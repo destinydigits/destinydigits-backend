@@ -53,7 +53,7 @@ def enrich_report(numbers):
     return {**numbers, **enriched}
     
 def extract_full_numerology(name, dob_str):
-    dob = datetime.datetime.strptime(dob_str, "%d-%m-%Y")
+    dob = datetime.datetime.strptime(dob_str, "%Y-%m-%d")
     day, month, year = dob.day, dob.month, dob.year
 
     numbers = numerology_values(name)
