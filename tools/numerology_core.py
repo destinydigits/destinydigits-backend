@@ -67,6 +67,7 @@ def extract_full_numerology(name, dob_str):
 
     raw_destiny = sum(int(d) for d in dob_str if d.isdigit())
     destiny_number = reduce_strict(raw_destiny)
+    life_path = destiny_number
     if raw_destiny in (11, 22, 33):
         master_numbers['destinyNumber'] = raw_destiny
 
@@ -81,6 +82,7 @@ def extract_full_numerology(name, dob_str):
     result = {
         'nameNumber': numbers['expressionNumber'],
         'birthNumber': birth_number,
+        'life_path': life_path,
         'destinyNumber': destiny_number,
         'heartNumber': numbers['heartNumber'],
         'personalityNumber': numbers['personalityNumber'],
