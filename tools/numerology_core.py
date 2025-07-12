@@ -95,7 +95,7 @@ def extract_full_numerology(name, dob_str):
         'pinnacleNumbers': get_pinnacle_numbers(day, month, reduce_strict(year)),
         'personalYear': personal_year,
         'personalMonth': personal_month,
-        'personalDay': personal_day
+        'personalDay': personal_day,  # ✅ COMMA FIXED HERE
         'heart_desire': numbers['heartNumber'],
         'expression_number': numbers['expressionNumber'],
         'personality_number': numbers['personalityNumber'],
