@@ -7,7 +7,8 @@ number_profile = {
         "expressionTrait": "Determined Achiever",
         "talents": "Leadership, Initiative, Vision",
         "gift": "Trailblazer",
-        "problemSolvingStyle": "Takes charge and directs"
+        "problemSolvingStyle": "Takes charge and directs",
+        "lifeDescription": "You are here to initiate, take charge, and be original. Your journey is about bold beginnings."
     },
     2: {
         "coreTrait": "Harmony Seeker",
@@ -17,7 +18,8 @@ number_profile = {
         "expressionTrait": "Intuitive Mediator",
         "talents": "Listening, Peacemaking, Partnership",
         "gift": "Healer",
-        "problemSolvingStyle": "Finds common ground"
+        "problemSolvingStyle": "Finds common ground",
+        "lifeDescription": "Your soul is wired for connection and balance. You teach the power of patience and compassion."
     },
     3: {
         "coreTrait": "Creative Communicator",
@@ -27,7 +29,8 @@ number_profile = {
         "expressionTrait": "Artistic Spark",
         "talents": "Speaking, Writing, Performing",
         "gift": "Entertainer",
-        "problemSolvingStyle": "Charms and inspires"
+        "problemSolvingStyle": "Charms and inspires",
+        "lifeDescription": "You are here to express and inspire through words, art, or performance. Your joy heals others."
     },
     4: {
         "coreTrait": "Stable Builder",
@@ -37,7 +40,8 @@ number_profile = {
         "expressionTrait": "Methodical Worker",
         "talents": "Planning, Discipline, Dedication",
         "gift": "Architect",
-        "problemSolvingStyle": "Builds step by step"
+        "problemSolvingStyle": "Builds step by step",
+        "lifeDescription": "Your mission is to lay foundations — whether in family, career, or society. You value reliability."
     },
     5: {
         "coreTrait": "Freedom Explorer",
@@ -47,7 +51,8 @@ number_profile = {
         "expressionTrait": "Persuasive Adventurer",
         "talents": "Adaptability, Sales, Storytelling",
         "gift": "Rebel",
-        "problemSolvingStyle": "Adapts fast, breaks limits"
+        "problemSolvingStyle": "Adapts fast, breaks limits",
+        "lifeDescription": "You are here to experience life fully. Growth comes when you embrace movement without losing grounding."
     },
     6: {
         "coreTrait": "Caring Nurturer",
@@ -57,7 +62,8 @@ number_profile = {
         "expressionTrait": "Supportive Guardian",
         "talents": "Caregiving, Teaching, Serving others",
         "gift": "Caretaker",
-        "problemSolvingStyle": "Soothes and serves"
+        "problemSolvingStyle": "Soothes and serves",
+        "lifeDescription": "Your path is about service, home, and care. You’re the emotional anchor for others."
     },
     7: {
         "coreTrait": "Deep Thinker",
@@ -67,7 +73,8 @@ number_profile = {
         "expressionTrait": "Wise Observer",
         "talents": "Research, Intuition, Philosophy",
         "gift": "Mystic",
-        "problemSolvingStyle": "Questions and analyzes"
+        "problemSolvingStyle": "Questions and analyzes",
+        "lifeDescription": "You are the quiet mind behind big questions. Spiritual, philosophical, and deep."
     },
     8: {
         "coreTrait": "Powerful Achiever",
@@ -77,7 +84,8 @@ number_profile = {
         "expressionTrait": "Strategic Executor",
         "talents": "Business, Leadership, Finance",
         "gift": "Manifestor",
-        "problemSolvingStyle": "Organizes for victory"
+        "problemSolvingStyle": "Organizes for victory",
+        "lifeDescription": "You are here to master wealth, power, and influence — with ethics. You're a builder of empires."
     },
     9: {
         "coreTrait": "Wise Giver",
@@ -87,6 +95,7 @@ number_profile = {
         "expressionTrait": "Soulful Humanitarian",
         "talents": "Empathy, Global Thinking, Healing",
         "gift": "Guide",
-        "problemSolvingStyle": "Uplifts and heals"
+        "problemSolvingStyle": "Uplifts and heals",
+        "lifeDescription": "Your journey is about giving back. Wisdom and closure are your tools for impact."
     }
 }
