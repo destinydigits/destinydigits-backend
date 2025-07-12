@@ -1,4 +1,3 @@
-
 import datetime
 
 PYTHAGOREAN_VALUES = {
@@ -53,20 +52,18 @@ def extract_full_numerology(name, dob_str):
     day, month, year = dob.day, dob.month, dob.year
 
     numbers = numerology_values(name)
-
-    birth_raw = sum(int(d) for d in str(day))
-    birth_number = reduce_number(day)
-    destiny_raw = sum(int(d) for d in dob_str if d.isdigit())
-    destiny_number = reduce_number(destiny_raw)
-
     master_numbers = {}
-    if birth_number in (11, 22, 33):
-        master_numbers['birthNumber'] = birth_number
-        birth_number = reduce_strict(birth_number)
 
-    if destiny_number in (11, 22, 33):
-        master_numbers['destinyNumber'] = destiny_number
-        destiny_number = reduce_strict(destiny_number)
+    # Master check but reduce anyway
+    raw_birth = day
+    birth_number = reduce_strict(day)
+    if raw_birth in (11, 22, 33):
+        master_numbers['birthNumber'] = raw_birth
+
+    raw_destiny = sum(int(d) for d in dob_str if d.isdigit())
+    destiny_number = reduce_strict(raw_destiny)
+    if raw_destiny in (11, 22, 33):
+        master_numbers['destinyNumber'] = raw_destiny
 
     talent_number = [int(d) for d in str(destiny_number)] if destiny_number > 9 else [destiny_number]
     ultimate_number = reduce_strict(numbers['expressionNumber'] + destiny_number)
