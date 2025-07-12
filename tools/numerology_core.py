@@ -138,7 +138,11 @@ def extract_full_numerology(name, dob_str):
     personal_year = reduce_strict(day + month + today.year)
     personal_month = reduce_strict(personal_year + today.month)
     personal_day = reduce_strict(personal_month + today.day)
-
+   
+    pinnacles = get_pinnacle_numbers(day, month, reduce_strict(year))
+    challenge_list = get_challenge_numbers(day, month, reduce_strict(year))
+    challenge_number = get_primary_challenge_number(challenge_list)
+    
     result = {
         'nameNumber': numbers['expressionNumber'],
         'birthNumber': birth_number,
@@ -151,33 +155,31 @@ def extract_full_numerology(name, dob_str):
         'habitNumber': numbers['habitNumber'],
         'firstLetter': numbers['firstLetter'],
         'firstVowel': numbers['firstVowel'],
-        'challengeNumbers': get_challenge_numbers(day, month, reduce_strict(year)),
-        'pinnacleNumbers': get_pinnacle_numbers(day, month, reduce_strict(year)),
-        'personalYear': personal_year,
-        'personalMonth': personal_month,
-        'personalDay': personal_day,  # ✅ COMMA FIXED HERE
-        'heart_desire': numbers['heartNumber'],
-        'expression_number': numbers['expressionNumber'],
-        'personality_number': numbers['personalityNumber'],        
-        'p1': get_pinnacle_numbers(day, month, reduce_strict(year))[0],
-        'p2': get_pinnacle_numbers(day, month, reduce_strict(year))[1],
-        'p3': get_pinnacle_numbers(day, month, reduce_strict(year))[2],
-        'p4': get_pinnacle_numbers(day, month, reduce_strict(year))[3],
         'challengeNumbers': challenge_list,
         'challenge_number': challenge_number,
+        'pinnacleNumbers': pinnacles,
+        'p1': pinnacles[0],
+        'p2': pinnacles[1],
+        'p3': pinnacles[2],
+        'p4': pinnacles[3],
         'c1': challenge_list[0],
         'c2': challenge_list[1],
         'c3': challenge_list[2],
         'c4': challenge_list[3],
+        'personalYear': personal_year,
+        'personalMonth': personal_month,
+        'personalDay': personal_day,
+        'heart_desire': numbers['heartNumber'],
+        'expression_number': numbers['expressionNumber'],
+        'personality_number': numbers['personalityNumber']
     }
-
-    pinnacles = get_pinnacle_numbers(day, month, reduce_strict(year))
+    
     pinnacle_texts = get_pinnacle_phase_texts(year, pinnacles)
     result.update(pinnacle_texts)
     
     if master_numbers:
         result['masterNumbers'] = master_numbers
-
+    
     return enrich_report(result)  
 
 
