@@ -137,40 +137,49 @@ challenge_profile = {
 
 expression_profile = {
     1: {
-        "expressionTrait": "Leadership, originality, and drive",
-        "expressionMessage": "You express yourself best when you're leading, initiating, and showing the way forward with courage."
+        "talents": "Leadership, originality, and courage",
+        "expressionTrait": "Bold action taker",
+        "problemSolvingStyle": "Takes charge and leads through challenges"
     },
     2: {
-        "expressionTrait": "Diplomacy, gentleness, and harmony",
-        "expressionMessage": "You express through sensitivity and care, preferring peaceful solutions and building emotional bridges."
+        "talents": "Diplomacy, listening, cooperation",
+        "expressionTrait": "Peaceful harmonizer",
+        "problemSolvingStyle": "Builds consensus and resolves conflict"
     },
     3: {
-        "expressionTrait": "Creativity, optimism, and communication",
-        "expressionMessage": "You express through words, art, and charm. Your vibe uplifts rooms and sparks joy wherever you go."
+        "talents": "Creativity, optimism, and communication",
+        "expressionTrait": "Expressive artist",
+        "problemSolvingStyle": "Uses words and charm to overcome"
     },
     4: {
-        "expressionTrait": "Discipline, structure, and dedication",
-        "expressionMessage": "You express steadily — through hard work, strong values, and a commitment to long-term goals."
+        "talents": "Discipline, structure, and dedication",
+        "expressionTrait": "Reliable builder",
+        "problemSolvingStyle": "Solves steadily through systems"
     },
     5: {
-        "expressionTrait": "Adaptability, exploration, and charisma",
-        "expressionMessage": "You shine when you're free to explore, communicate, and experiment with new ideas or paths."
+        "talents": "Adaptability, curiosity, and charisma",
+        "expressionTrait": "Adventurous speaker",
+        "problemSolvingStyle": "Navigates change with wit"
     },
     6: {
-        "expressionTrait": "Nurturing, healing, and community roles",
-        "expressionMessage": "Your best expression comes when you're supporting, guiding, or healing others in your community or family."
+        "talents": "Caring, healing, responsibility",
+        "expressionTrait": "Emotional supporter",
+        "problemSolvingStyle": "Fixes problems through nurturing"
     },
     7: {
-        "expressionTrait": "Depth, intuition, and spiritual insight",
-        "expressionMessage": "You express through deep thought, unique perspective, and spiritual or philosophical insights."
+        "talents": "Intuition, research, insight",
+        "expressionTrait": "Spiritual thinker",
+        "problemSolvingStyle": "Finds truth through analysis"
     },
     8: {
-        "expressionTrait": "Ambition, efficiency, and leadership",
-        "expressionMessage": "You express best through building, organizing, and executing visions of power and influence."
+        "talents": "Organization, ambition, leadership",
+        "expressionTrait": "Strategic doer",
+        "problemSolvingStyle": "Takes control with precision"
     },
     9: {
-        "expressionTrait": "Compassion, creativity, and humanitarian ideals",
-        "expressionMessage": "You express with wisdom, heart, and a drive to uplift humanity — often through art or service."
+        "talents": "Compassion, vision, service",
+        "expressionTrait": "Inspired idealist",
+        "problemSolvingStyle": "Solves with empathy and creativity"
     }
 }
 
