@@ -138,9 +138,6 @@ def extract_full_numerology(name, dob_str):
     personal_year = reduce_strict(day + month + today.year)
     personal_month = reduce_strict(personal_year + today.month)
     personal_day = reduce_strict(personal_month + today.day)
-    pinnacles = get_pinnacle_numbers(day, month, reduce_strict(year))
-    pinnacle_texts = get_pinnacle_phase_texts(year, pinnacles)
-    result.update(pinnacle_texts)
 
     result = {
         'nameNumber': numbers['expressionNumber'],
@@ -173,6 +170,11 @@ def extract_full_numerology(name, dob_str):
         'c3': challenge_list[2],
         'c4': challenge_list[3],
     }
+
+    pinnacles = get_pinnacle_numbers(day, month, reduce_strict(year))
+    pinnacle_texts = get_pinnacle_phase_texts(year, pinnacles)
+    result.update(pinnacle_texts)
+    
     if master_numbers:
         result['masterNumbers'] = master_numbers
 
