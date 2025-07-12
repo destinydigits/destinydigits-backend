@@ -53,15 +53,27 @@ def get_pinnacle_numbers(day, month, year):
     p3 = reduce_strict(p1 + p2)
     p4 = reduce_strict(month + year)
     return [p1, p2, p3, p4]
+
 def enrich_report(numbers):
     lp = numbers["life_path"]
     enriched = number_profile.get(lp, {})
     numbers.update(enriched)
-    numbers["heartDescription"] = heart_profile.get(numbers.get("heartNumber"), "")
+
+    # Fixing correct keys for JS to use
+    numbers["emotionalNeed"] = heart_profile.get(numbers.get("heartNumber"), "")
+    numbers["outerMask"] = personality_profile.get(numbers.get("personality_number"), "")
+    numbers["talents"] = expression_profile.get(numbers.get("expression_number"), "")
+    numbers["expressionTrait"] = expression_profile.get(numbers.get("expression_number"), "")
+    numbers["problemSolvingStyle"] = expression_profile.get(numbers.get("expression_number"), "")
+
+    # Old keys can stay if you still want them for internal use
+    numbers["heartDescription"] = numbers["emotionalNeed"]
+    numbers["expressionDescription"] = numbers["expressionTrait"]
+    numbers["maskDescription"] = numbers["outerMask"]
+
     numbers["struggle"] = challenge_profile.get(numbers.get("challenge_number"), {}).get("struggle", "")
     numbers["resolutionTip"] = challenge_profile.get(numbers.get("challenge_number"), {}).get("resolutionTip", "")
-    numbers["expressionDescription"] = expression_profile.get(numbers.get("expression_number"), "")
-    numbers["maskDescription"] = personality_profile.get(numbers.get("personality_number"), "")
+    
     return numbers
     
 def extract_full_numerology(name, dob_str):
