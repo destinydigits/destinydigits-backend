@@ -47,7 +47,11 @@ def get_pinnacle_numbers(day, month, year):
     p3 = reduce_strict(p1 + p2)
     p4 = reduce_strict(month + year)
     return [p1, p2, p3, p4]
-
+def enrich_report(numbers):
+    lp = numbers["life_path"]
+    enriched = number_profile[lp]
+    return {**numbers, **enriched}
+    
 def extract_full_numerology(name, dob_str):
     dob = datetime.datetime.strptime(dob_str, "%d-%m-%Y")
     day, month, year = dob.day, dob.month, dob.year
@@ -91,12 +95,9 @@ def extract_full_numerology(name, dob_str):
         'personalMonth': personal_month,
         'personalDay': personal_day
     }
-def enrich_report(numbers):
-    lp = numbers["life_path"]
-    enriched = number_profile[lp]
-
-    return {**numbers, **enriched}
     if master_numbers:
         result['masterNumbers'] = master_numbers
 
-    return result
+    return enrich_report(result)  
+
+
