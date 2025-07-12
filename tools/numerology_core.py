@@ -91,7 +91,22 @@ def enrich_report(numbers):
     numbers["resolutionTip"] = challenge.get("resolutionTip", "")
 
     return numbers
-    
+
+def get_pinnacle_phase_texts(birth_year, pinnacles):
+    current_year = datetime.datetime.now().year
+    age = current_year - birth_year
+
+    def describe(pinnacle_number):
+        return number_profile.get(pinnacle_number, {}).get("lifePurpose", "")
+
+    return {
+        "pinnaclePhase1": f"{pinnacles[0]} – {describe(pinnacles[0])}",
+        "pinnaclePhase2": f"{pinnacles[1]} – {describe(pinnacles[1])}",
+        "pinnaclePhase3": f"{pinnacles[2]} – {describe(pinnacles[2])}",
+        "pinnaclePhase4": f"{pinnacles[3]} – {describe(pinnacles[3])}",
+        "currentAge": age
+    }
+
 def extract_full_numerology(name, dob_str):
     dob = datetime.datetime.strptime(dob_str, "%Y-%m-%d")
     day, month, year = dob.day, dob.month, dob.year
@@ -119,6 +134,9 @@ def extract_full_numerology(name, dob_str):
     personal_year = reduce_strict(day + month + today.year)
     personal_month = reduce_strict(personal_year + today.month)
     personal_day = reduce_strict(personal_month + today.day)
+    pinnacles = get_pinnacle_numbers(day, month, reduce_strict(year))
+    pinnacle_texts = get_pinnacle_phase_texts(year, pinnacles)
+    result.update(pinnacle_texts)
 
     result = {
         'nameNumber': numbers['expressionNumber'],
