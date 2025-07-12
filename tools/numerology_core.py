@@ -150,7 +150,6 @@ def extract_full_numerology(name, dob_str):
         'c2': challenge_list[1],
         'c3': challenge_list[2],
         'c4': challenge_list[3],
-        ...
     }
     if master_numbers:
         result['masterNumbers'] = master_numbers
