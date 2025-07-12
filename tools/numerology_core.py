@@ -68,9 +68,9 @@ def enrich_report(numbers):
 
     # Get expression profile safely
     expr = expression_profile.get(numbers.get("expression_number"), {})
-    numbers["talents"] = expr if isinstance(expr, str) else expr.get("talents", "")
-    numbers["expressionTrait"] = expr if isinstance(expr, str) else expr.get("expressionTrait", "")
-    numbers["problemSolvingStyle"] = expr if isinstance(expr, str) else expr.get("problemSolvingStyle", "")
+    numbers["talents"] = expr.get("talents", "")
+    numbers["expressionTrait"] = expr.get("expressionTrait", "")
+    numbers["problemSolvingStyle"] = expr.get("problemSolvingStyle", "")
 
     # Get heart profile safely
     heart = heart_profile.get(numbers.get("heartNumber"), "")
