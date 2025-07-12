@@ -96,6 +96,14 @@ def extract_full_numerology(name, dob_str):
         'personalYear': personal_year,
         'personalMonth': personal_month,
         'personalDay': personal_day
+        'heart_desire': numbers['heartNumber'],
+        'expression_number': numbers['expressionNumber'],
+        'personality_number': numbers['personalityNumber'],
+        'challenge_number': get_challenge_numbers(day, month, reduce_strict(year))[0],
+        'p1': get_pinnacle_numbers(day, month, reduce_strict(year))[0],
+        'p2': get_pinnacle_numbers(day, month, reduce_strict(year))[1],
+        'p3': get_pinnacle_numbers(day, month, reduce_strict(year))[2],
+        'p4': get_pinnacle_numbers(day, month, reduce_strict(year))[3],
     }
     if master_numbers:
         result['masterNumbers'] = master_numbers
