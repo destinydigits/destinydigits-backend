@@ -1,5 +1,11 @@
 import datetime
-from tools.lookup_tables import number_profile
+from .lookup_tables import (
+    number_profile,
+    heart_profile,
+    challenge_profile,
+    expression_profile,
+    personality_profile
+)
 
 PYTHAGOREAN_VALUES = {
     'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9,
@@ -49,8 +55,14 @@ def get_pinnacle_numbers(day, month, year):
     return [p1, p2, p3, p4]
 def enrich_report(numbers):
     lp = numbers["life_path"]
-    enriched = number_profile[lp]
-    return {**numbers, **enriched}
+    enriched = number_profile.get(lp, {})
+    numbers.update(enriched)
+    numbers["heartDescription"] = heart_profile.get(numbers.get("heartNumber"), "")
+    numbers["struggle"] = challenge_profile.get(numbers.get("challenge_number"), {}).get("struggle", "")
+    numbers["resolutionTip"] = challenge_profile.get(numbers.get("challenge_number"), {}).get("resolutionTip", "")
+    numbers["expressionDescription"] = expression_profile.get(numbers.get("expression_number"), "")
+    numbers["maskDescription"] = personality_profile.get(numbers.get("personality_number"), "")
+    return numbers
     
 def extract_full_numerology(name, dob_str):
     dob = datetime.datetime.strptime(dob_str, "%Y-%m-%d")
