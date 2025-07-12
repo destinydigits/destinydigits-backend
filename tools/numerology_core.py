@@ -59,21 +59,30 @@ def enrich_report(numbers):
     enriched = number_profile.get(lp, {})
     numbers.update(enriched)
 
-    # Fixing correct keys for JS to use
-    numbers["emotionalNeed"] = heart_profile.get(numbers.get("heartNumber"), "")
-    numbers["outerMask"] = personality_profile.get(numbers.get("personality_number"), "")
-    numbers["talents"] = expression_profile.get(numbers.get("expression_number"), "")
-    numbers["expressionTrait"] = expression_profile.get(numbers.get("expression_number"), "")
-    numbers["problemSolvingStyle"] = expression_profile.get(numbers.get("expression_number"), "")
+    # Get expression profile safely
+    expr = expression_profile.get(numbers.get("expression_number"), {})
+    numbers["talents"] = expr if isinstance(expr, str) else expr.get("talents", "")
+    numbers["expressionTrait"] = expr if isinstance(expr, str) else expr.get("expressionTrait", "")
+    numbers["problemSolvingStyle"] = expr if isinstance(expr, str) else expr.get("problemSolvingStyle", "")
 
-    # Old keys can stay if you still want them for internal use
+    # Get heart profile safely
+    heart = heart_profile.get(numbers.get("heartNumber"), "")
+    numbers["emotionalNeed"] = heart if isinstance(heart, str) else heart.get("emotionalNeed", "")
+
+    # Get personality profile safely
+    mask = personality_profile.get(numbers.get("personality_number"), "")
+    numbers["outerMask"] = mask if isinstance(mask, str) else mask.get("outerMask", "")
+
+    # For JS compatibility (optional duplicates)
     numbers["heartDescription"] = numbers["emotionalNeed"]
     numbers["expressionDescription"] = numbers["expressionTrait"]
     numbers["maskDescription"] = numbers["outerMask"]
 
-    numbers["struggle"] = challenge_profile.get(numbers.get("challenge_number"), {}).get("struggle", "")
-    numbers["resolutionTip"] = challenge_profile.get(numbers.get("challenge_number"), {}).get("resolutionTip", "")
-    
+    # Challenge info
+    challenge = challenge_profile.get(numbers.get("challenge_number"), {})
+    numbers["struggle"] = challenge.get("struggle", "")
+    numbers["resolutionTip"] = challenge.get("resolutionTip", "")
+
     return numbers
     
 def extract_full_numerology(name, dob_str):
