@@ -58,15 +58,42 @@ number_profile = {
 }
 
 heart_profile = {
-    1: "You deeply crave independence, achievement, and recognition.",
-    2: "You deeply crave closeness, love, and emotional peace.",
-    3: "You deeply crave expression, attention, and joyful communication.",
-    4: "You deeply crave structure, loyalty, and long-term security.",
-    5: "You deeply crave freedom, variety, and personal space.",
-    6: "You deeply crave love, responsibility, and a sense of belonging.",
-    7: "You deeply crave solitude, inner clarity, and personal growth.",
-    8: "You deeply crave success, control, and material stability.",
-    9: "You deeply crave meaning, compassion, and a chance to help others."
+    1: {
+        "emotionalNeed": "Independence, achievement, and recognition",
+        "emotionalMessage": "You deeply crave independence and recognition. Your heart feels fulfilled when you're achieving and leading."
+    },
+    2: {
+        "emotionalNeed": "Closeness, love, and emotional peace",
+        "emotionalMessage": "You deeply crave closeness and emotional harmony. Peaceful, loving bonds are what heal your soul."
+    },
+    3: {
+        "emotionalNeed": "Expression, attention, and joyful communication",
+        "emotionalMessage": "Your heart desires to express freely, be seen, and share joy. Emotional fulfillment comes through creativity and connection."
+    },
+    4: {
+        "emotionalNeed": "Structure, loyalty, and long-term security",
+        "emotionalMessage": "You crave emotional stability. Consistent love, loyalty, and grounded relationships soothe your inner self."
+    },
+    5: {
+        "emotionalNeed": "Freedom, variety, and personal space",
+        "emotionalMessage": "You need emotional space and flexibility. Freedom to explore love and life keeps your heart light."
+    },
+    6: {
+        "emotionalNeed": "Love, responsibility, and a sense of belonging",
+        "emotionalMessage": "You long to nurture and be nurtured. Deep bonds, responsibility, and mutual care feed your emotional world."
+    },
+    7: {
+        "emotionalNeed": "Solitude, inner clarity, and personal growth",
+        "emotionalMessage": "Your emotional world thrives in silence and understanding. Alone time and deep inner reflection are your healing agents."
+    },
+    8: {
+        "emotionalNeed": "Success, control, and material stability",
+        "emotionalMessage": "You crave respect, power, and emotional control. Security and influence give you a sense of emotional peace."
+    },
+    9: {
+        "emotionalNeed": "Meaning, compassion, and helping others",
+        "emotionalMessage": "You seek love through compassion and giving. Serving a higher cause or people in need fulfills your emotional core."
+    }
 }
 
 challenge_profile = {
@@ -109,25 +136,81 @@ challenge_profile = {
 }
 
 expression_profile = {
-    1: "You express through leadership, originality, and drive.",
-    2: "You express through diplomacy, gentleness, and harmony.",
-    3: "You express through creativity, optimism, and communication.",
-    4: "You express through discipline, structure, and dedication.",
-    5: "You express through adaptability, exploration, and charisma.",
-    6: "You express through nurturing, healing, and community roles.",
-    7: "You express through depth, intuition, and spiritual insight.",
-    8: "You express through ambition, efficiency, and leadership.",
-    9: "You express through compassion, creativity, and humanitarian ideals."
+    1: {
+        "expressionTrait": "Leadership, originality, and drive",
+        "expressionMessage": "You express yourself best when you're leading, initiating, and showing the way forward with courage."
+    },
+    2: {
+        "expressionTrait": "Diplomacy, gentleness, and harmony",
+        "expressionMessage": "You express through sensitivity and care, preferring peaceful solutions and building emotional bridges."
+    },
+    3: {
+        "expressionTrait": "Creativity, optimism, and communication",
+        "expressionMessage": "You express through words, art, and charm. Your vibe uplifts rooms and sparks joy wherever you go."
+    },
+    4: {
+        "expressionTrait": "Discipline, structure, and dedication",
+        "expressionMessage": "You express steadily — through hard work, strong values, and a commitment to long-term goals."
+    },
+    5: {
+        "expressionTrait": "Adaptability, exploration, and charisma",
+        "expressionMessage": "You shine when you're free to explore, communicate, and experiment with new ideas or paths."
+    },
+    6: {
+        "expressionTrait": "Nurturing, healing, and community roles",
+        "expressionMessage": "Your best expression comes when you're supporting, guiding, or healing others in your community or family."
+    },
+    7: {
+        "expressionTrait": "Depth, intuition, and spiritual insight",
+        "expressionMessage": "You express through deep thought, unique perspective, and spiritual or philosophical insights."
+    },
+    8: {
+        "expressionTrait": "Ambition, efficiency, and leadership",
+        "expressionMessage": "You express best through building, organizing, and executing visions of power and influence."
+    },
+    9: {
+        "expressionTrait": "Compassion, creativity, and humanitarian ideals",
+        "expressionMessage": "You express with wisdom, heart, and a drive to uplift humanity — often through art or service."
+    }
 }
 
+
 personality_profile = {
-    1: "You come across as confident, direct, and assertive.",
-    2: "You come across as gentle, diplomatic, and calm.",
-    3: "You come across as fun-loving, social, and expressive.",
-    4: "You come across as practical, reliable, and steady.",
-    5: "You come across as adventurous, charismatic, and curious.",
-    6: "You come across as responsible, caring, and idealistic.",
-    7: "You come across as mysterious, intelligent, and reserved.",
-    8: "You come across as powerful, ambitious, and self-controlled.",
-    9: "You come across as wise, generous, and emotionally deep."
+    1: {
+        "outerMask": "Confident, direct, and assertive",
+        "maskMessage": "You give the impression of someone who knows what they want and takes initiative. People see you as a natural leader."
+    },
+    2: {
+        "outerMask": "Gentle, diplomatic, and calm",
+        "maskMessage": "You appear peaceful and emotionally intelligent. Others often approach you for mediation or comfort."
+    },
+    3: {
+        "outerMask": "Fun-loving, social, and expressive",
+        "maskMessage": "Your vibrant energy and storytelling charm make you naturally magnetic in social settings."
+    },
+    4: {
+        "outerMask": "Practical, reliable, and steady",
+        "maskMessage": "You are seen as grounded and responsible — the one who can be counted on in tough times."
+    },
+    5: {
+        "outerMask": "Adventurous, charismatic, and curious",
+        "maskMessage": "Your energy is exciting and ever-changing. People see you as bold, free-spirited, and full of stories."
+    },
+    6: {
+        "outerMask": "Responsible, caring, and idealistic",
+        "maskMessage": "You come across as warm and nurturing, often taking the role of peacemaker or caregiver in groups."
+    },
+    7: {
+        "outerMask": "Mysterious, intelligent, and reserved",
+        "maskMessage": "People sense depth in you. You may not speak much, but your silence holds weight and intrigue."
+    },
+    8: {
+        "outerMask": "Powerful, ambitious, and self-controlled",
+        "maskMessage": "Others see you as capable and commanding. You exude an aura of success and high standards."
+    },
+    9: {
+        "outerMask": "Wise, generous, and emotionally deep",
+        "maskMessage": "You project compassion and wisdom. People often come to you for emotional guidance or inspiration."
+    }
 }
+
