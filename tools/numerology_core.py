@@ -55,10 +55,10 @@ def get_primary_challenge_number(challenge_list):
     return None
 
 def get_pinnacle_numbers(day, month, year):
-    #p1 = reduce_strict(day + month)
-    #p2 = reduce_strict(day + year)
-    #p3 = reduce_strict(p1 + p2)
-    #p4 = reduce_strict(month + year)
+    p1 = reduce_strict(day + month)
+    p2 = reduce_strict(day + year)
+    p3 = reduce_strict(p1 + p2)
+    p4 = reduce_strict(month + year)
     return [p1, p2, p3, p4]
 
 def enrich_report(numbers):
