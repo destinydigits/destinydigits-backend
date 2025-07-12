@@ -11,11 +11,15 @@ def home():
 @app.route('/api/extract-numbers')
 def extract_numbers():
     name = request.args.get('name')
-    dob = request.args.get('dob')  # format: DD-MM-YYYY
-    if not name or not dob:
-        return jsonify({"error": "Missing name or dob"}), 400
-    result = extract_full_numerology(name, dob)
-    return jsonify(result)
+    dob = request.args.get('dob')
+    try:
+        if not name or not dob:
+            return jsonify({"error": "Missing name or dob"}), 400
+        result = extract_full_numerology(name, dob)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
