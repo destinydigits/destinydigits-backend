@@ -93,20 +93,24 @@ def enrich_report(numbers):
     return numbers
 
 def get_pinnacle_phase_texts(birth_year, pinnacles):
-    current_year = datetime.datetime.now().year
-    age = current_year - birth_year
-
-    def describe(pinnacle_number):
-        return number_profile.get(pinnacle_number, {}).get("lifePurpose", "")
-
-    return {
-        "pinnaclePhase1": f"{pinnacles[0]} – {describe(pinnacles[0])}",
-        "pinnaclePhase2": f"{pinnacles[1]} – {describe(pinnacles[1])}",
-        "pinnaclePhase3": f"{pinnacles[2]} – {describe(pinnacles[2])}",
-        "pinnaclePhase4": f"{pinnacles[3]} – {describe(pinnacles[3])}",
-        "currentAge": age
+    descriptions = {
+        1: "Independence, ambition, leadership",
+        2: "Emotional sensitivity, building deep bonds",
+        3: "Creativity, self-expression, joy",
+        4: "Discipline, creating structure",
+        5: "Change, adventure, freedom",
+        6: "Love, family, and responsibility",
+        7: "Spiritual growth, introspection, study",
+        8: "Material success, power, management",
+        9: "Compassion, service, humanitarian focus"
     }
-
+    return {
+        "pinnacle_phase_1": f"Age 0–27: {pinnacles[0]} – {descriptions.get(pinnacles[0], '')}",
+        "pinnacle_phase_2": f"Age 28–36: {pinnacles[1]} – {descriptions.get(pinnacles[1], '')}",
+        "pinnacle_phase_3": f"Age 37–45: {pinnacles[2]} – {descriptions.get(pinnacles[2], '')}",
+        "pinnacle_phase_4": f"Age 46+: {pinnacles[3]} – {descriptions.get(pinnacles[3], '')}",
+    }
+    
 def extract_full_numerology(name, dob_str):
     dob = datetime.datetime.strptime(dob_str, "%Y-%m-%d")
     day, month, year = dob.day, dob.month, dob.year
