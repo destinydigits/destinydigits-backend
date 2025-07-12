@@ -1,4 +1,5 @@
 import datetime
+from tools.lookup_tables import number_profile
 
 PYTHAGOREAN_VALUES = {
     'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9,
@@ -90,7 +91,11 @@ def extract_full_numerology(name, dob_str):
         'personalMonth': personal_month,
         'personalDay': personal_day
     }
+def enrich_report(numbers):
+    lp = numbers["life_path"]
+    enriched = number_profile[lp]
 
+    return {**numbers, **enriched}
     if master_numbers:
         result['masterNumbers'] = master_numbers
 
