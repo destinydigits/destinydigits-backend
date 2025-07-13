@@ -4,21 +4,21 @@ import random
 
 def load_horoscope(number, type_):
     try:
-        base_path = os.path.dirname(__file__)
-        file_path = os.path.join(base_path, "horoscope_data", f"{type_}.json")
+        folder = os.path.join(os.path.dirname(__file__), "horoscope_data")
+        file_path = os.path.join(folder, f"{type_}.json")
 
         if not os.path.exists(file_path):
-            return {"error": "Horoscope file not found"}, 500
+            return {"error": "Could not load horoscope file"}, 500
 
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         if number not in data:
-            return {"error": "No data for this number"}, 400
+            return {"error": "Invalid number"}, 400
 
         entry = data[number]
 
-        # For DAILY format
+        # ✅ For DAILY format
         if type_ == "daily" and isinstance(entry, dict):
             messages = entry.get("horoscope", [])
             message = random.choice(messages) if messages else "No message available."
@@ -28,8 +28,8 @@ def load_horoscope(number, type_):
                 "todayTip": entry.get("todayTip", "")
             }
 
-        # For MONTHLY/YEARLY: entry is list of strings
-        if isinstance(entry, list):
+        # ✅ For MONTHLY format
+        if type_ == "monthly" and isinstance(entry, list):
             message = random.choice(entry)
             return {
                 "message": message,
@@ -37,15 +37,17 @@ def load_horoscope(number, type_):
                 "todayTip": None
             }
 
-        # If entry is a plain string (rare case)
-        if isinstance(entry, str):
+        # ✅ For YEARLY format
+        if type_ == "yearly" and isinstance(entry, list):
+            message = random.choice(entry)
             return {
-                "message": entry,
+                "message": message,
                 "luckyColor": None,
                 "todayTip": None
             }
 
+        # 🛑 Fallback if nothing matched
         return {"message": "No horoscope found."}
 
     except Exception as e:
-        return {"error": "Error reading horoscope", "details": str(e)}, 500
+        return {"error": "Internal server error", "details": str(e)}, 500
