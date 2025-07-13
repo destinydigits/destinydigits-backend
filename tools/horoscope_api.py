@@ -2,38 +2,47 @@ import json
 import random
 import os
 
-def load_horoscope(number: str, type_: str):
+def load_horoscope(number, type_):
+    import os, json, random
+
+    folder = os.path.join(os.path.dirname(__file__), "horoscope_data")
+    file_path = os.path.join(folder, f"{type_}.json")
+
+    if not os.path.exists(file_path):
+        return {"error": "Could not load horoscope file"}, 500
+
     try:
-        file_path = os.path.join(os.path.dirname(__file__), "horoscope_data", f"{type_}.json")
-
-        if not os.path.exists(file_path):
-            return {"error": "Could not load horoscope file"}, 500
-
         with open(file_path, "r", encoding="utf-8") as f:
-            all_data = json.load(f)
+            data = json.load(f)
 
-        number_data = all_data.get(str(number))
-        if not number_data:
-            return {"error": "No data for this number"}, 404
+        if number not in data:
+            return {"error": "Invalid number"}, 400
 
-        selected = random.choice(number_data) if isinstance(number_data, list) else number_data
+        entry = data[number]
 
-        # Handle daily format
-        if isinstance(selected, dict):
+        # DAILY
+        if type_ == "daily":
+            horoscope_list = entry.get("horoscope", [])
+            message = random.choice(horoscope_list) if horoscope_list else "No message available."
             return {
-                "message": selected.get("message", ""),
-                "luckyColor": selected.get("luckyColor", ""),
-                "todayTip": selected.get("todayTip", "")
+                "message": message,
+                "luckyColor": entry.get("luckyColor", ""),
+                "todayTip": entry.get("todayTip", "")
             }
 
-        # Handle monthly/yearly format (string list)
-        if isinstance(selected, list):
-            return {
-                "message": "\n\n".join(selected)
-            }
+        # MONTHLY/YEARLY
+        if isinstance(entry, list):
+            message = random.choice(entry)
+        elif isinstance(entry, str):
+            message = entry
+        else:
+            message = "No message available."
 
-        # If selected is already a string
-        return {"message": str(selected)}
+        return {
+            "message": message,
+            "luckyColor": None,
+            "todayTip": None
+        }
 
     except Exception as e:
-        return {"error": "Error parsing horoscope", "details": str(e)}, 500
+        return {"error": "Error reading horoscope", "details": str(e)}, 500
