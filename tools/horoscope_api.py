@@ -3,6 +3,7 @@ import json
 import random
 
 def load_horoscope(number, type_):
+    number = str(number)
     try:
         folder = os.path.join(os.path.dirname(__file__), "horoscope_data")
         file_path = os.path.join(folder, f"{type_}.json")
