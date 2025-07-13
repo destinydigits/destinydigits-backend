@@ -1,12 +1,12 @@
-import os
 import json
+import os
 import random
 
 def load_horoscope(number, type_):
     number = str(number)
     try:
-        folder = os.path.join(os.path.dirname(__file__), "horoscope_data")
-        file_path = os.path.join(folder, f"{type_}.json")
+        folder_path = os.path.join(os.path.dirname(__file__), "horoscope_data")
+        file_path = os.path.join(folder_path, f"{type_}.json")
 
         if not os.path.exists(file_path):
             return {"error": "Could not load horoscope file"}, 500
@@ -19,7 +19,7 @@ def load_horoscope(number, type_):
 
         entry = data[number]
 
-        # ✅ For DAILY format
+        # 🟢 DAILY
         if type_ == "daily" and isinstance(entry, dict):
             messages = entry.get("horoscope", [])
             message = random.choice(messages) if messages else "No message available."
@@ -29,7 +29,7 @@ def load_horoscope(number, type_):
                 "todayTip": entry.get("todayTip", "")
             }
 
-        # ✅ For MONTHLY format
+        # 🟢 MONTHLY
         if type_ == "monthly" and isinstance(entry, list):
             message = random.choice(entry)
             return {
@@ -38,7 +38,7 @@ def load_horoscope(number, type_):
                 "todayTip": None
             }
 
-        # ✅ For YEARLY format
+        # 🟢 YEARLY
         if type_ == "yearly" and isinstance(entry, list):
             message = random.choice(entry)
             return {
@@ -47,8 +47,7 @@ def load_horoscope(number, type_):
                 "todayTip": None
             }
 
-        # 🛑 Fallback if nothing matched
-        return {"message": "No horoscope found."}
+        return {"error": "Invalid horoscope format"}
 
     except Exception as e:
         return {"error": "Internal server error", "details": str(e)}, 500
