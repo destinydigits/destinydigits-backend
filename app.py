@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from tools.numerology_core import extract_full_numerology
 from tools.horoscope_api import load_horoscope
-from tools.tool_engine import process_tool
+from tools.romantic_vibes import get_romantic_vibes
 import os
 
 app = Flask(__name__)
@@ -42,12 +42,6 @@ def get_horoscope_message():
     if isinstance(result, tuple):  # error
         return jsonify(result[0]), result[1]
 
-    return jsonify(result)
-
-@app.route('/api/tool-result', methods=['POST'])
-def get_tool_result():
-    data = request.get_json()
-    result = process_tool(data)
     return jsonify(result)
     
 if __name__ == '__main__':
