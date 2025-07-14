@@ -3,6 +3,7 @@ from flask_cors import CORS
 from tools.numerology_core import extract_full_numerology
 from tools.horoscope_api import load_horoscope
 from tools.romantic_vibes import get_romantic_vibes
+from tools.karmic_lesson_marriage import get_karmic_lesson_marriage
 import os
 
 app = Flask(__name__)
@@ -51,6 +52,8 @@ def get_tool_result():
 
     if tool == "romantic-vibes":
         return jsonify(get_romantic_vibes(data))
+    if tool == "karmic-marriage":
+        return jsonify(get_karmic_lesson_marriage(data))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
