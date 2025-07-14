@@ -6,7 +6,14 @@ from tools.tool_engine import process_tool
 import os
 
 app = Flask(__name__)
-CORS(app, origins=["https://destinydigits.com"])
+CORS(app, supports_credentials=True)
+
+@app.after_request
+def apply_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "https://destinydigits.com"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+    response.headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    return response
 
 @app.route('/')
 def home():
