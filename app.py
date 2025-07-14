@@ -52,7 +52,7 @@ def get_tool_result():
 
     if tool == "romantic-vibes":
         return jsonify(get_romantic_vibes(data))
-    if tool == "karmic-marriage":
+    if tool == "karmic-lessons-marriage":
         return jsonify(get_karmic_lesson_marriage(data))
 
     return jsonify({"error": "Unsupported tool"}), 400
