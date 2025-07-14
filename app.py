@@ -43,6 +43,17 @@ def get_horoscope_message():
         return jsonify(result[0]), result[1]
 
     return jsonify(result)
+
+@app.route('/api/tool-result', methods=['POST'])
+def get_tool_result():
+    data = request.get_json()
+    tool = data.get("tool")
+
+    if tool == "romantic-vibes":
+        return jsonify(get_romantic_vibes(data))
+
+    return jsonify({"error": "Unsupported tool"}), 400
+
     
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
