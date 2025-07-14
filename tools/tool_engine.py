@@ -5,8 +5,13 @@ def process_tool(data):
     tool = data.get("tool")
     name = data.get("name")
     dob = data.get("dob")
-    partner = data.get("partnerName")
-    partner_dob = data.get("partnerDOB")
+    partner = data.get("partnerName") or ""
+    partner_dob = data.get("partnerDOB") or ""
+
+    if tool == "heart-desire":
+        if not partner:
+            return {"error": "Partner name required"}, 400
+
 
     # Extract full numerology once for user
     user_data = extract_full_numerology(name, dob)
