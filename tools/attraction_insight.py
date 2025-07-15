@@ -78,9 +78,14 @@ def get_attraction_insight(data):
     )
 
     return {
-        "tool": "attraction-insight",
-        "name": name.title(),
-        "hiddenPassion": hidden_passion,
-        "personalityNumber": personality,
-        "paragraph": paragraph
-    }
+    "tool": "attraction-insight",
+    "name": name.title(),
+    "dob": data.get("dob", ""),
+    "mainNumber": personality,
+    "mainPercentage": None,
+    "title": "Attraction Number Insight",
+    "summary": paragraph,
+    "paragraph": paragraph,
+    "hiddenPassion": hidden_passion,
+    "personalityNumber": personality
+}
