@@ -121,6 +121,7 @@ def get_love_compatibility(data):
         "summary": summary,
         "title": "Love Compatibility",
         "mainNumber": score,
+        "mainPercentage": score,
         "partnerVibe": label,
         "syncScore": f"{score}/100",
         "syncMessage": syncMessage
