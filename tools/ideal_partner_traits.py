@@ -1,4 +1,4 @@
-from utils.number_utils import get_all_numbers  # your shared logic
+from numerology_core import extract_full_numerology  
 
 heart_traits = {
     1: "craves a partner who respects their independence and offers mutual admiration.",
@@ -30,7 +30,7 @@ def get_ideal_partner_traits(data):
     if not name or not dob:
         return {"error": "Name and DOB required."}
 
-    numbers = get_all_numbers(name, dob)
+    numbers = extract_full_numerology(name, dob)
     heart = numbers.get("heartNumber")
     destiny = numbers.get("expressionNumber")
     life_path = numbers.get("lifePath")
