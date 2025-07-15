@@ -4,9 +4,11 @@ from tools.numerology_core import reduce_strict
 def get_life_path(dob):
     try:
         digits = [int(ch) for ch in dob if ch.isdigit()]
+        if not digits:
+            return None
         return reduce_strict(sum(digits))
     except:
-        return 0
+        return None
 
 def get_personal_year(dob, target_year):
     try:
@@ -45,6 +47,8 @@ def get_best_year_to_marry(data):
 
     try:
         life_path = get_life_path(dob)
+        if life_path is None:
+            return {"error": "Invalid date format or empty DOB"}
         current_year = datetime.now().year
         upcoming_years = []
 
