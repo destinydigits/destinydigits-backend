@@ -5,7 +5,6 @@ from tools.horoscope_api import load_horoscope
 from tools.romantic_vibes import get_romantic_vibes
 from tools.karmic_lesson_marriage import get_karmic_lesson_marriage
 from tools.attraction_insight import get_attraction_insight
-from tools.numerology_core import reduce_number, get_name_number
 import os
 
 app = Flask(__name__)
