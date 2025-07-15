@@ -76,8 +76,6 @@ def get_best_year_to_marry(data):
             "tool": "marriage-year",
             "name": name,
             "dob": dob,
-            "mainNumber": life_path or 0,
-            "mainPercentage": None,
             "title": "Best Year to Marry",
             "summary": f"Based on your birth details, your Life Path Number is {life_path or '—'}, symbolizing your journey and emotional foundation for marriage.",
             "marriageYears": upcoming_years,
