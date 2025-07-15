@@ -71,7 +71,10 @@ def get_tool_result():
     if tool == "marriage-compatibility":
         return jsonify(get_marriage_compatibility(data))
     if tool == "best-year-to-marry":
-        return jsonify(get_best_year_to_marry(data))
+        result = get_best_year_to_marry(data)
+        if "error" in result:
+            return jsonify(result), 400
+        return jsonify(result)
 
 
     return jsonify({"error": "Unsupported tool"}), 400
