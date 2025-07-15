@@ -34,43 +34,48 @@ def tag_for_personal_year(py):
         return "🔄 Neutral Influence"
 
 def get_best_year_to_marry(data):
-    name = data.get("name")
-    dob = data.get("dob")
+    name = data.get("name", "").strip()
+    dob = data.get("dob", "").strip()
 
     if not name or not dob:
         return {"error": "Name and Date of Birth are required."}
 
-    life_path = get_life_path(dob)
-    current_year = datetime.now().year
-    upcoming_years = []
+    try:
+        life_path = get_life_path(dob)
+        current_year = datetime.now().year
+        upcoming_years = []
 
-    for i in range(5):
-        year = current_year + i
-        py = get_personal_year(dob, year)
-        tag = tag_for_personal_year(py)
-        upcoming_years.append({
-            "year": year,
-            "personalYear": py,
-            "tag": tag
-        })
+        for i in range(5):
+            year = current_year + i
+            py = get_personal_year(dob, year)
+            if py is None:
+                continue
+            tag = tag_for_personal_year(py)
+            upcoming_years.append({
+                "year": year,
+                "personalYear": py,
+                "tag": tag
+            })
 
-    # Select strong years for summary
-    good_years = [y['year'] for y in upcoming_years if y['personalYear'] in [2, 6, 9]]
-    sync_message = (
-        f"{', '.join(str(y) for y in good_years)} "
-        "are highly favorable for long-term commitment. "
-        "Align important decisions like engagement or marriage in these years."
-        if good_years else
-        "The upcoming years carry mixed energies. Focus on inner alignment before choosing a marriage year."
-    )
+        good_years = [y['year'] for y in upcoming_years if y['personalYear'] in [2, 6, 9]]
+        sync_message = (
+            f"{', '.join(str(y) for y in good_years)} "
+            "are highly favorable for long-term commitment. "
+            "Align important decisions like engagement or marriage in these years."
+            if good_years else
+            "The upcoming years carry mixed energies. Focus on inner alignment before choosing a marriage year."
+        )
 
-    return {
-        "tool": "best-year-to-marry",
-        "name": name,
-        "dob": dob,
-        "mainNumber": life_path,
-        "title": "Best Year to Marry",
-        "summary": f"Based on your birth details, your Life Path Number is {life_path}, symbolizing your journey and emotional foundation for marriage.",
-        "marriageYears": upcoming_years,
-        "syncMessage": sync_message
-    }
+        return {
+            "tool": "best-year-to-marry",
+            "name": name,
+            "dob": dob,
+            "mainNumber": life_path,
+            "title": "Best Year to Marry",
+            "summary": f"Based on your birth details, your Life Path Number is {life_path}, symbolizing your journey and emotional foundation for marriage.",
+            "marriageYears": upcoming_years,
+            "syncMessage": sync_message
+        }
+
+    except Exception as e:
+        return {"error": f"Unexpected error: {str(e)}"}
