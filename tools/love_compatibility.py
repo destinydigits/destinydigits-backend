@@ -1,28 +1,27 @@
-from tools.numerology_core import reduce_number, get_name_number
 from datetime import datetime
+from tools.numerology_core import numerology_values, reduce_strict
 
 def get_birth_number(dob_str):
     try:
         day = int(datetime.strptime(dob_str, "%Y-%m-%d").day)
-        return reduce_number(day)
+        return reduce_strict(day)
     except:
         return None
 
 def get_life_path_number(dob_str):
     try:
-        dob = datetime.strptime(dob_str, "%Y-%m-%d")
-        digits = list(str(dob.day) + str(dob.month) + str(dob.year))
-        total = sum(int(d) for d in digits)
-        return reduce_number(total)
+        digits = [int(d) for d in dob_str if d.isdigit()]
+        return reduce_strict(sum(digits))
     except:
         return None
 
 def build_person_profile(name, dob):
+    numbers = numerology_values(name)
     return {
         "name": name,
         "birthNumber": get_birth_number(dob),
         "lifePath": get_life_path_number(dob),
-        "nameNumber": get_name_number(name)
+        "nameNumber": numbers.get("expressionNumber")
     }
 
 def score_match(n1, n2):
@@ -68,6 +67,9 @@ def get_love_compatibility(data):
     name2 = data.get("partnerName")
     dob2 = data.get("partnerDOB")
 
+    if not all([name1, dob1, name2, dob2]):
+        return {"error": "Missing required fields"}
+
     p1 = build_person_profile(name1, dob1)
     p2 = build_person_profile(name2, dob2)
     score = calculate_compatibility_score(p1, p2)
@@ -90,4 +92,3 @@ def get_love_compatibility(data):
         "syncScore": f"{score}/100",
         "syncMessage": summary
     }
-
