@@ -1,4 +1,4 @@
-from utils.numerology import reduce_number, get_name_number
+from tools.numerology_core import reduce_number, get_name_number
 from datetime import datetime
 
 def get_birth_number(dob_str):
