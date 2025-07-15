@@ -7,10 +7,12 @@ def get_life_path(dob):
 
 def get_personal_year(dob, target_year):
     try:
-        day = int(dob[-2:])
-        month = int(dob[5:7])
-        return reduce_strict(day + month + target_year)
-    except:
+        parts = dob.strip().split("-")
+        if len(parts) != 3:
+            return None
+        y, m, d = map(int, parts)
+        return reduce_strict(d + m + target_year)
+    except Exception:
         return None
 
 def tag_for_personal_year(py):
