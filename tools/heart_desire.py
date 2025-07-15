@@ -69,7 +69,8 @@ def get_heart_desire_match(data):
         "partnerName": name2,
         "partnerDOB": dob2,
         "score": score,
-        "mainNumber": score,  # for frontend compatibility
+        "mainNumber": score,
+        "mainPercentage": int((score / 50) * 100),
         "title": "Heart Desire Match",
         "partnerVibe": label,
         "summary": summary,
