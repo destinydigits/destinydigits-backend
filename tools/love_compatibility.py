@@ -1,5 +1,3 @@
-# tools/love_compatibility.py
-
 from utils.numerology import reduce_number, get_name_number
 from datetime import datetime
 
