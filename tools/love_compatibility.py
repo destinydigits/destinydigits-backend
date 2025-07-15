@@ -75,7 +75,40 @@ def get_love_compatibility(data):
     score = calculate_compatibility_score(p1, p2)
     emoji, label = get_emoji_and_label(score)
 
-    summary = f"{p1['name']} and {p2['name']} share a {label.lower()}. Life Path: {p1['lifePath']} vs {p2['lifePath']}, Birth Numbers: {p1['birthNumber']} vs {p2['birthNumber']}."
+    # 🌟 Emotional Market-Friendly Summary
+    summary = (
+        f"<b>{p1['name']}</b> and <b>{p2['name']}</b> share a "
+        f"<span style='color:#d32f2f;'>{label}</span>.<br>"
+        f"<b>Life Path:</b> {p1['lifePath']} vs {p2['lifePath']} &nbsp;&nbsp;|&nbsp;&nbsp; "
+        f"<b>Birth Numbers:</b> {p1['birthNumber']} vs {p2['birthNumber']}"
+    )
+
+    # 💬 Insight based on label
+    if label == "Soulmate Energy":
+        syncMessage = (
+            f"Your bond feels karmic and effortless. "
+            f"<b>{p1['name']}</b> and <b>{p2['name']}</b> were destined to cross paths — a connection that goes beyond this lifetime."
+        )
+    elif label == "Strong Bond":
+        syncMessage = (
+            f"There is real emotional chemistry here. "
+            f"You both support each other’s growth and find joy in shared values and vision."
+        )
+    elif label == "Balanced Match":
+        syncMessage = (
+            f"This relationship has great potential. "
+            f"With communication and a little adjustment, <b>{p1['name']}</b> and <b>{p2['name']}</b> can evolve beautifully together."
+        )
+    elif label == "Needs Effort":
+        syncMessage = (
+            f"There are fundamental differences, but not walls. "
+            f"Honest effort and emotional awareness can help <b>{p1['name']}</b> and <b>{p2['name']}</b> build understanding."
+        )
+    else:
+        syncMessage = (
+            f"This is a karmic connection — possibly intense or testing. "
+            f"<b>{p1['name']}</b> and <b>{p2['name']}</b> must choose patience, maturity, and mutual respect to make it thrive."
+        )
 
     return {
         "tool": "love-compatibility",
@@ -90,5 +123,5 @@ def get_love_compatibility(data):
         "mainNumber": score,
         "partnerVibe": label,
         "syncScore": f"{score}/100",
-        "syncMessage": summary
+        "syncMessage": syncMessage
     }
