@@ -1,4 +1,4 @@
-from numerology_core import extract_full_numerology  
+from .numerology_core import extract_full_numerology  
 
 heart_traits = {
     1: "craves a partner who respects their independence and offers mutual admiration.",
