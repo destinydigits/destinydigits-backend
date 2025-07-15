@@ -6,6 +6,7 @@ from tools.romantic_vibes import get_romantic_vibes
 from tools.karmic_lesson_marriage import get_karmic_lesson_marriage
 from tools.attraction_insight import get_attraction_insight
 from tools.love_compatibility import get_love_compatibility 
+from tools.heart_desire import get_heart_desire_match
 import os
 
 app = Flask(__name__)
@@ -60,6 +61,8 @@ def get_tool_result():
         return jsonify(get_attraction_insight(data))
     if tool == "love-compatibility":
         return jsonify(get_love_compatibility(data))
+    if tool == "heart-desire":
+        return jsonify(get_heart_desire_match(data))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
