@@ -73,7 +73,7 @@ def get_best_year_to_marry(data):
         )
 
         return {
-            "tool": "best-year-to-marry",
+            "tool": "marriage-year",
             "name": name,
             "dob": dob,
             "mainNumber": life_path or 0,
