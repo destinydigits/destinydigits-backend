@@ -2,8 +2,11 @@ from datetime import datetime
 from tools.numerology_core import reduce_strict
 
 def get_life_path(dob):
-    digits = [int(ch) for ch in dob if ch.isdigit()]
-    return reduce_strict(sum(digits))
+    try:
+        digits = [int(ch) for ch in dob if ch.isdigit()]
+        return reduce_strict(sum(digits))
+    except:
+        return 0
 
 def get_personal_year(dob, target_year):
     try:
@@ -12,7 +15,7 @@ def get_personal_year(dob, target_year):
             return None
         y, m, d = map(int, parts)
         return reduce_strict(d + m + target_year)
-    except Exception:
+    except:
         return None
 
 def tag_for_personal_year(py):
@@ -37,7 +40,7 @@ def get_best_year_to_marry(data):
     name = data.get("name", "").strip()
     dob = data.get("dob", "").strip()
 
-    if not name or not dob:
+    if not name or not dob or "-" not in dob:
         return {"error": "Name and Date of Birth are required."}
 
     try:
@@ -59,8 +62,7 @@ def get_best_year_to_marry(data):
 
         good_years = [y['year'] for y in upcoming_years if y['personalYear'] in [2, 6, 9]]
         sync_message = (
-            f"{', '.join(str(y) for y in good_years)} "
-            "are highly favorable for long-term commitment. "
+            f"{', '.join(str(y) for y in good_years)} are highly favorable for long-term commitment. "
             "Align important decisions like engagement or marriage in these years."
             if good_years else
             "The upcoming years carry mixed energies. Focus on inner alignment before choosing a marriage year."
@@ -79,4 +81,5 @@ def get_best_year_to_marry(data):
         }
 
     except Exception as e:
+        print(f"[ERROR] get_best_year_to_marry failed: {e}")
         return {"error": f"Unexpected error: {str(e)}"}
