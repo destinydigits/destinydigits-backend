@@ -70,7 +70,7 @@ def get_tool_result():
         return jsonify(get_soulmate_score(data))
     if tool == "marriage-compatibility":
         return jsonify(get_marriage_compatibility(data))
-    if tool == "best-year-to-marry":
+    if tool in ["best-year-to-marry", "marriage-year"]:
         return jsonify(get_best_year_to_marry(data))
 
 
