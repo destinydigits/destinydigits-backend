@@ -3,6 +3,8 @@ from tools.numerology_core import numerology_values
 def get_heart_desire_match(data):
     name1 = data.get("name")
     name2 = data.get("partnerName")
+    dob1 = data.get("dob", "")
+    dob2 = data.get("partnerDOB", "")
 
     if not name1 or not name2:
         return {"error": "Both names are required"}
@@ -36,16 +38,13 @@ def get_heart_desire_match(data):
     if nameNumberMatch:
         score += 5
 
-    # Clamp score
     score = min(score, 50)
 
-    # Summary
     summary = (
         f"<b>{name1}</b> and <b>{name2}</b> have heart numbers {h1} and {h2}.<br>"
         f"This reveals an emotional equation of <b>{label}</b> — driven by your deepest desires and needs."
     )
 
-    # Sync message (market-style)
     if label == "Emotional Soulmates":
         syncMessage = (
             f"Your emotional needs mirror each other. This is a natural, intuitive bond — perfect for love, marriage, or long-term growth."
@@ -66,10 +65,11 @@ def get_heart_desire_match(data):
     return {
         "tool": "heart-desire",
         "name": name1,
+        "dob": dob1,
         "partnerName": name2,
-        "heartNumber1": h1,
-        "heartNumber2": h2,
+        "partnerDOB": dob2,
         "score": score,
+        "mainNumber": score,  # for frontend compatibility
         "title": "Heart Desire Match",
         "partnerVibe": label,
         "summary": summary,
