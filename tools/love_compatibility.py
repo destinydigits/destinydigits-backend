@@ -16,12 +16,12 @@ def get_life_path_number(dob_str):
         return None
 
 def build_person_profile(name, dob):
-    numbers = numerology_values(name)
+    name_data = numerology_values(name)
     return {
         "name": name,
         "birthNumber": get_birth_number(dob),
         "lifePath": get_life_path_number(dob),
-        "nameNumber": numbers.get("expressionNumber")
+        "nameNumber": name_data.get("expressionNumber")
     }
 
 def score_match(n1, n2):
