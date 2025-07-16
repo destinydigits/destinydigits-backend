@@ -99,7 +99,7 @@ def get_tool_result():
             data.get("dob"),
             data.get("businessName")
         ))
-    if tool in ["best-time-to-start-venture", "venture-timing"]:
+    if tool in ["venture-timing", "best-time-to-start-venture"]:
         return jsonify(get_venture_timing(data))
 
 
