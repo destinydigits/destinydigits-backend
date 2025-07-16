@@ -76,7 +76,7 @@ def get_tool_result():
         return jsonify(get_best_year_to_marry(data))
     if tool == "ideal-partner-traits":
         return jsonify(get_ideal_partner_traits(data))
-    if tool == "karmic-twinflame-or-compatible":
+    if tool == "union-type-check":
         return jsonify(get_relationship_type(data))
 
 
