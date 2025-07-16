@@ -1,6 +1,5 @@
 from .numerology_core import extract_full_numerology
 
-# 🧠 Wealth combo insights — currently filled for Life Path 1
 wealth_insights = {
     (1, 1): "You are born to lead and build wealth through innovation and independence.",
     (1, 2): "You have leadership instincts with the ability to form powerful financial partnerships.",
