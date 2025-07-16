@@ -1,72 +1,55 @@
-from .numerology_core import numerology_values
-import random
+from .numerology_core import extract_full_numerology, numerology_values
 
-# 🔢 Multiple insights per number (expandable)
-business_insights = {
-    1: [
-        "Excellent for leadership-oriented ventures and personal brands.",
-        "Number 1 attracts authority, courage, and pioneering success.",
-        "Ideal for startups where innovation and boldness matter."
-    ],
-    2: [
-        "Best for partnerships, healing, and wellness brands.",
-        "Brings balance, diplomacy, and harmony in business.",
-        "Works well for feminine brands, counselors, or coaches."
-    ],
-    3: [
-        "A magnet for creative success — great for media, art, and entertainment.",
-        "Brings joy, communication, and social popularity.",
-        "Perfect for influencers, marketing firms, and creative startups."
-    ],
-    4: [
-        "Good for structure-based businesses like finance, education, or real estate.",
-        "Number 4 brings order, trust, and reliability.",
-        "Ideal for traditional setups that value discipline and consistency."
-    ],
-    5: [
-        "Dynamic and bold — attracts trendsetters, marketers, and travelers.",
-        "Favors businesses in communication, media, or tech.",
-        "Excellent for freedom-driven ventures with global reach."
-    ],
-    6: [
-        "Works well for healing, family, and creative lifestyle brands.",
-        "6 brings nurturing energy — good for design, wellness, or education.",
-        "Ideal for brands that care, serve, and beautify."
-    ],
-    7: [
-        "Spiritual and analytical — great for research, psychology, or niche tech.",
-        "Number 7 favors thinkers, healers, and high-vibration entrepreneurs.",
-        "Perfect for consulting, soul-led coaching, or deep niche brands."
-    ],
-    8: [
-        "Powerful for money, success, and legacy-building businesses.",
-        "Ideal for finance, real estate, and leadership ventures.",
-        "Number 8 brings power, status, and high-level authority."
-    ],
-    9: [
-        "The global helper — good for humanitarian or social impact ventures.",
-        "Brings emotional intelligence, vision, and universal appeal.",
-        "Perfect for coaching, NGOs, spiritual brands, and causes."
-    ]
+# 🔮 Business number suggestions based on user's life path
+business_number_map = {
+    1: [1, 5, 8],
+    2: [2, 6, 9],
+    3: [3, 5, 6],
+    4: [4, 8],
+    5: [1, 3, 5],
+    6: [2, 3, 6],
+    7: [7, 2, 9],
+    8: [1, 4, 8],
+    9: [6, 9, 2]
 }
 
+# ✍️ Hardcoded example for how number is calculated from business name
+def get_example_summary():
+    name = "Moon Matrix"
+    values = numerology_values(name)
+    total = values["expressionNumber"]
+    return f"🧾 Example: The business name '{name}' adds up to {total} using the Pythagorean system."
+
+# 🧠 Main runner
 def run(name, dob, businessName=None):
     try:
-        if not businessName:
-            return {"error": "Missing business name"}
+        full = extract_full_numerology(name, dob)
+        life_path = full.get("life_path")
+        expr = full.get("expression_number")
 
-        values = numerology_values(businessName)
-        total = values["expressionNumber"]
+        if not life_path or not expr:
+            return {"error": "Missing user numerology numbers"}
 
-        summary_list = business_insights.get(total, ["No insights available for this number."])
-        summary = random.choice(summary_list)
+        # Merge both life path and expression suggestions
+        user_suggestions = list(set(business_number_map.get(life_path, []) + business_number_map.get(expr, [])))
+        user_suggestions.sort()
+
+        summary = (
+            f"🔮 Your Life Path: {life_path}\n"
+            f"🧠 Your Expression Number: {expr}\n\n"
+            f"💼 Based on your personal numbers, the most powerful business name numbers for you are: "
+            f"{', '.join(str(n) for n in user_suggestions)}\n\n"
+            f"These numbers align with your natural energy and can attract more success, flow, and alignment in business.\n\n"
+            + get_example_summary()
+        )
 
         return {
-            "tool": "business-name-check",  # ✅ match with frontend ID
-            "name": businessName,
-            "title": "🔢 Business Name Numerology",
-            "mainNumber": total,
-            "summary": f"The name '{businessName}' resonates with the number {total}, which means: {summary}"
+            "tool": "business-name-suggestion",
+            "name": name,
+            "dob": dob,
+            "title": "💼 Business Name Suggestion",
+            "mainNumber": life_path,
+            "summary": summary
         }
 
     except Exception as e:
