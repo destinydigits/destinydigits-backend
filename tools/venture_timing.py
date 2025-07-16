@@ -48,10 +48,10 @@ def run(name, dob, businessName=None):
             "tool": "venture-timing",
             "name": name,
             "dob": dob,
-            "title": "Your Wealth Personality",  # Frontend is using this title
-            "summary": f"💼 Wealth Combo: Essence + Pinnacle\n\n{summary}",
-            "mainNumber": 5,  # Dummy to avoid crash
-            "score": "",      # Prevents 'Compatibility Score' from showing
+            "title": "Your Wealth Personality",  # ✅ frontend expects this
+            "summary": f"💼 Wealth Combo: Essence + Pinnacle\n\n{summary}",  # ✅ placed inside summary
+            "mainNumber": full.get("life_path") or 1,  # ✅ safe fallback
+            "score": ""  # ✅ blank disables Compatibility Score
         }
 
     except Exception as e:
