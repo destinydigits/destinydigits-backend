@@ -106,9 +106,9 @@ def run(name, dob):
             "tool": "wealth-potential-insight",
             "name": name,
             "dob": dob,
-            "title": "💰 Wealth Potential Insight",
+            "title": "Your Wealth Personality",
             "summary": paragraph,
-            "mainNumber": lp
+            "mainNumber": f"{lp}"  # to avoid undefined%
         }
 
     except Exception as e:
