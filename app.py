@@ -14,6 +14,7 @@ from tools.ideal_partner_traits import get_ideal_partner_traits
 from tools.money_vibration_today import run as money_vibration_today
 from tools.wealth_potential_insight import run as wealth_potential_insight
 from tools.business_name_numerology import run as business_name_numerology
+from tools.venture_timing import run as venture_timing
 import os
 
 app = Flask(__name__)
@@ -94,6 +95,12 @@ def get_tool_result():
         return jsonify(get_wealth_potential_insight(data))
     if tool == "business-name-check":
         return jsonify(business_name_numerology(
+            data.get("name"),
+            data.get("dob"),
+            data.get("businessName")
+        ))
+    if tool == "venture-timing":
+        return jsonify(venture_timing(
             data.get("name"),
             data.get("dob"),
             data.get("businessName")
