@@ -12,8 +12,15 @@ def get_business_partner_compatibility(data):
             "summary": f"DEBUG: name1={name1}, dob1={dob1}, name2={name2}, dob2={dob2}",
             "compatibilityScore": 0
         }
-    n1 = extract_full_numerology(name1, dob1)
-    n2 = extract_full_numerology(name2, dob2)
+    try:
+        n1 = extract_full_numerology(name1, dob1)
+        n2 = extract_full_numerology(name2, dob2)
+    except Exception as e:
+        return {
+            "title": "Partner Compatibility in Business",
+            "summary": f"⚠️ Failed to calculate numerology. Error: {str(e)}",
+            "compatibilityScore": 0
+        }
 
     lp1 = n1["life_path"]
     lp2 = n2["life_path"]
