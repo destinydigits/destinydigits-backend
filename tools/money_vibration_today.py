@@ -1,4 +1,3 @@
-# 📁 File: tools/money_vibration_today.py
 
 from .numerology_core import extract_full_numerology
 import random
