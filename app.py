@@ -12,6 +12,7 @@ from tools.marriage_compatibility import get_marriage_compatibility
 from tools.best_year_to_marry import get_best_year_to_marry
 from tools.ideal_partner_traits import get_ideal_partner_traits
 from tools.money_vibration_today import run as money_vibration_today
+from tools.wealth_potential_insight import run as wealth_potential_insight
 import os
 
 app = Flask(__name__)
@@ -57,6 +58,11 @@ def get_money_vibration_today(data):
     name = data.get("name")
     dob = data.get("dob")
     return money_vibration_today(name, dob)
+
+def get_wealth_potential_insight(data):
+    name = data.get("name")
+    dob = data.get("dob")
+    return wealth_potential_insight(name, dob)
     
 @app.route('/api/tool-result', methods=['POST'])
 def get_tool_result():
@@ -83,6 +89,8 @@ def get_tool_result():
         return jsonify(get_ideal_partner_traits(data))
     if tool in ["money-vibration-today", "money-today"]:
         return jsonify(get_money_vibration_today(data))
+    if tool == "wealth-potential-insight":
+        return jsonify(get_wealth_potential_insight(data))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
