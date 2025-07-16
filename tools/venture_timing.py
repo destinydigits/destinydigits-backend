@@ -14,18 +14,27 @@ def run(name, dob):
         heart = full.get("heart_number")
 
         if not expression or not heart:
-            return {"error": "Missing core numerology numbers"}
+            return {
+                "tool": "venture-timing",
+                "name": name,
+                "dob": dob,
+                "title": "Best Time to Start Venture",
+                "summary": "⚠️ Missing core numerology numbers.",
+                "mainNumber": 0,
+                "score": ""
+            }
 
         current_year = datetime.today().year
-        current_essence = get_essence_number(current_year, expression)
-        current_pinnacle = get_pinnacle_number(current_year, heart)
+        essence = get_essence_number(current_year, expression)
+        pinnacle = get_pinnacle_number(current_year, heart)
 
         summary = (
-            f"Essence Number for {current_year}: {current_essence}\n"
-            f"Pinnacle Number for {current_year}: {current_pinnacle}\n\n"
-            "This year aligns your spiritual and external energies. "
-            "If both numbers are high (like 8 or 9), it's a strong year to launch your venture. "
-            "If they're lower, it may be a time for planning and groundwork."
+            f"🧭 Essence Number for {current_year}: {essence}\n"
+            f"🏔️ Pinnacle Number for {current_year}: {pinnacle}\n\n"
+            "This year reflects your internal and external alignment.\n"
+            "- High numbers (7, 8, 9): Strong year to begin.\n"
+            "- Medium (4, 5, 6): Plan + slow build.\n"
+            "- Low (1, 2, 3): Start groundwork but delay final launch."
         )
 
         return {
@@ -34,9 +43,17 @@ def run(name, dob):
             "dob": dob,
             "title": "📈 Best Time to Start Venture",
             "summary": summary,
-            "mainNumber": current_essence,
+            "mainNumber": essence,
             "score": ""  # Prevent Compatibility Score from appearing
         }
 
     except Exception as e:
-        return {"error": str(e)}
+        return {
+            "tool": "venture-timing",
+            "name": name,
+            "dob": dob,
+            "title": "Best Time to Start Venture",
+            "summary": f"Error occurred: {str(e)}",
+            "mainNumber": 0,
+            "score": ""
+        }
