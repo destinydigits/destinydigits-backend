@@ -100,7 +100,7 @@ def get_tool_result():
             data.get("businessName")
         ))
     if tool in ["venture-timing", "best-time-to-start-venture"]:
-        return jsonify(get_venture_timing(data))
+        return jsonify(venture_timing(data.get("name"), data.get("dob")))
 
 
     return jsonify({"error": "Unsupported tool"}), 400
