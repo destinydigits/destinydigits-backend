@@ -52,7 +52,12 @@ def get_horoscope_message():
         return jsonify(result[0]), result[1]
 
     return jsonify(result)
-
+    
+def get_money_vibration_today(data):
+    name = data.get("name")
+    dob = data.get("dob")
+    return money_vibration_today(name, dob)
+    
 @app.route('/api/tool-result', methods=['POST'])
 def get_tool_result():
     data = request.get_json()
@@ -77,7 +82,7 @@ def get_tool_result():
     if tool == "ideal-partner-traits":
         return jsonify(get_ideal_partner_traits(data))
     if tool in ["money-vibration-today", "money-today"]:
-        return jsonify(money_vibration_today(data.get("name"), data.get("dob")))
+        return jsonify(get_money_vibration_today(data))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
