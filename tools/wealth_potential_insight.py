@@ -112,7 +112,6 @@ def run(name, dob):
             "title": "Your Wealth Personality",
             "summary": f"💼 Wealth Combo: {lp} + {expr}\n\n{paragraph}",
             "mainNumber": "N/A",         # 👈 HTML non-breaking space
-            "mainPercentage": ""      # 👈 also a blank space
         }
 
     except Exception as e:
