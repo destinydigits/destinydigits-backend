@@ -1,57 +1,41 @@
 from .numerology_core import extract_full_numerology
-import datetime
+from datetime import datetime
 
-# ✨ Sample logic: Use current year and essence/pinnacle for that year
-def run(name, dob, businessName=None):
+def get_essence_number(year, expression_number):
+    return (year + expression_number) % 9 or 9
+
+def get_pinnacle_number(year, heart_number):
+    return (year + heart_number) % 9 or 9
+
+def run(name, dob):
     try:
         full = extract_full_numerology(name, dob)
-        essence_map = full.get("essenceMap", {})
-        pinnacle_map = full.get("pinnacleMap", {})
+        expression = full.get("expression_number")
+        heart = full.get("heart_number")
 
-        if not essence_map or not pinnacle_map:
-            return {"error": "Essence or Pinnacle data missing"}
+        if not expression or not heart:
+            return {"error": "Missing core numerology numbers"}
 
-        current_year = datetime.datetime.now().year
-        years_to_check = list(range(current_year, current_year + 5))
-
-        suggestions = []
-
-        for year in years_to_check:
-            essence = essence_map.get(str(year))
-            pinnacle = pinnacle_map.get(str(year))
-
-            if not essence or not pinnacle:
-                continue
-
-            rating = 0
-            if essence in [1, 5, 8]:  # Dynamic, Growth, Power
-                rating += 1
-            if pinnacle in [1, 3, 8]:  # Action, Creativity, Ambition
-                rating += 1
-
-            if rating == 2:
-                comment = "🌟 Excellent year to launch or expand your business."
-            elif rating == 1:
-                comment = "⚖️ Decent year — favorable energy, but act with clarity."
-            else:
-                comment = "⛔ May not be ideal — wait or plan, not act."
-
-            suggestions.append(f"{year}: Essence {essence}, Pinnacle {pinnacle} → {comment}")
+        current_year = datetime.today().year
+        current_essence = get_essence_number(current_year, expression)
+        current_pinnacle = get_pinnacle_number(current_year, heart)
 
         summary = (
-            f"🧮 Analysis based on your personal Essence and Pinnacle cycles:\n\n" +
-            "\n".join(suggestions) +
-            "\n\n✅ Ideal years are those with Essence and Pinnacle energies that support action, growth, and leadership."
+            f"Essence Number for {current_year}: {current_essence}\n"
+            f"Pinnacle Number for {current_year}: {current_pinnacle}\n\n"
+            "This year aligns your spiritual and external energies. "
+            "If both numbers are high (like 8 or 9), it's a strong year to launch your venture. "
+            "If they're lower, it may be a time for planning and groundwork."
         )
 
         return {
             "tool": "venture-timing",
             "name": name,
             "dob": dob,
-            "title": "Your Wealth Personality",  # ✅ frontend expects this
-            "summary": f"💼 Wealth Combo: Essence + Pinnacle\n\n{summary}",  # ✅ placed inside summary
-            "mainNumber": full.get("life_path") or 1,  # ✅ safe fallback
-            "score": ""  # ✅ blank disables Compatibility Score
+            "title": "📈 Best Time to Start Venture",
+            "summary": summary,
+            "mainNumber": current_essence,
+            "score": ""  # Prevent Compatibility Score from appearing
         }
 
     except Exception as e:
