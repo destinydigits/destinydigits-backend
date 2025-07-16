@@ -35,7 +35,7 @@ def get_relationship_type(data):
     }
 
     return {
-        "tool": "relationship-type",
+        "tool": "karmic-twinflame-or-compatible",
         "name1": name1,
         "dob1": dob1,
         "name2": name2,
