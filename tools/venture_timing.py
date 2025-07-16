@@ -44,7 +44,7 @@ def run(name, dob, businessName=None):
             "\n\n✅ Ideal years are those with Essence and Pinnacle energies that support action, growth, and leadership."
         )
 
-        return return {
+        return {
             "tool": "venture-timing",
             "name": name,
             "dob": dob,
