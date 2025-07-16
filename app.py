@@ -11,6 +11,7 @@ from tools.soulmates_check import get_soulmate_score
 from tools.marriage_compatibility import get_marriage_compatibility
 from tools.best_year_to_marry import get_best_year_to_marry
 from tools.ideal_partner_traits import get_ideal_partner_traits
+from tools.money_vibration_today import run as money_vibration_today
 import os
 
 app = Flask(__name__)
@@ -75,6 +76,8 @@ def get_tool_result():
         return jsonify(get_best_year_to_marry(data))
     if tool == "ideal-partner-traits":
         return jsonify(get_ideal_partner_traits(data))
+    if tool == "money-vibration-today":
+        return jsonify(money_vibration_today(data.get("name"), data.get("dob")))
 
 
     return jsonify({"error": "Unsupported tool"}), 400
