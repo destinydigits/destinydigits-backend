@@ -107,9 +107,9 @@ def run(name, dob):
             "name": name,
             "dob": dob,
             "title": "Your Wealth Personality",
-            "summary": paragraph,
-            "mainPercentage": "",              # disables % view
-            "mainNumber": f"Life Path {lp}"    # clean text display
+            "summary": f"💼 Wealth Combo: {lp} + {expr}\n\n{paragraph}",
+            "mainNumber": expr,
+            "mainPercentage": ""
         }
 
     except Exception as e:
