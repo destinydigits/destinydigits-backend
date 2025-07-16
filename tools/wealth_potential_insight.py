@@ -108,7 +108,8 @@ def run(name, dob):
             "dob": dob,
             "title": "Your Wealth Personality",
             "summary": paragraph,
-            "mainNumber": f"{lp}"  # to avoid undefined%
+            "mainPercentage": "",              # disables % view
+            "mainNumber": f"Life Path {lp}"    # clean text display
         }
 
     except Exception as e:
