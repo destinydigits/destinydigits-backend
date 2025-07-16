@@ -16,10 +16,10 @@ def classify_relationship(n1, n2):
         return "Compatible"
 
 def get_relationship_type(data):
-    name1 = data.get("name1", "").strip()
-    dob1 = data.get("dob1", "").strip()
-    name2 = data.get("name2", "").strip()
-    dob2 = data.get("dob2", "").strip()
+    name1 = data.get("name", "").strip()
+    dob1 = data.get("dob", "").strip()
+    name2 = data.get("partnerName", "").strip()
+    dob2 = data.get("partnerDOB", "").strip()
 
     if not name1 or not dob1 or not name2 or not dob2:
         return {"error": "Both names and DOBs are required."}
