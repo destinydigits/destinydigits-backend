@@ -44,8 +44,11 @@ messages = {
 def run(name, dob):
     try:
         full = extract_full_numerology(name, dob)
-        personal_day = full["personalDay"]
-        name_number = full["expressionNumber"]
+        personal_day = full.get("personalDay")
+        name_number = full.get("expressionNumber")
+
+        if not personal_day or not name_number:
+            return {"error": "Numerology values missing (personalDay or nameNumber)"}
 
         paragraph = random.choice(messages.get(personal_day, ["No financial insight available for today."]))
 
