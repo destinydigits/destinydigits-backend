@@ -48,7 +48,7 @@ def run(name, dob, businessName=None):
             "name": name,
             "dob": dob,
             "title": "💼 Business Name Suggestion",
-            "mainNumber": life_path,
+            "mainNumber": N/A,
             "summary": summary
         }
 
