@@ -45,7 +45,7 @@ def run(name, dob):
     try:
         full = extract_full_numerology(name, dob)
         personal_day = full.get("personalDay")
-        name_number = full.get("expressionNumber")
+        name_number = full.get("expression_number")
 
         if not personal_day or not name_number:
             return {"error": "Numerology values missing (personalDay or nameNumber)"}
