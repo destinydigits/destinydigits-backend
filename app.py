@@ -89,7 +89,7 @@ def get_tool_result():
         return jsonify(get_ideal_partner_traits(data))
     if tool in ["money-vibration-today", "money-today"]:
         return jsonify(get_money_vibration_today(data))
-    if tool == "wealth-potential-insight":
+    if tool in ["wealth-potential-insight", "wealth-potential"]:
         return jsonify(get_wealth_potential_insight(data))
 
     return jsonify({"error": "Unsupported tool"}), 400
