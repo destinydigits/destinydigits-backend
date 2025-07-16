@@ -111,7 +111,7 @@ def run(name, dob):
             "dob": dob,
             "title": "Your Wealth Personality",
             "summary": f"💼 Wealth Combo: {lp} + {expr}\n\n{paragraph}",
-            "mainNumber": expr,        # frontend may show this with %
+            "mainNumber": "",        # frontend may show this with %
             "mainPercentage": ""       # disables % visually if logic supports
         }
 
