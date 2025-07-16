@@ -77,7 +77,7 @@ def get_tool_result():
     if tool == "ideal-partner-traits":
         return jsonify(get_ideal_partner_traits(data))
     if tool in ["money-vibration-today", "money-today"]:
-        return jsonify(money_vibration_today(data.get("name"), data.get("dob")))
+        return jsonify(money_vibration_today(data))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
