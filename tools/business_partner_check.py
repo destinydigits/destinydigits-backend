@@ -9,10 +9,9 @@ def get_business_partner_compatibility(data):
     if not name1 or not dob1 or not name2 or not dob2:
         return {
             "title": "Partner Compatibility in Business",
-            "summary": "⚠️ Missing or invalid data. Please go back and try again.",
+            "summary": f"DEBUG: name1={name1}, dob1={dob1}, name2={name2}, dob2={dob2}",
             "compatibilityScore": 0
         }
-
     n1 = extract_full_numerology(name1, dob1)
     n2 = extract_full_numerology(name2, dob2)
 
