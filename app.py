@@ -15,6 +15,7 @@ from tools.money_vibration_today import run as money_vibration_today
 from tools.wealth_potential_insight import run as wealth_potential_insight
 from tools.business_name_numerology import run as business_name_numerology
 from tools.venture_timing import run as venture_timing
+from tools.business_partner_check import get_business_partner_compatibility
 import os
 
 app = Flask(__name__)
@@ -101,6 +102,8 @@ def get_tool_result():
         ))
     if tool in ["venture-timing", "best-time-to-start-venture"]:
         return jsonify(venture_timing(data.get("name"), data.get("dob")))
+    if tool == "business-partner-check":
+        return jsonify(get_business_partner_compatibility(data))
 
 
     return jsonify({"error": "Unsupported tool"}), 400
