@@ -35,7 +35,7 @@ def get_relationship_type(data):
     }
 
     return {
-    "tool": "union-type-check",
+    "tool": "karmic-twinflame-or-compatible",
     "name": name1,
     "dob": dob1,
     "relationshipType": result_type,
