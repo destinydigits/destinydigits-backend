@@ -1,6 +1,6 @@
-from numerology_core import extract_full_numerology
+from tools.numerology_core import extract_full_numerology
 
-def business_partner_check(data):
+def get_business_partner_compatibility(data):
     name1 = data.get("name")
     dob1 = data.get("dob")
     name2 = data.get("partnerName")
@@ -20,34 +20,35 @@ def business_partner_check(data):
     lp2 = n2["life_path"]
     hn1 = n1["heartNumber"]
     hn2 = n2["heartNumber"]
+    en1 = n1["expression_number"]
+    en2 = n2["expression_number"]
 
-    # Compatibility logic (custom ranges)
-    compatibility = 50  # base score
-
+    # Scoring Logic
+    score = 50
     if lp1 == lp2:
-        compatibility += 20
-    elif abs(lp1 - lp2) in [1, 2]:
-        compatibility += 10
+        score += 20
+    elif abs(lp1 - lp2) == 1:
+        score += 10
 
     if hn1 == hn2:
-        compatibility += 15
+        score += 10
     elif abs(hn1 - hn2) == 1:
-        compatibility += 5
+        score += 5
 
-    # Normalize score
-    compatibility = min(compatibility, 95)
-    compatibility = max(compatibility, 55)
+    if en1 == en2:
+        score += 10
 
-    # Compatibility message
-    if compatibility >= 85:
-        message = "🌟 Excellent compatibility! This partnership has high potential for long-term success with mutual understanding and complementary strengths."
-    elif compatibility >= 70:
-        message = "👍 Good compatibility! You both bring complementary skills and shared values to the table—great for collaboration."
+    score = max(55, min(score, 95))
+
+    if score >= 85:
+        msg = "🌟 Excellent compatibility! You both share remarkable alignment in purpose and working style, making you a strong business duo."
+    elif score >= 70:
+        msg = "✅ Good compatibility. While there may be a few differences, your core strengths complement each other well for business success."
     else:
-        message = "🤝 Moderate compatibility. With clear communication and role clarity, this partnership can still thrive."
+        msg = "🤝 Moderate compatibility. With role clarity and clear communication, you can make this partnership work effectively."
 
     return {
         "title": "Partner Compatibility in Business",
-        "summary": message,
-        "compatibilityScore": compatibility
+        "summary": msg,
+        "compatibilityScore": score
     }
