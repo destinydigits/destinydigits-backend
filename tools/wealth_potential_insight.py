@@ -93,16 +93,15 @@ def get_wealth_insight(lp, expr):
 
 def run(name, dob):
     try:
-        print("🟢 Incoming:", name, dob)
-        full = extract_full_numerology(name, dob)
-        print("📦 Full:", full)
+        if not name or not dob:
+            return {"error": "Missing name or dob"}
 
+        full = extract_full_numerology(name, dob)
         lp = full.get("life_path")
         expr = full.get("expression_number")
-        print("📊 Combo:", lp, expr)
 
-        if not lp or not expr:
-            return {"error": "Life Path or Expression Number missing"}
+        if not isinstance(lp, int) or not isinstance(expr, int):
+            return {"error": "Invalid life path or expression number"}
 
         paragraph = get_wealth_insight(lp, expr)
 
@@ -112,10 +111,9 @@ def run(name, dob):
             "dob": dob,
             "title": "Your Wealth Personality",
             "summary": f"💼 Wealth Combo: {lp} + {expr}\n\n{paragraph}",
-            "mainNumber": expr,
-            "mainPercentage": ""
+            "mainNumber": expr,        # frontend may show this with %
+            "mainPercentage": ""       # disables % visually if logic supports
         }
 
     except Exception as e:
-        print("🔥 Error:", str(e))
-        return {"error": str(e)}
+        return {"error": f"Internal error: {str(e)}"}
