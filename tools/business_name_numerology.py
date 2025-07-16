@@ -15,7 +15,7 @@ business_number_map = {
 
 # ✍️ Hardcoded example for how number is calculated from business name
 def get_example_summary():
-    name = "Moon Matrix"
+    name = "Business Name"
     values = numerology_values(name)
     total = values["expressionNumber"]
     return f"🧾 Example: The business name '{name}' adds up to {total} using the Pythagorean system."
