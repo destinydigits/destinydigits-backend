@@ -56,9 +56,9 @@ def run(name, dob):
             "tool": "money-vibration-today",
             "name": name,
             "dob": dob,
-            "personalDay": personal_day,
-            "nameNumber": name_number,
-            "paragraph": paragraph
+            "title": "💸 Money Vibration Today",  # ✅ for heading
+            "summary": paragraph,                # ✅ for main body
+            "mainNumber": personal_day,          # ✅ optional, shows % in UI
         }
     except Exception as e:
         return {"error": str(e)}
