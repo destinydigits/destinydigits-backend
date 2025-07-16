@@ -10,8 +10,8 @@ def get_pinnacle_number(year, heart_number):
 def run(name, dob):
     try:
         full = extract_full_numerology(name, dob)
-        expression = full.get("expression_number")
-        heart = full.get("heart_number")
+        expression = full.get("expression_number") or full.get("expressionNumber")
+        heart = full.get("heart_number") or full.get("heartNumber")
 
         if not expression or not heart:
             return {
