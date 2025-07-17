@@ -16,6 +16,7 @@ from tools.wealth_potential_insight import run as wealth_potential_insight
 from tools.business_name_numerology import run as business_name_numerology
 from tools.venture_timing import run as venture_timing
 from tools.business_partner_check import get_business_partner_compatibility
+from tools.career_guidance import get_career_guidance
 import os
 
 app = Flask(__name__)
@@ -104,6 +105,8 @@ def get_tool_result():
         return jsonify(venture_timing(data.get("name"), data.get("dob")))
     if tool == "business-partner-check":
         return jsonify(get_business_partner_compatibility(data))
+    if tool == "career-guidance":
+        return jsonify(get_career_guidance(data))
 
 
     return jsonify({"error": "Unsupported tool"}), 400
