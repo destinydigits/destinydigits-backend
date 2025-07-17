@@ -20,6 +20,7 @@ from tools.career_guidance import get_career_guidance
 from tools.hidden_talents import get_hidden_talents
 from tools.resume_booster import get_resume_booster
 from tools.best_working_days import get_best_working_days
+from tools.personal_core_numbers import get_personal_core_number
 import os
 
 app = Flask(__name__)
@@ -116,6 +117,12 @@ def get_tool_result():
         return jsonify(get_resume_booster(data))
     if tool == "best-working-days":
         return jsonify(get_best_working_days(data))
+    if tool in [
+        "life-path", "expression-number", "soul-urge",
+        "personality-number", "birthday-number", "maturity-number",
+        "karmic-lessons", "hidden-passion"
+    ]:
+        return jsonify(get_personal_core_number(data, tool))
 
 
     return jsonify({"error": "Unsupported tool"}), 400
