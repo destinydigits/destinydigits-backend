@@ -38,7 +38,6 @@ You are here to master the material world. With vision, ambition, and resilience
 The Soul of Compassion  
 Your heart beats for the world. You are a humanitarian, called to serve, uplift, and inspire. Through love, forgiveness, and selfless giving, you help heal the world — one soul at a time."""
     }
-}
 
     "expression-number": {
     1: """Expression Number 1  
