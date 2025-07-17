@@ -182,4 +182,6 @@ def extract_full_numerology(name, dob_str):
     
     return enrich_report(result)  
 
-
+# 👇 NEW FUNCTION – Safe to add below return
+def letter_to_number_pythagorean(letter):
+    return PYTHAGOREAN_VALUES.get(letter.upper(), 0)
