@@ -18,6 +18,7 @@ from tools.venture_timing import run as venture_timing
 from tools.business_partner_check import get_business_partner_compatibility
 from tools.career_guidance import get_career_guidance
 from tools.hidden_talents import get_hidden_talents
+from tools.resume_booster import get_resume_booster
 import os
 
 app = Flask(__name__)
@@ -110,6 +111,8 @@ def get_tool_result():
         return jsonify(get_career_guidance(data))
     if tool == "hidden-talents":
         return jsonify(get_hidden_talents(data))
+    if tool == "resume-booster":
+        return jsonify(get_resume_booster(data))
 
 
     return jsonify({"error": "Unsupported tool"}), 400
