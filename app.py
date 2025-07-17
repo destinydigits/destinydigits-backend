@@ -21,6 +21,7 @@ from tools.hidden_talents import get_hidden_talents
 from tools.resume_booster import get_resume_booster
 from tools.best_working_days import get_best_working_days
 from tools.personal_core_numbers import get_personal_core_number
+from tools.vedic_kundali import get_vedic_kundali
 import os
 
 app = Flask(__name__)
@@ -123,6 +124,8 @@ def get_tool_result():
         "karmic-lessons", "hidden-passion"
     ]:
         return jsonify(get_personal_core_number(data, tool))
+    if tool == "vedic-numerology-kundali":
+        return jsonify(get_vedic_kundali(data))
 
 
     return jsonify({"error": "Unsupported tool"}), 400
