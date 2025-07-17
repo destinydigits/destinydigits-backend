@@ -56,5 +56,7 @@ def get_business_partner_compatibility(data):
     return {
         "title": "Partner Compatibility in Business",
         "summary": msg,
-        "compatibilityScore": score
+        "mainPercentage": score,   # 🧠 This fixed everything
+        "name": name1,
+        "dob": dob1
     }
