@@ -122,7 +122,7 @@ def generate_vedic_kundali(name, dob):
         birth_number = get_birth_number(dob)
         destiny_number = get_destiny_number(dob)
         ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
-        digits = {int(x) for row in ank_grid for x in row.split() if x}
+        digits = {int(num) for row in ank_grid for cell in row for num in cell.split() if num}
         yogs = detect_yogs(digits)
 
         today = datetime.date.today()
