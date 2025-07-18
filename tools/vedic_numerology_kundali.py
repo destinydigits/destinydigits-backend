@@ -119,57 +119,67 @@ def get_predictions(mahadasha, antardasha, pratyantardasha):
 # ---------------------- MAIN FUNCTION ----------------------
 def generate_vedic_kundali(name, dob):
     try:
-    birth_number = get_birth_number(dob)
-    destiny_number = get_destiny_number(dob)
-    ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
-    digits = {int(x) for row in ank_grid for x in row.split() if x}
-    yogs = detect_yogs(digits)
+        birth_number = get_birth_number(dob)
+        destiny_number = get_destiny_number(dob)
+        ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
+        digits = {int(x) for row in ank_grid for x in row.split() if x}
+        yogs = detect_yogs(digits)
 
-    today = datetime.date.today()
-    dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
-    current_age = today.year - dob_date.year - ((today.month, today.day) < (dob_date.month, dob_date.day))
+        today = datetime.date.today()
+        dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
+        current_age = today.year - dob_date.year - ((today.month, today.day) < (dob_date.month, dob_date.day))
+
+        mahadasha_seq = get_mahadasha_sequence(birth_number, years=90)
+        start_year = today.year - 1
+        dasha_timeline = []
+        year_cursor = start_year
+
+        for m_number, duration in mahadasha_seq:
+            for _ in range(duration):
+                antardasha = get_antardasha(dob, year_cursor, m_number)
+                pratyantar = get_pratyantardasha(
+                    datetime.date(year_cursor, dob_date.month, dob_date.day),
+                    antardasha
+                )
+                dasha_timeline.append({
+                    "year": year_cursor,
+                    "mahadasha": m_number,
+                    "mahadasha_planet": PLANET_MAP[m_number],
+                    "antardasha": antardasha,
+                    "antardasha_planet": PLANET_MAP[antardasha],
+                    "pratyantardasha": pratyantar
+                })
+                year_cursor += 1
+
+        current_dasha = next((item for item in dasha_timeline if item["year"] == today.year), None)
+        if current_dasha:
+            predictions = get_predictions(
+                current_dasha["mahadasha"],
+                current_dasha["antardasha"],
+                current_dasha["pratyantardasha"][0]["number"]
+            )
+        else:
+            predictions = {}
+
+        return {
+            "tool": "vedic-numerology-kundali",
+            "name": name,
+            "dob": dob,
+            "birth_number": birth_number,
+            "birth_planet": PLANET_MAP[birth_number],
+            "destiny_number": destiny_number,
+            "destiny_planet": PLANET_MAP[destiny_number],
+            "ank_kundali": ank_grid,
+            "missing_numbers": missing_numbers,
+            "yogs": yogs,
+            "current_dasha": current_dasha,
+            "predictions": predictions,
+            "mahadasha_chart": dasha_timeline[:10]
+        }
+
     except Exception as e:
         return {"error": str(e)}
-    # Current Mahadasha
-    mahadasha_seq = get_mahadasha_sequence(birth_number, years=90)
-    start_year = today.year - 1
-    dasha_timeline = []
-    year_cursor = start_year
-    for m_number, duration in mahadasha_seq:
-        for _ in range(duration):
-            antardasha = get_antardasha(dob, year_cursor, m_number)
-            pratyantar = get_pratyantardasha(datetime.date(year_cursor, dob_date.month, dob_date.day), antardasha)
-            dasha_timeline.append({
-                "year": year_cursor,
-                "mahadasha": m_number,
-                "mahadasha_planet": PLANET_MAP[m_number],
-                "antardasha": antardasha,
-                "antardasha_planet": PLANET_MAP[antardasha],
-                "pratyantardasha": pratyantar
-            })
-            year_cursor += 1
 
-    current_dasha = next((item for item in dasha_timeline if item["year"] == today.year), None)
-    if current_dasha:
-        predictions = get_predictions(current_dasha["mahadasha"], current_dasha["antardasha"], current_dasha["pratyantardasha"][0]["number"])
-    else:
-        predictions = {}
-
-    return {
-        "tool": "vedic-numerology-kundali",
-        "name": name,
-        "dob": dob,
-        "birth_number": birth_number,
-        "birth_planet": PLANET_MAP[birth_number],
-        "destiny_number": destiny_number,
-        "destiny_planet": PLANET_MAP[destiny_number],
-        "ank_kundali": ank_grid,
-        "missing_numbers": missing_numbers,
-        "yogs": yogs,
-        "current_dasha": current_dasha,
-        "predictions": predictions,
-        "mahadasha_chart": dasha_timeline[:10]  # First 10 years for demo
-    }
 
 if __name__ == "__main__":
     print(json.dumps(generate_vedic_kundali("Ravi Kumar", "1985-03-31"), indent=2))
