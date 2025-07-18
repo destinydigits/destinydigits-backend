@@ -118,6 +118,7 @@ def get_predictions(mahadasha, antardasha, pratyantardasha):
 
 # ---------------------- MAIN FUNCTION ----------------------
 def generate_vedic_kundali(name, dob):
+    try:
     birth_number = get_birth_number(dob)
     destiny_number = get_destiny_number(dob)
     ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
@@ -127,7 +128,8 @@ def generate_vedic_kundali(name, dob):
     today = datetime.date.today()
     dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
     current_age = today.year - dob_date.year - ((today.month, today.day) < (dob_date.month, dob_date.day))
-
+    except Exception as e:
+        return {"error": str(e)}
     # Current Mahadasha
     mahadasha_seq = get_mahadasha_sequence(birth_number, years=90)
     start_year = today.year - 1
