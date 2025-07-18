@@ -1,9 +1,8 @@
-# File: tools/vedic_numerology_kundali.py
+# File: tools/vedic_numerology_kundali.py (Updated with correct Ank Kundali grid)
 import datetime
 from collections import defaultdict
 import json
 
-# ---------------------- PLANET MAPPING ----------------------
 PLANET_MAP = {
     1: "Sun (Surya)",
     2: "Moon (Chandra)",
@@ -29,15 +28,39 @@ def get_birth_number(dob):
 def get_destiny_number(dob):
     return reduce_strict(sum(int(d) for d in dob.replace("-", "")))
 
-# ---------------------- GRID NUMBERS ----------------------
-def get_grid_numbers(dob):
-    digits = [int(d) for d in dob.replace("-", "")]
-    frequency = defaultdict(int)
+# ---------------------- ANK KUNDALI GRID ----------------------
+def get_grid_numbers(dob, birth_number, destiny_number):
+    # Extract digits: DD, MM, YY (last 2 digits only)
+    parts = dob.split("-")
+    day = parts[2]
+    month = parts[1]
+    year_last2 = parts[0][2:]  # Only last two digits
+
+    digits = []
+    for val in day + month + year_last2:
+        if val != "0":
+            digits.append(int(val))
+
+    # Add Birth Number & Destiny Number
+    digits.append(birth_number)
+    digits.append(destiny_number)
+
+    # Prepare 3x3 Ank Kundali grid (3 | 1 | 9 / 6 | 7 | 5 / 2 | 8 | 4)
+    grid_map = {1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []}
     for d in digits:
-        frequency[d] += 1
-    available = sorted(set(frequency.keys()))
-    missing = [i for i in range(1, 10) if i not in available]
-    return frequency, available, missing
+        grid_map[d].append(str(d))
+
+    # Create rows
+    grid = [
+        [" ".join(grid_map[3]), " ".join(grid_map[1]), " ".join(grid_map[9])],
+        [" ".join(grid_map[6]), " ".join(grid_map[7]), " ".join(grid_map[5])],
+        [" ".join(grid_map[2]), " ".join(grid_map[8]), " ".join(grid_map[4])]
+    ]
+
+    # Missing numbers
+    missing = [num for num, vals in grid_map.items() if len(vals) == 0]
+
+    return grid, missing
 
 # ---------------------- MAHADASHA ----------------------
 def get_mahadasha_sequence(birth_number, years=90):
@@ -75,18 +98,16 @@ def load_predictions():
 
 # ---------------------- MAIN FUNCTION ----------------------
 def generate_vedic_kundali(name, dob):
-    # Basic calculations
     birth_number = get_birth_number(dob)
     destiny_number = get_destiny_number(dob)
-    frequency, available, missing = get_grid_numbers(dob)
-    
+    ank_grid, missing_numbers = get_grid_numbers(dob, birth_number, destiny_number)
+
     today = datetime.date.today()
     dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
     current_age = today.year - dob_date.year - ((today.month, today.day) < (dob_date.month, dob_date.day))
 
-    # Start from (current_age - 1) for context, go till 90 years of age
     start_year = today.year - 1
-    years_remaining = 90 - current_age + 1  # +1 to include current year
+    years_remaining = 90 - current_age + 1
     mahadasha_seq = get_mahadasha_sequence(birth_number, years=years_remaining)
 
     dasha_timeline = []
@@ -109,7 +130,6 @@ def generate_vedic_kundali(name, dob):
             })
         year_cursor += duration
 
-    # Current Dasha
     current_dasha = next((item for item in dasha_timeline if item["year"] == today.year), None)
 
     predictions = load_predictions()
@@ -122,15 +142,13 @@ def generate_vedic_kundali(name, dob):
         "birth_planet": PLANET_MAP[birth_number],
         "destiny_number": destiny_number,
         "destiny_planet": PLANET_MAP[destiny_number],
-        "ank_kundali": dict(frequency),
-        "available_numbers": available,
-        "missing_numbers": missing,
+        "ank_kundali": ank_grid,
+        "missing_numbers": missing_numbers,
         "current_dasha": current_dasha,
         "mahadasha_chart": dasha_timeline,
         "remedies": predictions.get("remedies", {}),
         "traits": predictions.get("traits", {})
     }
 
-# For local testing
 if __name__ == "__main__":
     print(json.dumps(generate_vedic_kundali("Ravi Kumar", "1985-03-31"), indent=2))
