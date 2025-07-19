@@ -158,8 +158,8 @@ def get_tool_result():
         "karmic-lessons", "hidden-passion"
     ]:
         return jsonify(get_personal_core_number(data, tool))
-    if tool == "vedic-numerology-kundali":
-        return jsonify(get_vedic_kundali(data))
+    if tool == "vedic-numerology":
+        return jsonify(get_vedic_numerology(data))
     
     return jsonify({"error": "Unsupported tool"}), 400
 
