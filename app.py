@@ -27,13 +27,26 @@ import os
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
+# ------------------- CORS HEADERS -------------------
 @app.after_request
 def apply_cors_headers(response):
     response.headers["Access-Control-Allow-Origin"] = "https://destinydigits.com"
     response.headers["Access-Control-Allow-Headers"] = "Content-Type"
     response.headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    response.headers["Access-Control-Allow-Credentials"] = "true"
     return response
 
+# OPTIONS route to handle CORS preflight
+@app.route('/api/tool-result', methods=['OPTIONS'])
+def tool_result_options():
+    response = jsonify({'status': 'OK'})
+    response.headers["Access-Control-Allow-Origin"] = "https://destinydigits.com"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+    response.headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    return response
+
+# ------------------- ROUTES -------------------
 @app.route('/')
 def home():
     return jsonify({"message": "DestinyDigits Backend Running!"})
@@ -49,6 +62,7 @@ def extract_numbers():
         return jsonify(result)
     except Exception as e:
         return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
+
 @app.route('/api/horoscope-message')
 def get_horoscope_message():
     number = request.args.get("number")
@@ -62,7 +76,7 @@ def get_horoscope_message():
         return jsonify(result[0]), result[1]
 
     return jsonify(result)
-    
+
 def get_money_vibration_today(data):
     name = data.get("name")
     dob = data.get("dob")
@@ -72,7 +86,7 @@ def get_wealth_potential_insight(data):
     name = data.get("name")
     dob = data.get("dob")
     return wealth_potential_insight(name, dob)
-    
+
 @app.route('/api/tool-result', methods=['POST'])
 def get_tool_result():
     data = request.get_json()
@@ -149,9 +163,6 @@ def get_tool_result():
     
     return jsonify({"error": "Unsupported tool"}), 400
 
-    
-   
-    
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
