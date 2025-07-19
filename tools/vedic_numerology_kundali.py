@@ -109,11 +109,11 @@ def get_pratyantardasha(start_date, antardasha):
     return praty_list
 
 # ---------------------- PREDICTIONS (Skeleton) ----------------------
-def get_predictions(mahadasha, antardasha, pratyantardasha):
+def get_predictions(mahadasha, antardasha, praty_number):
     return {
-        "mahadasha_prediction": f"Major life theme under {PLANET_MAP[mahadasha]}.",
-        "antardasha_prediction": f"Current sub-period ruled by {PLANET_MAP[antardasha]}.",
-        "pratyantardasha_prediction": f"Daily trends influenced by {PLANET_MAP[pratyantardasha]}"
+        "mahadasha_prediction": f"Major life theme under {PLANET_MAP.get(mahadasha, 'Unknown')}.",
+        "antardasha_prediction": f"Current sub-period ruled by {PLANET_MAP.get(antardasha, 'Unknown')}.",
+        "pratyantardasha_prediction": f"Daily trends influenced by {PLANET_MAP.get(praty_number, 'Unknown')}"
     }
 
 # ---------------------- MAIN FUNCTION ----------------------
