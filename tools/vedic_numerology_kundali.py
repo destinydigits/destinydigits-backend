@@ -100,7 +100,7 @@ def get_pratyantardasha(start_date, antardasha):
         end_date = current_date + datetime.timedelta(days=days)
         praty_list.append({
             "number": current_number,
-            "planet": PLANET_MAP[current_number],
+            "planet": PLANET_MAP.get(current_number, f"Unknown({current_number})"),
             "start": current_date.isoformat(),
             "end": end_date.isoformat()
         })
@@ -108,7 +108,7 @@ def get_pratyantardasha(start_date, antardasha):
         current_date = end_date
     return praty_list
 
-# ---------------------- PREDICTIONS (Skeleton) ----------------------
+# ---------------------- PREDICTIONS ----------------------
 def get_predictions(mahadasha, antardasha, praty_number):
     return {
         "mahadasha_prediction": f"Major life theme under {PLANET_MAP.get(mahadasha, 'Unknown')}.",
@@ -119,7 +119,7 @@ def get_predictions(mahadasha, antardasha, praty_number):
 # ---------------------- MAIN FUNCTION ----------------------
 def generate_vedic_kundali(name, dob):
     try:
-        dob = dob.strip()  # extra spaces hata do
+        dob = dob.strip()
         birth_number = get_birth_number(dob)
         destiny_number = get_destiny_number(dob)
         ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
@@ -148,7 +148,7 @@ def generate_vedic_kundali(name, dob):
                     "mahadasha_planet": PLANET_MAP.get(m_number, f"Unknown({m_number})"),
                     "antardasha": antardasha,
                     "antardasha_planet": PLANET_MAP.get(antardasha, f"Unknown({antardasha})"),
-                    "pratyantardasha": PLANET_MAP.get(pratyantardasha, f"Unknown({pratyantardasha})")
+                    "pratyantardasha": pratyantar
                 })
                 year_cursor += 1
 
