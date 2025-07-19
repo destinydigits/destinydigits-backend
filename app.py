@@ -77,6 +77,19 @@ def get_wealth_potential_insight(data):
 def get_tool_result():
     data = request.get_json()
     tool = data.get("tool")
+    
+    if tool == "life-prediction":
+    name = data.get("name")
+    dob = data.get("dob")
+    if not name or not dob:
+        return jsonify({"error": "Missing name or dob"}), 400
+    result = extract_full_numerology(name, dob)
+    result["tool"] = "life-prediction"
+    result["name"] = name
+    result["dob"] = dob
+    result["fullReport"] = generate_full_report(name, dob)
+    result["title"] = "Free Life Prediction Report"
+    return jsonify(result)
 
     if tool == "romantic-vibes":
         return jsonify(get_romantic_vibes(data))
@@ -126,23 +139,11 @@ def get_tool_result():
         return jsonify(get_personal_core_number(data, tool))
     if tool == "vedic-numerology-kundali":
         return jsonify(get_vedic_kundali(data))
-
+    
 
     return jsonify({"error": "Unsupported tool"}), 400
     
-    if tool == "life-prediction":
-    name = data.get("name")
-    dob = data.get("dob")
-    if not name or not dob:
-        return jsonify({"error": "Missing name or dob"}), 400
-    result = extract_full_numerology(name, dob)
-    result["tool"] = "life-prediction"
-    result["name"] = name
-    result["dob"] = dob
-    result["fullReport"] = generate_full_report(name, dob)
-    result["title"] = "Free Life Prediction Report"
-    return jsonify(result)
-
+   
     
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
