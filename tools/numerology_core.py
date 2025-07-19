@@ -202,9 +202,9 @@ def generate_full_report(name, dob_str):
         <div class='report-box'>
             <h3>✨ 1. Life Path – Your Soul’s Journey</h3>
             <p>{profile.get('lifeDescription', '')}</p>
-            <p><strong>Key Vibe:</strong> {profile.get('keyVibe', 'N/A')}</p>
-            <p><strong>Core Strength:</strong> {profile.get('coreStrength', 'N/A')}</p>
-            <p><strong>Hidden Gift:</strong> {profile.get('hiddenGift', 'N/A')}</p>
+            <p><strong>Core Trait:</strong> {profile.get('coreTrait', '')}</p>
+            <p><strong>Life Purpose:</strong> {profile.get('lifePurpose', '')}</p>
+            <p><strong>Gift:</strong> {profile.get('gift', '')}</p>
         </div>
         """)
 
@@ -212,14 +212,10 @@ def generate_full_report(name, dob_str):
     heart = data.get('heartNumber')
     if heart in heart_profile:
         heart_data = heart_profile[heart]
-        if isinstance(heart_data, str):
-            emotional_msg = heart_data
-        else:
-            emotional_msg = heart_data.get('emotionalMessage', '')
         sections.append(f"""
         <div class='report-box'>
             <h3>💖 2. Heart's Desire – Your Emotional Core</h3>
-            <p>{emotional_msg}</p>
+            <p>{heart_data.get('emotionalMessage', '')}</p>
         </div>
         """)
 
@@ -227,27 +223,21 @@ def generate_full_report(name, dob_str):
     pers = data.get('personality_number')
     if pers in personality_profile:
         pers_data = personality_profile[pers]
-        if isinstance(pers_data, str):
-            mask_msg = pers_data
-        else:
-            mask_msg = pers_data.get('maskMessage', '')
         sections.append(f"""
         <div class='report-box'>
             <h3>👥 3. Your Personality – Your Social Mask</h3>
-            <p>{mask_msg}</p>
+            <p>{pers_data.get('maskMessage', '')}</p>
         </div>
         """)
 
     # 4. Challenge Section
     ch = data.get('challenge_number')
     if ch in challenge_profile:
-        challenge_msg = challenge_profile[ch].get('struggle', '')
-        tip_msg = challenge_profile[ch].get('resolutionTip', '')
         sections.append(f"""
         <div class='report-box'>
             <h3>⚔️ 4. Challenge – Your Inner Work</h3>
-            <p><strong>Challenge {ch}:</strong> {challenge_msg}</p>
-            <p>💎 <strong>Healing Tip:</strong> {tip_msg}</p>
+            <p><strong>Challenge {ch}:</strong> {challenge_profile[ch].get('struggle', '')}</p>
+            <p>💎 <strong>Healing Tip:</strong> {challenge_profile[ch].get('resolutionTip', '')}</p>
         </div>
         """)
 
@@ -264,12 +254,12 @@ def generate_full_report(name, dob_str):
         </div>
         """)
 
-    # 6. Pinnacle Phases
+    # 6. Pinnacle & Personal Numbers
     sections.append(f"""
     <div class='report-box'>
         <h3>🧭 6. Numerology Identity Card</h3>
         <ul>
-            <li><strong>Life Path:</strong> {data.get('life_path', '')} – {number_profile.get(data.get('life_path'), {}).get('coreStrength', '')}</li>
+            <li><strong>Life Path:</strong> {lp} – {number_profile.get(lp, {}).get('coreTrait', '')}</li>
             <li><strong>Heart's Desire:</strong> {data.get('heartNumber', '')}</li>
             <li><strong>Personality:</strong> {data.get('personalityNumber', '')}</li>
             <li><strong>Expression:</strong> {data.get('expression_number', '')}</li>
