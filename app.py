@@ -79,17 +79,17 @@ def get_tool_result():
     tool = data.get("tool")
     
     if tool == "life-prediction":
-    name = data.get("name")
-    dob = data.get("dob")
-    if not name or not dob:
-        return jsonify({"error": "Missing name or dob"}), 400
-    result = extract_full_numerology(name, dob)
-    result["tool"] = "life-prediction"
-    result["name"] = name
-    result["dob"] = dob
-    result["fullReport"] = generate_full_report(name, dob)
-    result["title"] = "Free Life Prediction Report"
-    return jsonify(result)
+        name = data.get("name")
+        dob = data.get("dob")
+        if not name or not dob:
+            return jsonify({"error": "Missing name or dob"}), 400
+        result = extract_full_numerology(name, dob)
+        result["tool"] = "life-prediction"
+        result["name"] = name
+        result["dob"] = dob
+        result["fullReport"] = generate_full_report(name, dob)
+        result["title"] = "Free Life Prediction Report"
+        return jsonify(result)
 
     if tool == "romantic-vibes":
         return jsonify(get_romantic_vibes(data))
@@ -140,8 +140,8 @@ def get_tool_result():
     if tool == "vedic-numerology-kundali":
         return jsonify(get_vedic_kundali(data))
     
-
     return jsonify({"error": "Unsupported tool"}), 400
+
     
    
     
