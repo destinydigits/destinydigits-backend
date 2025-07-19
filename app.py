@@ -83,12 +83,19 @@ def get_tool_result():
         dob = data.get("dob")
         if not name or not dob:
             return jsonify({"error": "Missing name or dob"}), 400
-        result = extract_full_numerology(name, dob)
-        result["tool"] = "life-prediction"
-        result["name"] = name
-        result["dob"] = dob
-        result["fullReport"] = generate_full_report(name, dob)
-        result["title"] = "Free Life Prediction Report"
+
+        numerology_data = extract_full_numerology(name, dob)
+        full_report = generate_full_report(name, dob)
+
+        result = {
+            "tool": "life-prediction",
+            "name": name,
+            "dob": dob,
+            "title": "🔮 Free Life Prediction Report",
+            "summary": (full_report[:250] + "...") if len(full_report) > 250 else full_report,
+            "mainNumber": numerology_data.get("life_path", 0),
+            "fullReport": full_report
+        }
         return jsonify(result)
 
     if tool == "romantic-vibes":
