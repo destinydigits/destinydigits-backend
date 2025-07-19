@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from tools.numerology_core import extract_full_numerology
+from tools.numerology_core import extract_full_numerology, generate_full_report
 from tools.horoscope_api import load_horoscope
 from tools.romantic_vibes import get_romantic_vibes
 from tools.karmic_lesson_marriage import get_karmic_lesson_marriage
@@ -129,6 +130,19 @@ def get_tool_result():
 
 
     return jsonify({"error": "Unsupported tool"}), 400
+    
+    if tool == "life-prediction":
+    name = data.get("name")
+    dob = data.get("dob")
+    if not name or not dob:
+        return jsonify({"error": "Missing name or dob"}), 400
+    result = extract_full_numerology(name, dob)
+    result["tool"] = "life-prediction"
+    result["name"] = name
+    result["dob"] = dob
+    result["fullReport"] = generate_full_report(name, dob)
+    result["title"] = "Free Life Prediction Report"
+    return jsonify(result)
 
     
 if __name__ == '__main__':
