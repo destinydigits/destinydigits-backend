@@ -8,22 +8,25 @@ from .lookup_tables import (
 )
 
 PYTHAGOREAN_VALUES = {
-    'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9,
-    'J':1, 'K':2, 'L':3, 'M':4, 'N':5, 'O':6, 'P':7, 'Q':8, 'R':9,
-    'S':1, 'T':2, 'U':3, 'V':4, 'W':5, 'X':6, 'Y':7, 'Z':8
+    'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+    'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+    'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
 }
 
 VOWELS = set('AEIOU')
+
 
 def reduce_number(n):
     while n > 9 and n not in (11, 22, 33):
         n = sum(int(d) for d in str(n))
     return n
 
+
 def reduce_strict(n):
     while n > 9:
         n = sum(int(d) for d in str(n))
     return n
+
 
 def numerology_values(name):
     name = name.upper()
@@ -40,6 +43,7 @@ def numerology_values(name):
         'hiddenPassion': max(set(all_letters), key=all_letters.count) if all_letters else None
     }
 
+
 def get_challenge_numbers(day, month, year):
     c1 = abs(month - day)
     c2 = abs(day - year)
@@ -48,11 +52,13 @@ def get_challenge_numbers(day, month, year):
     reduced = [reduce_strict(c) for c in (c1, c2, c3, c4)]
     return reduced
 
+
 def get_primary_challenge_number(challenge_list):
     for c in challenge_list:
         if c != 0:
             return c
     return None
+
 
 def get_pinnacle_numbers(day, month, year):
     p1 = reduce_strict(day + month)
@@ -60,6 +66,7 @@ def get_pinnacle_numbers(day, month, year):
     p3 = reduce_strict(p1 + p2)
     p4 = reduce_strict(month + year)
     return [p1, p2, p3, p4]
+
 
 def enrich_report(numbers):
     lp = numbers["life_path"]
@@ -92,6 +99,7 @@ def enrich_report(numbers):
 
     return numbers
 
+
 def get_pinnacle_phase_texts(birth_year, pinnacles):
     descriptions = {
         1: "Independence, ambition, leadership",
@@ -110,7 +118,8 @@ def get_pinnacle_phase_texts(birth_year, pinnacles):
         "pinnacle_phase_3": f"Age 37–45: {pinnacles[2]} – {descriptions.get(pinnacles[2], '')}",
         "pinnacle_phase_4": f"Age 46+: {pinnacles[3]} – {descriptions.get(pinnacles[3], '')}",
     }
-    
+
+
 def extract_full_numerology(name, dob_str):
     dob = datetime.datetime.strptime(dob_str, "%Y-%m-%d")
     day, month, year = dob.day, dob.month, dob.year
@@ -118,7 +127,6 @@ def extract_full_numerology(name, dob_str):
     numbers = numerology_values(name)
     master_numbers = {}
 
-    # Master check but reduce anyway
     raw_birth = day
     birth_number = reduce_strict(day)
     if raw_birth in (11, 22, 33):
@@ -138,11 +146,11 @@ def extract_full_numerology(name, dob_str):
     personal_year = reduce_strict(day + month + today.year)
     personal_month = reduce_strict(personal_year + today.month)
     personal_day = reduce_strict(personal_month + today.day)
-   
+
     pinnacles = get_pinnacle_numbers(day, month, reduce_strict(year))
     challenge_list = get_challenge_numbers(day, month, reduce_strict(year))
     challenge_number = get_primary_challenge_number(challenge_list)
-    
+
     result = {
         'nameNumber': numbers['expressionNumber'],
         'birthNumber': birth_number,
@@ -157,7 +165,6 @@ def extract_full_numerology(name, dob_str):
         'firstVowel': numbers['firstVowel'],
         'challengeNumbers': challenge_list,
         'challenge_number': challenge_number,
-        #'pinnacleNumbers': pinnacles,
         'p1': pinnacles[0],
         'p2': pinnacles[1],
         'p3': pinnacles[2],
@@ -173,15 +180,43 @@ def extract_full_numerology(name, dob_str):
         'expression_number': numbers['expressionNumber'],
         'personality_number': numbers['personalityNumber']
     }
-    
+
     pinnacle_texts = get_pinnacle_phase_texts(year, pinnacles)
     result.update(pinnacle_texts)
-    
+
     if master_numbers:
         result['masterNumbers'] = master_numbers
-    
-    return enrich_report(result)  
 
-# 👇 NEW FUNCTION – Safe to add below return
+    return enrich_report(result)
+
+
+# ➡ NEW FUNCTION FOR FULL REPORT
+def generate_full_report(name, dob_str):
+    data = extract_full_numerology(name, dob_str)
+    parts = []
+
+    lp = data.get('life_path')
+    if lp in number_profile:
+        parts.append(f"Life Path {lp}: {number_profile[lp]['lifeDescription']}")
+
+    heart = data.get('heartNumber')
+    if heart in heart_profile:
+        parts.append(f"Heart Number {heart}: {heart_profile[heart]['emotionalMessage']}")
+
+    exp = data.get('expression_number')
+    if exp in expression_profile:
+        parts.append(f"Expression Number {exp}: {expression_profile[exp]['expressionTrait']}")
+
+    pers = data.get('personality_number')
+    if pers in personality_profile:
+        parts.append(f"Personality Number {pers}: {personality_profile[pers]['maskMessage']}")
+
+    ch = data.get('challenge_number')
+    if ch in challenge_profile:
+        parts.append(f"Challenge {ch}: {challenge_profile[ch]['struggle']} Tip: {challenge_profile[ch]['resolutionTip']}")
+
+    return "<br><br>".join(parts)
+
+
 def letter_to_number_pythagorean(letter):
     return PYTHAGOREAN_VALUES.get(letter.upper(), 0)
