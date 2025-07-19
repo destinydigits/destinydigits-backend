@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from tools.numerology_core import extract_full_numerology
 from tools.numerology_core import extract_full_numerology, generate_full_report
 from tools.horoscope_api import load_horoscope
 from tools.romantic_vibes import get_romantic_vibes
