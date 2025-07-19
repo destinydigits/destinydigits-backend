@@ -159,7 +159,7 @@ def get_tool_result():
     ]:
         return jsonify(get_personal_core_number(data, tool))
     if tool == "vedic-numerology":
-        return jsonify(get_vedic_numerology(data))
+        return jsonify(get_vedic_kundali(data))
     
     return jsonify({"error": "Unsupported tool"}), 400
 
