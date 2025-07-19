@@ -119,6 +119,7 @@ def get_predictions(mahadasha, antardasha, pratyantardasha):
 # ---------------------- MAIN FUNCTION ----------------------
 def generate_vedic_kundali(name, dob):
     try:
+        dob = dob.strip()  # extra spaces hata do
         birth_number = get_birth_number(dob)
         destiny_number = get_destiny_number(dob)
         ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
@@ -144,10 +145,10 @@ def generate_vedic_kundali(name, dob):
                 dasha_timeline.append({
                     "year": year_cursor,
                     "mahadasha": m_number,
-                    "mahadasha_planet": PLANET_MAP[m_number],
+                    "mahadasha_planet": PLANET_MAP.get(m_number, f"Unknown({m_number})"),
                     "antardasha": antardasha,
-                    "antardasha_planet": PLANET_MAP[antardasha],
-                    "pratyantardasha": pratyantar
+                    "antardasha_planet": PLANET_MAP.get(antardasha, f"Unknown({antardasha})"),
+                    "pratyantardasha": PLANET_MAP.get(pratyantardasha, f"Unknown({pratyantardasha})")
                 })
                 year_cursor += 1
 
@@ -178,6 +179,8 @@ def generate_vedic_kundali(name, dob):
         }
 
     except Exception as e:
+        import traceback
+        print("ERROR in generate_vedic_kundali:", traceback.format_exc())
         return {"error": str(e)}
 
 
