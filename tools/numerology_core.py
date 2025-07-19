@@ -189,33 +189,63 @@ def extract_full_numerology(name, dob_str):
 
     return enrich_report(result)
 
-
 # ➡ NEW FUNCTION FOR FULL REPORT
 def generate_full_report(name, dob_str):
     data = extract_full_numerology(name, dob_str)
-    parts = []
+    report_parts = []
 
+    # Life Path
     lp = data.get('life_path')
     if lp in number_profile:
-        parts.append(f"Life Path {lp}: {number_profile[lp]['lifeDescription']}")
+        desc = number_profile[lp].get('lifeDescription', '')
+        report_parts.append(f"<strong>Life Path {lp}:</strong> {desc}")
 
+    # Heart Number
     heart = data.get('heartNumber')
     if heart in heart_profile:
-        parts.append(f"Heart Number {heart}: {heart_profile[heart]['emotionalMessage']}")
+        heart_data = heart_profile[heart]
+        heart_msg = heart_data if isinstance(heart_data, str) else heart_data.get('emotionalMessage', '')
+        report_parts.append(f"<strong>Heart Number {heart}:</strong> {heart_msg}")
 
+    # Expression Number
     exp = data.get('expression_number')
     if exp in expression_profile:
-        parts.append(f"Expression Number {exp}: {expression_profile[exp]['expressionTrait']}")
+        exp_msg = expression_profile[exp].get('expressionTrait', '')
+        report_parts.append(f"<strong>Expression Number {exp}:</strong> {exp_msg}")
 
+    # Personality Number
     pers = data.get('personality_number')
     if pers in personality_profile:
-        parts.append(f"Personality Number {pers}: {personality_profile[pers]['maskMessage']}")
+        pers_msg = personality_profile[pers].get('maskMessage', '')
+        report_parts.append(f"<strong>Personality Number {pers}:</strong> {pers_msg}")
 
+    # Challenge Number
     ch = data.get('challenge_number')
     if ch in challenge_profile:
-        parts.append(f"Challenge {ch}: {challenge_profile[ch]['struggle']} Tip: {challenge_profile[ch]['resolutionTip']}")
+        challenge_msg = challenge_profile[ch].get('struggle', '')
+        tip_msg = challenge_profile[ch].get('resolutionTip', '')
+        report_parts.append(
+            f"<strong>Challenge {ch}:</strong> {challenge_msg} "
+            f"<em>Tip:</em> {tip_msg}"
+        )
 
-    return "<br><br>".join(parts)
+    # Add Pinnacle Phases
+    report_parts.append(
+        f"<strong>Pinnacle Phases:</strong><br>"
+        f"1st: {data.get('pinnacle_phase_1', '')}<br>"
+        f"2nd: {data.get('pinnacle_phase_2', '')}<br>"
+        f"3rd: {data.get('pinnacle_phase_3', '')}<br>"
+        f"4th: {data.get('pinnacle_phase_4', '')}"
+    )
+
+    # Add Personal Numbers
+    report_parts.append(
+        f"<strong>Personal Cycle Today:</strong> Year: {data.get('personalYear', '')}, "
+        f"Month: {data.get('personalMonth', '')}, Day: {data.get('personalDay', '')}"
+    )
+
+    return "<br><br>".join(report_parts)
+
 
 
 def letter_to_number_pythagorean(letter):
