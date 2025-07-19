@@ -192,59 +192,97 @@ def extract_full_numerology(name, dob_str):
 # ➡ NEW FUNCTION FOR FULL REPORT
 def generate_full_report(name, dob_str):
     data = extract_full_numerology(name, dob_str)
-    report_parts = []
+    sections = []
 
-    # Life Path
+    # 1. Life Path Section
     lp = data.get('life_path')
     if lp in number_profile:
-        desc = number_profile[lp].get('lifeDescription', '')
-        report_parts.append(f"<strong>Life Path {lp}:</strong> {desc}")
+        profile = number_profile[lp]
+        sections.append(f"""
+        <div class='report-box'>
+            <h3>✨ 1. Life Path – Your Soul’s Journey</h3>
+            <p>{profile.get('lifeDescription', '')}</p>
+            <p><strong>Key Vibe:</strong> {profile.get('keyVibe', 'N/A')}</p>
+            <p><strong>Core Strength:</strong> {profile.get('coreStrength', 'N/A')}</p>
+            <p><strong>Hidden Gift:</strong> {profile.get('hiddenGift', 'N/A')}</p>
+        </div>
+        """)
 
-    # Heart Number
+    # 2. Heart’s Desire Section
     heart = data.get('heartNumber')
     if heart in heart_profile:
         heart_data = heart_profile[heart]
-        heart_msg = heart_data if isinstance(heart_data, str) else heart_data.get('emotionalMessage', '')
-        report_parts.append(f"<strong>Heart Number {heart}:</strong> {heart_msg}")
+        if isinstance(heart_data, str):
+            emotional_msg = heart_data
+        else:
+            emotional_msg = heart_data.get('emotionalMessage', '')
+        sections.append(f"""
+        <div class='report-box'>
+            <h3>💖 2. Heart's Desire – Your Emotional Core</h3>
+            <p>{emotional_msg}</p>
+        </div>
+        """)
 
-    # Expression Number
-    exp = data.get('expression_number')
-    if exp in expression_profile:
-        exp_msg = expression_profile[exp].get('expressionTrait', '')
-        report_parts.append(f"<strong>Expression Number {exp}:</strong> {exp_msg}")
-
-    # Personality Number
+    # 3. Personality Section
     pers = data.get('personality_number')
     if pers in personality_profile:
-        pers_msg = personality_profile[pers].get('maskMessage', '')
-        report_parts.append(f"<strong>Personality Number {pers}:</strong> {pers_msg}")
+        pers_data = personality_profile[pers]
+        if isinstance(pers_data, str):
+            mask_msg = pers_data
+        else:
+            mask_msg = pers_data.get('maskMessage', '')
+        sections.append(f"""
+        <div class='report-box'>
+            <h3>👥 3. Your Personality – Your Social Mask</h3>
+            <p>{mask_msg}</p>
+        </div>
+        """)
 
-    # Challenge Number
+    # 4. Challenge Section
     ch = data.get('challenge_number')
     if ch in challenge_profile:
         challenge_msg = challenge_profile[ch].get('struggle', '')
         tip_msg = challenge_profile[ch].get('resolutionTip', '')
-        report_parts.append(
-            f"<strong>Challenge {ch}:</strong> {challenge_msg} "
-            f"<em>Tip:</em> {tip_msg}"
-        )
+        sections.append(f"""
+        <div class='report-box'>
+            <h3>⚔️ 4. Challenge – Your Inner Work</h3>
+            <p><strong>Challenge {ch}:</strong> {challenge_msg}</p>
+            <p>💎 <strong>Healing Tip:</strong> {tip_msg}</p>
+        </div>
+        """)
 
-    # Add Pinnacle Phases
-    report_parts.append(
-        f"<strong>Pinnacle Phases:</strong><br>"
-        f"1st: {data.get('pinnacle_phase_1', '')}<br>"
-        f"2nd: {data.get('pinnacle_phase_2', '')}<br>"
-        f"3rd: {data.get('pinnacle_phase_3', '')}<br>"
-        f"4th: {data.get('pinnacle_phase_4', '')}"
-    )
+    # 5. Expression Section
+    exp = data.get('expression_number')
+    if exp in expression_profile:
+        exp_data = expression_profile[exp]
+        sections.append(f"""
+        <div class='report-box'>
+            <h3>🌈 5. How You Express – Your Gift & Style</h3>
+            <p>🔧 <strong>Natural Talents:</strong> {exp_data.get('talents', '')}</p>
+            <p>🚀 <strong>How You Shine:</strong> {exp_data.get('expressionTrait', '')}</p>
+            <p>🎯 <strong>Your Power Style:</strong> {exp_data.get('problemSolvingStyle', '')}</p>
+        </div>
+        """)
 
-    # Add Personal Numbers
-    report_parts.append(
-        f"<strong>Personal Cycle Today:</strong> Year: {data.get('personalYear', '')}, "
-        f"Month: {data.get('personalMonth', '')}, Day: {data.get('personalDay', '')}"
-    )
+    # 6. Pinnacle Phases
+    sections.append(f"""
+    <div class='report-box'>
+        <h3>🧭 6. Numerology Identity Card</h3>
+        <ul>
+            <li><strong>Life Path:</strong> {data.get('life_path', '')} – {number_profile.get(data.get('life_path'), {}).get('coreStrength', '')}</li>
+            <li><strong>Heart's Desire:</strong> {data.get('heartNumber', '')}</li>
+            <li><strong>Personality:</strong> {data.get('personalityNumber', '')}</li>
+            <li><strong>Expression:</strong> {data.get('expression_number', '')}</li>
+            <li><strong>Challenge:</strong> {data.get('challenge_number', '')}</li>
+            <li><strong>Pinnacle 1:</strong> {data.get('pinnacle_phase_1', '')}</li>
+            <li><strong>Pinnacle 2:</strong> {data.get('pinnacle_phase_2', '')}</li>
+            <li><strong>Pinnacle 3:</strong> {data.get('pinnacle_phase_3', '')}</li>
+            <li><strong>Pinnacle 4:</strong> {data.get('pinnacle_phase_4', '')}</li>
+        </ul>
+    </div>
+    """)
 
-    return "<br><br>".join(report_parts)
+    return "\n".join(sections)
 
 
 
