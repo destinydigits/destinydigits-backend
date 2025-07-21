@@ -18,7 +18,7 @@ PLANET_MAP = {
     9: "Mars (Mangal)"
 }
 
-# ---------------------- CORE UTILS ----------------------
+# ---------------------- CORE UTILS ---------------------
 def reduce_strict(n):
     while n > 9:
         n = sum(int(d) for d in str(n))
