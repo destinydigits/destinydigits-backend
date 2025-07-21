@@ -3,7 +3,7 @@ import datetime
 import json
 from collections import defaultdict
 
-with open("birth_destiny_interpretations.json", "r", encoding="utf-8") as f:
+with open("tools/birth_destiny_interpretations.json", "r", encoding="utf-8") as f:
     BIRTH_DESTINY_TEXT = json.load(f)
 
 PLANET_MAP = {
