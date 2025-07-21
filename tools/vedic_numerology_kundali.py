@@ -3,6 +3,9 @@ import datetime
 import json
 from collections import defaultdict
 
+with open("birth_destiny_interpretations.json", "r", encoding="utf-8") as f:
+    BIRTH_DESTINY_TEXT = json.load(f)
+
 PLANET_MAP = {
     1: "Sun (Surya)",
     2: "Moon (Chandra)",
@@ -122,6 +125,8 @@ def generate_vedic_kundali(name, dob):
         dob = dob.strip()
         birth_number = get_birth_number(dob)
         destiny_number = get_destiny_number(dob)
+        combo_key = f"{birth_number}_{destiny_number}"
+        combo_interpretation = BIRTH_DESTINY_TEXT.get(combo_key, {})
         ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
         digits = {int(num) for row in ank_grid for cell in row for num in cell.split() if num}
         yogs = detect_yogs(digits)
@@ -170,12 +175,14 @@ def generate_vedic_kundali(name, dob):
             "birth_planet": PLANET_MAP[birth_number],
             "destiny_number": destiny_number,
             "destiny_planet": PLANET_MAP[destiny_number],
+            "combo_interpretation": combo_interpretation,
             "ank_kundali": ank_grid,
             "missing_numbers": missing_numbers,
             "yogs": yogs,
             "current_dasha": current_dasha,
             "predictions": predictions,
             "mahadasha_chart": dasha_timeline[:10]
+
         }
 
     except Exception as e:
