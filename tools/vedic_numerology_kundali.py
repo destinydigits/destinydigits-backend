@@ -86,83 +86,72 @@ def generate_ank_interpretation(grid, missing_numbers):
     # Personality & Nature
     present_personality = [n for n in [1, 3, 5, 9] if count_map[n] > 0]
     missing_personality = [n for n in [1, 3, 5, 9] if n not in present_personality]
-
-    personality_text = [ANK_TRAITS["personality"][str(n)]["positive"] for n in present_personality]
-    for n in present_personality:
-        if count_map[n] > 1:
-            personality_text.append(ANK_TRAITS["personality"][str(n)]["negative"])
-    missing_personality_text = [ANK_TRAITS["personality"][str(n)]["negative"] for n in missing_personality]
-
     personality_paragraph = (
         f"Your personality is shaped by {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_personality)}, "
-        + f"bringing traits like {', '.join([ANK_TRAITS['personality'][str(n)]['positive'].split(' ',1)[1] for n in present_personality])}. "
-        + (" ".join(personality_text) if personality_text else "")
-        + (f" However, missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_personality)} "
-           f"can lead to {', '.join(missing_personality_text)}." if missing_personality else "")
+        + (
+            "bringing traits like "
+            + ', '.join(ANK_TRAITS['personality'][str(n)]['positive'] for n in present_personality)
+            + ". "
+            if present_personality else ""
+        )
+        + (
+            f"However, missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_personality)} "
+            f"can lead to {', '.join(ANK_TRAITS['personality'][str(n)]['negative'] for n in missing_personality)}."
+            if missing_personality else ""
+        )
     )
 
     # Career & Finance
     present_career = [n for n in [4, 5, 8] if count_map[n] > 0]
     missing_career = [n for n in [4, 5, 8] if n not in present_career]
-
-    career_text = [ANK_TRAITS["career"][str(n)]["positive"] for n in present_career]
-    for n in present_career:
-        if count_map[n] > 1:
-            career_text.append(ANK_TRAITS["career"][str(n)]["negative"])
-    missing_career_text = [ANK_TRAITS["career"][str(n)]["negative"] for n in missing_career]
-
     career_paragraph = (
         f"Career and finances are influenced by {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_career)}. "
-        + " ".join(career_text)
-        + (f" Missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_career)} "
-           f"may cause {', '.join(missing_career_text)}." if missing_career else "")
+        + ', '.join(ANK_TRAITS['career'][str(n)]['positive'] for n in present_career)
+        + (
+            f" Missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_career)} "
+            f"may cause {', '.join(ANK_TRAITS['career'][str(n)]['negative'] for n in missing_career)}."
+            if missing_career else ""
+        )
     )
 
     # Love & Relationships
     present_love = [n for n in [2, 6] if count_map[n] > 0]
     missing_love = [n for n in [2, 6] if n not in present_love]
-
-    love_text = [ANK_TRAITS["love"][str(n)]["positive"] for n in present_love]
-    for n in present_love:
-        if count_map[n] > 1:
-            love_text.append(ANK_TRAITS["love"][str(n)]["negative"])
-    missing_love_text = [ANK_TRAITS["love"][str(n)]["negative"] for n in missing_love]
-
     love_paragraph = (
         f"In love and relationships, {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_love)} "
-        + (" ".join(love_text) if love_text else "")
-        + (f" Missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_love)} "
-           f"may bring {', '.join(missing_love_text)}." if missing_love else "")
+        + ', '.join(ANK_TRAITS['love'][str(n)]['positive'] for n in present_love)
+        + (
+            f" Missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_love)} "
+            f"may bring {', '.join(ANK_TRAITS['love'][str(n)]['negative'] for n in missing_love)}."
+            if missing_love else ""
+        )
     )
 
     # Health & Mindset
     present_health = [n for n in [1, 9, 7, 8] if count_map[n] > 0]
     missing_health = [n for n in [1, 9, 7, 8] if n not in present_health]
-
-    health_text = [ANK_TRAITS["health"][str(n)]["positive"] for n in present_health]
-    for n in present_health:
-        if count_map[n] > 1:
-            health_text.append(ANK_TRAITS["health"][str(n)]["negative"])
-    missing_health_text = [ANK_TRAITS["health"][str(n)]["negative"] for n in missing_health]
-
     health_paragraph = (
         f"Your health and mindset are shaped by {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_health)}. "
-        + " ".join(health_text)
-        + (f" Missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_health)} "
-           f"can lead to {', '.join(missing_health_text)}." if missing_health else "")
+        + ', '.join(ANK_TRAITS['health'][str(n)]['positive'] for n in present_health)
+        + (
+            f" Missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_health)} "
+            f"can lead to {', '.join(ANK_TRAITS['health'][str(n)]['negative'] for n in missing_health)}."
+            if missing_health else ""
+        )
     )
 
     # Remedy
     dominant_num = max(count_map, key=lambda k: count_map[k])
-    remedy = ANK_TRAITS["remedies"].get(str(dominant_num), "5 Mukhi Rudraksha for balance.")
+    remedy = ANK_TRAITS['remedies'].get(str(dominant_num), "5 Mukhi Rudraksha for balance.")
 
     return {
-        "personality": personality_paragraph,
-        "career_finance": career_paragraph,
-        "love_relationships": love_paragraph,
-        "health_mindset": health_paragraph,
+        "personality": personality_paragraph.strip(),
+        "career_finance": career_paragraph.strip(),
+        "love_relationships": love_paragraph.strip(),
+        "health_mindset": health_paragraph.strip(),
         "remedy": remedy
     }
+
 
 # ---------------------- DASHAS ----------------------
 def get_mahadasha_sequence(birth_number, years=90):
