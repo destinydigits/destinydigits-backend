@@ -218,6 +218,7 @@ def generate_vedic_kundali(name, dob):
         dob = dob.strip()
         birth_number = get_birth_number(dob)
         destiny_number = get_destiny_number(dob)
+        ank_interpretation = generate_ank_interpretation(ank_grid, missing_numbers)
         combo_key = f"{birth_number}_{destiny_number}"
         combo_interpretation = BIRTH_DESTINY_TEXT.get(combo_key, {})
         ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
@@ -271,6 +272,7 @@ def generate_vedic_kundali(name, dob):
             "combo_interpretation": combo_interpretation,
             "ank_kundali": ank_grid,
             "missing_numbers": missing_numbers,
+            "ank_interpretation": ank_interpretation,
             "yogs": yogs,
             "current_dasha": current_dasha,
             "predictions": predictions,
