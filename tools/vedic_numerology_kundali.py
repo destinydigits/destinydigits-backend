@@ -218,10 +218,10 @@ def generate_vedic_kundali(name, dob):
         dob = dob.strip()
         birth_number = get_birth_number(dob)
         destiny_number = get_destiny_number(dob)
-        ank_interpretation = generate_ank_interpretation(ank_grid, missing_numbers)
         combo_key = f"{birth_number}_{destiny_number}"
         combo_interpretation = BIRTH_DESTINY_TEXT.get(combo_key, {})
         ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
+        ank_interpretation = generate_ank_interpretation(ank_grid, missing_numbers)
         digits = {int(num) for row in ank_grid for cell in row for num in cell.split() if num}
         yogs = detect_yogs(digits)
 
