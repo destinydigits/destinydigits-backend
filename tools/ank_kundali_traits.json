@@ -1,0 +1,93 @@
+{
+  "personality": {
+    "1": {
+      "positive": "1 (Sun) gives you leadership, confidence, and a strong sense of individuality.",
+      "negative": "Sometimes this strong will can turn into stubbornness or ego, but it also fuels your ambition."
+    },
+    "2": {
+      "positive": "2 (Moon) makes you empathetic, calm, and emotionally intelligent.",
+      "negative": "You may become overly sensitive or dependent, but this also makes you deeply understanding."
+    },
+    "3": {
+      "positive": "3 (Jupiter) brings creativity, optimism, and powerful communication skills.",
+      "negative": "Sometimes your ideas can be scattered, but this curiosity helps you explore new possibilities."
+    },
+    "4": {
+      "positive": "4 (Rahu) adds discipline, focus, and a practical approach to life.",
+      "negative": "You may appear rigid or over-analytical at times, but this ensures reliability and consistency."
+    },
+    "5": {
+      "positive": "5 (Mercury) makes you adaptable, intelligent, and quick to make decisions.",
+      "negative": "You may act impulsively, but it often leads to innovative and fresh outcomes."
+    },
+    "6": {
+      "positive": "6 (Venus) brings love, harmony, and an artistic outlook.",
+      "negative": "You might become over-attached or self-sacrificing, but it shows your deep care for others."
+    },
+    "7": {
+      "positive": "7 (Ketu) gives spiritual wisdom, intuition, and introspection.",
+      "negative": "You may sometimes feel detached, but this allows deeper insight into life."
+    },
+    "8": {
+      "positive": "8 (Saturn) makes you disciplined, patient, and determined.",
+      "negative": "Slow progress may frustrate you, but it ensures long-lasting success."
+    },
+    "9": {
+      "positive": "9 (Mars) gives courage, passion, and a strong sense of purpose.",
+      "negative": "You may become overly intense or impatient, but it drives you toward your goals."
+    }
+  },
+  "career": {
+    "4": {
+      "positive": "4 (Rahu) helps in building structured careers, planning, and technical mastery.",
+      "negative": "Being too detail-focused might slow you, but ensures quality work."
+    },
+    "5": {
+      "positive": "5 (Mercury) favors business, sales, communication, and multi-tasking careers.",
+      "negative": "Over-confidence in quick decisions can lead to miscalculations, but also creative breakthroughs."
+    },
+    "8": {
+      "positive": "8 (Saturn) brings financial stability, persistence, and authority roles.",
+      "negative": "You may experience slow growth, but it builds a solid foundation."
+    }
+  },
+  "love": {
+    "2": {
+      "positive": "2 (Moon) brings deep emotional bonding and harmony in love.",
+      "negative": "Over-sensitivity can create misunderstandings, but your sincerity wins hearts."
+    },
+    "6": {
+      "positive": "6 (Venus) gives you romance, charm, and the ability to nurture relationships.",
+      "negative": "You may become over-attached, but this reflects your strong loyalty."
+    }
+  },
+  "health": {
+    "1": {
+      "positive": "1 (Sun) gives vitality, stamina, and strong immunity.",
+      "negative": "Stress and overwork may affect your energy, but relaxation restores balance."
+    },
+    "7": {
+      "positive": "7 (Ketu) supports mental calmness and inner healing.",
+      "negative": "Its absence can lead to mental restlessness, but mindfulness helps."
+    },
+    "8": {
+      "positive": "8 (Saturn) ensures endurance and resilience.",
+      "negative": "Overwork or fatigue can strain health, but steady routines keep you strong."
+    },
+    "9": {
+      "positive": "9 (Mars) adds physical energy, quick recovery, and drive.",
+      "negative": "Over-exertion may cause burnout, but moderation ensures lasting energy."
+    }
+  },
+  "remedies": {
+    "1": "1 Mukhi Rudraksha to enhance leadership and clarity.",
+    "2": "2 Mukhi Rudraksha for emotional balance and harmony.",
+    "3": "4 Mukhi Rudraksha to stabilize creativity and focus.",
+    "4": "8 Mukhi Rudraksha to reduce overthinking and bring discipline.",
+    "5": "5 Mukhi Rudraksha for mental clarity and communication strength.",
+    "6": "6 Mukhi Rudraksha to balance relationships and emotional health.",
+    "7": "7 Mukhi Rudraksha for spiritual stability and inner peace.",
+    "8": "9 Mukhi Rudraksha to support patience and financial stability.",
+    "9": "3 Mukhi Rudraksha for courage, passion, and energy balance."
+  }
+}
