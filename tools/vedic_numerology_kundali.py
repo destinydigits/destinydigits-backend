@@ -95,9 +95,17 @@ def generate_ank_interpretation(grid, missing_numbers):
 
     personality_paragraph = (
         f"Your personality is shaped by {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_personality)}, "
-        + ("bringing traits like " + ', '.join(ANK_TRAITS['personality'][str(n)]['positive'] for n in present_personality) + ". " if present_personality else "")
-        + (f"However, missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_personality)} "
-           f"can lead to {', '.join(ANK_TRAITS['personality'][str(n)]['negative'] for n in missing_personality)}." if missing_personality else "")
+        + (
+            "bringing traits like "
+            + ', '.join(ANK_TRAITS['personality'][str(n)]['positive'] for n in present_personality)
+            + ". "
+            if present_personality else ""
+        )
+        + (
+            f"However, missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_personality)} "
+            f"can lead to {', '.join(ANK_TRAITS['personality'][str(n)]['negative'] for n in missing_personality)}."
+            if missing_personality else ""
+        )
     )
 
     # Career & Finance
