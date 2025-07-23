@@ -135,24 +135,28 @@ def generate_ank_interpretation(grid, missing_numbers):
     }
 
 # ---------------------- MAHADASHA TIMELINE -----------------
-def generate_mahadasha_timeline(dob, total_years=50):
+def generate_mahadasha_timeline(dob, future_years=20):
     dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
+    today = datetime.date.today()
+    end_limit = today.replace(year=today.year + future_years)
+
     birth_number = get_birth_number(dob)
     current_number = birth_number
     start_date = dob_date
-    mahadashas = []
-    years_passed = 0
 
-    while years_passed < total_years:
+    mahadashas = []
+
+    while start_date <= end_limit:
         duration = current_number
         end_date = start_date.replace(year=start_date.year + duration) - datetime.timedelta(days=1)
+
         mahadashas.append({
             "number": current_number,
             "planet": PLANET_MAP[current_number],
             "start_date": start_date.strftime("%d-%m-%Y"),
             "end_date": end_date.strftime("%d-%m-%Y")
         })
-        years_passed += duration
+
         start_date = end_date + datetime.timedelta(days=1)
         current_number = 1 if current_number == 9 else current_number + 1
 
