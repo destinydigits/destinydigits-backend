@@ -1,13 +1,15 @@
-# File: tools/vedic_numerology_kundali.py (Pro-Level Vedic Numerology Engine)
+# File: tools/vedic_numerology_kundali.py
 import datetime
 import json
-from collections import defaultdict
+
+# ---------------------- LOAD TRAITS ----------------------
 with open("tools/ank_kundali_traits.json", "r", encoding="utf-8") as f:
     ANK_TRAITS = json.load(f)
 
 with open("tools/birth_destiny_interpretations.json", "r", encoding="utf-8") as f:
     BIRTH_DESTINY_TEXT = json.load(f)
 
+# ---------------------- PLANET MAP -----------------------
 PLANET_MAP = {
     1: "Sun (Surya)",
     2: "Moon (Chandra)",
@@ -20,25 +22,19 @@ PLANET_MAP = {
     9: "Mars (Mangal)"
 }
 
-# ---------------------- CORE UTILS ---------------------
+# ---------------------- CORE UTILS -----------------------
 def reduce_strict(n):
     while n > 9:
         n = sum(int(d) for d in str(n))
     return n
 
-def get_day_lord_number(date):
-    weekday = date.weekday()  # Monday=0, Sunday=6
-    mapping = {6: 1, 0: 2, 1: 9, 2: 5, 3: 3, 4: 6, 5: 8}  # Sun=1, Mon=2, Tue=9...
-    return mapping.get(weekday, 1)
-
-# ---------------------- BASIC NUMBERS ----------------------
 def get_birth_number(dob):
     return reduce_strict(int(dob.split("-")[2]))
 
 def get_destiny_number(dob):
     return reduce_strict(sum(int(d) for d in dob.replace("-", "")))
 
-# ---------------------- PRIMARY ANK KUNDALI ----------------------
+# ---------------------- ANK GRID -------------------------
 def build_primary_ank_kundali(dob, birth_number, destiny_number):
     parts = dob.split("-")
     day, month, year_last2 = parts[2], parts[1], parts[0][2:]
@@ -48,9 +44,11 @@ def build_primary_ank_kundali(dob, birth_number, destiny_number):
             digits.append(int(val))
     digits.append(birth_number)
     digits.append(destiny_number)
+
     grid_map = {n: [] for n in range(1, 10)}
     for d in digits:
         grid_map[d].append(str(d))
+
     grid = [
         [" ".join(grid_map[3]), " ".join(grid_map[1]), " ".join(grid_map[9])],
         [" ".join(grid_map[6]), " ".join(grid_map[7]), " ".join(grid_map[5])],
@@ -59,22 +57,7 @@ def build_primary_ank_kundali(dob, birth_number, destiny_number):
     missing = [num for num, vals in grid_map.items() if not vals]
     return grid, missing
 
-# ---------------------- YOG DETECTION ----------------------
-def detect_yogs(digits):
-    yogs = []
-    sets = [set([1,4,7]), set([2,5,8]), set([3,6,9])]
-    for s in sets:
-        if s.issubset(digits):
-            if s == {1,4,7}:
-                yogs.append("1-4-7 Yog: Leadership + Hard Work = Growth")
-            if s == {2,5,8}:
-                yogs.append("2-5-8 Yog: Financial Stability and Balance")
-            if s == {3,6,9}:
-                yogs.append("3-6-9 Yog: Creativity and Fame")
-    return yogs
-
-
-# ---------------------- ANK INTERPRETATION ----------------------
+# ---------------------- ANK INTERPRETATION ----------------
 def generate_ank_interpretation(grid, missing_numbers):
     count_map = {n: 0 for n in range(1, 10)}
     for row in grid:
@@ -83,7 +66,7 @@ def generate_ank_interpretation(grid, missing_numbers):
                 if num.isdigit():
                     count_map[int(num)] += 1
 
-    # Personality & Nature
+    # Personality
     present_personality = [n for n in [1, 3, 5, 9] if count_map[n] > 0]
     missing_personality = [n for n in [1, 3, 5, 9] if n not in present_personality]
     personality_paragraph = (
@@ -101,7 +84,7 @@ def generate_ank_interpretation(grid, missing_numbers):
         )
     )
 
-    # Career & Finance
+    # Career
     present_career = [n for n in [4, 5, 8] if count_map[n] > 0]
     missing_career = [n for n in [4, 5, 8] if n not in present_career]
     career_paragraph = (
@@ -114,7 +97,7 @@ def generate_ank_interpretation(grid, missing_numbers):
         )
     )
 
-    # Love & Relationships
+    # Love
     present_love = [n for n in [2, 6] if count_map[n] > 0]
     missing_love = [n for n in [2, 6] if n not in present_love]
     love_paragraph = (
@@ -127,7 +110,7 @@ def generate_ank_interpretation(grid, missing_numbers):
         )
     )
 
-    # Health & Mindset
+    # Health
     present_health = [n for n in [1, 9, 7, 8] if count_map[n] > 0]
     missing_health = [n for n in [1, 9, 7, 8] if n not in present_health]
     health_paragraph = (
@@ -140,7 +123,6 @@ def generate_ank_interpretation(grid, missing_numbers):
         )
     )
 
-    # Remedy
     dominant_num = max(count_map, key=lambda k: count_map[k])
     remedy = ANK_TRAITS['remedies'].get(str(dominant_num), "5 Mukhi Rudraksha for balance.")
 
@@ -152,14 +134,12 @@ def generate_ank_interpretation(grid, missing_numbers):
         "remedy": remedy
     }
 
-
-# ---------------------- DASHAS ----------------------
+# ---------------------- MAHADASHA TIMELINE -----------------
 def generate_mahadasha_timeline(dob, total_years=50):
     dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
     birth_number = get_birth_number(dob)
     current_number = birth_number
     start_date = dob_date
-
     mahadashas = []
     years_passed = 0
 
@@ -178,40 +158,12 @@ def generate_mahadasha_timeline(dob, total_years=50):
 
     return mahadashas
 
-def get_antardasha(dob, year, mahadasha):
-    dob_parts = dob.split("-")
-    date_obj = datetime.date(year, int(dob_parts[1]), int(dob_parts[2]))
-    day_lord = get_day_lord_number(date_obj)
-    day_sum = sum(int(x) for x in dob_parts[2])
-    month_sum = sum(int(x) for x in dob_parts[1])
-    year_sum = sum(int(x) for x in str(year)[-2:])
-    antardasha = reduce_strict(day_sum + month_sum + year_sum + day_lord)
-    return antardasha
-
-def get_pratyantardasha(start_date, antardasha):
-    duration_map = {1:8,2:16,3:24,4:32,5:41,6:49,7:57,8:65,9:73}
-    days = duration_map[antardasha]
-    praty_list = []
-    current_number = antardasha
-    current_date = start_date
-    for i in range(12):  # 12 segments for 1 year approx.
-        end_date = current_date + datetime.timedelta(days=days)
-        praty_list.append({
-            "number": current_number,
-            "planet": PLANET_MAP.get(current_number, f"Unknown({current_number})"),
-            "start": current_date.isoformat(),
-            "end": end_date.isoformat()
-        })
-        current_number = 1 if current_number == 9 else current_number + 1
-        current_date = end_date
-    return praty_list
-
-# ---------------------- PREDICTIONS ----------------------
-def get_predictions(mahadasha, antardasha, praty_number):
+# ---------------------- PREDICTIONS ------------------------
+def get_predictions(current_dasha):
+    if not current_dasha:
+        return {}
     return {
-        "mahadasha_prediction": f"Major life theme under {PLANET_MAP.get(mahadasha, 'Unknown')}.",
-        "antardasha_prediction": f"Current sub-period ruled by {PLANET_MAP.get(antardasha, 'Unknown')}.",
-        "pratyantardasha_prediction": f"Daily trends influenced by {PLANET_MAP.get(praty_number, 'Unknown')}"
+        "mahadasha_prediction": f"Major life theme under {current_dasha['planet']}."
     }
 
 # ---------------------- MAIN FUNCTION ----------------------
@@ -224,44 +176,19 @@ def generate_vedic_kundali(name, dob):
         combo_interpretation = BIRTH_DESTINY_TEXT.get(combo_key, {})
         ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
         ank_interpretation = generate_ank_interpretation(ank_grid, missing_numbers)
-        digits = {int(num) for row in ank_grid for cell in row for num in cell.split() if num}
-        yogs = detect_yogs(digits)
 
+        # Mahadasha Timeline
+        mahadasha_seq = generate_mahadasha_timeline(dob, total_years=50)
+
+        # Find current Mahadasha
         today = datetime.date.today()
-        dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
-        current_age = today.year - dob_date.year - ((today.month, today.day) < (dob_date.month, dob_date.day))
+        current_dasha = next(
+            (m for m in mahadasha_seq
+             if datetime.datetime.strptime(m["start_date"], "%d-%m-%Y").date() <= today <= datetime.datetime.strptime(m["end_date"], "%d-%m-%Y").date()),
+            None
+        )
 
-        dasha_timeline = generate_mahadasha_timeline(dob, total_years=50)
-        start_year = today.year - 1
-        dasha_timeline = []
-        year_cursor = start_year
-
-        for m_number, duration in mahadasha_seq:
-            for _ in range(duration):
-                antardasha = get_antardasha(dob, year_cursor, m_number)
-                pratyantar = get_pratyantardasha(
-                    datetime.date(year_cursor, dob_date.month, dob_date.day),
-                    antardasha
-                )
-                dasha_timeline.append({
-                    "year": year_cursor,
-                    "mahadasha": m_number,
-                    "mahadasha_planet": PLANET_MAP.get(m_number, f"Unknown({m_number})"),
-                    "antardasha": antardasha,
-                    "antardasha_planet": PLANET_MAP.get(antardasha, f"Unknown({antardasha})"),
-                    "pratyantardasha": pratyantar
-                })
-                year_cursor += 1
-
-        current_dasha = next((item for item in dasha_timeline if item["year"] == today.year), None)
-        if current_dasha:
-            predictions = get_predictions(
-                current_dasha["mahadasha"],
-                current_dasha["antardasha"],
-                current_dasha["pratyantardasha"][0]["number"]
-            )
-        else:
-            predictions = {}
+        predictions = get_predictions(current_dasha)
 
         return {
             "tool": "vedic-numerology-kundali",
@@ -275,11 +202,9 @@ def generate_vedic_kundali(name, dob):
             "ank_kundali": ank_grid,
             "missing_numbers": missing_numbers,
             "ank_interpretation": ank_interpretation,
-            "yogs": yogs,
             "current_dasha": current_dasha,
             "predictions": predictions,
-            "mahadasha_chart": dasha_timeline
-
+            "mahadasha_chart": mahadasha_seq
         }
 
     except Exception as e:
