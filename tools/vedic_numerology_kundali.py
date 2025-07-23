@@ -231,7 +231,7 @@ def generate_vedic_kundali(name, dob):
         dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
         current_age = today.year - dob_date.year - ((today.month, today.day) < (dob_date.month, dob_date.day))
 
-        mahadasha_seq = get_mahadasha_sequence(birth_number, years=90)
+        dasha_timeline = generate_mahadasha_timeline(dob, total_years=50)
         start_year = today.year - 1
         dasha_timeline = []
         year_cursor = start_year
@@ -278,7 +278,7 @@ def generate_vedic_kundali(name, dob):
             "yogs": yogs,
             "current_dasha": current_dasha,
             "predictions": predictions,
-            "mahadasha_chart": dasha_timeline[:10]
+            "mahadasha_chart": dasha_timeline
 
         }
 
