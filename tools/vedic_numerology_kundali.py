@@ -154,16 +154,29 @@ def generate_ank_interpretation(grid, missing_numbers):
 
 
 # ---------------------- DASHAS ----------------------
-def get_mahadasha_sequence(birth_number, years=90):
-    sequence, current, total = [], birth_number, 0
-    while total < years:
-        span = current
-        if total + span > years:
-            span = years - total
-        sequence.append((current, span))
-        total += span
-        current = 1 if current == 9 else current + 1
-    return sequence
+def generate_mahadasha_timeline(dob, total_years=50):
+    dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
+    birth_number = get_birth_number(dob)
+    current_number = birth_number
+    start_date = dob_date
+
+    mahadashas = []
+    years_passed = 0
+
+    while years_passed < total_years:
+        duration = current_number
+        end_date = start_date.replace(year=start_date.year + duration) - datetime.timedelta(days=1)
+        mahadashas.append({
+            "number": current_number,
+            "planet": PLANET_MAP[current_number],
+            "start_date": start_date.strftime("%d-%m-%Y"),
+            "end_date": end_date.strftime("%d-%m-%Y")
+        })
+        years_passed += duration
+        start_date = end_date + datetime.timedelta(days=1)
+        current_number = 1 if current_number == 9 else current_number + 1
+
+    return mahadashas
 
 def get_antardasha(dob, year, mahadasha):
     dob_parts = dob.split("-")
