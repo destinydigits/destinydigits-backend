@@ -1,16 +1,14 @@
-# File: tools/vedic_numerology_kundali.py
 import datetime
 import json
 from dateutil.relativedelta import relativedelta
 
-# ---------------------- LOAD TRAITS ----------------------
+# ---------------------- TRAITS ----------------------
 with open("tools/ank_kundali_traits.json", "r", encoding="utf-8") as f:
     ANK_TRAITS = json.load(f)
 
 with open("tools/birth_destiny_interpretations.json", "r", encoding="utf-8") as f:
     BIRTH_DESTINY_TEXT = json.load(f)
 
-# ---------------------- PLANET MAP -----------------------
 PLANET_MAP = {
     1: "Sun (Surya)",
     2: "Moon (Chandra)",
@@ -23,7 +21,7 @@ PLANET_MAP = {
     9: "Mars (Mangal)"
 }
 
-# ---------------------- CORE UTILS -----------------------
+# ---------------------- UTIL FUNCTIONS ----------------------
 def reduce_strict(n):
     while n > 9:
         n = sum(int(d) for d in str(n))
@@ -35,7 +33,7 @@ def get_birth_number(dob):
 def get_destiny_number(dob):
     return reduce_strict(sum(int(d) for d in dob.replace("-", "")))
 
-# ---------------------- ANK GRID -------------------------
+# ---------------------- ANK GRID ----------------------
 def build_primary_ank_kundali(dob, birth_number, destiny_number):
     parts = dob.split("-")
     day, month, year_last2 = parts[2], parts[1], parts[0][2:]
@@ -58,7 +56,7 @@ def build_primary_ank_kundali(dob, birth_number, destiny_number):
     missing = [num for num, vals in grid_map.items() if not vals]
     return grid, missing
 
-# ---------------------- ANK INTERPRETATION ----------------
+# ---------------------- ANK INTERPRETATION ----------------------
 def generate_ank_interpretation(grid, missing_numbers):
     count_map = {n: 0 for n in range(1, 10)}
     for row in grid:
@@ -70,25 +68,25 @@ def generate_ank_interpretation(grid, missing_numbers):
     # Personality
     present_personality = [n for n in [1, 3, 5, 9] if count_map[n] > 0]
     missing_personality = [n for n in [1, 3, 5, 9] if n not in present_personality]
-    personality_paragraph = (
+    personality_text = (
         f"Your personality is shaped by {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_personality)}, "
         + (
-            "bringing traits like "
-            + ', '.join(ANK_TRAITS['personality'][str(n)]['positive'] for n in present_personality)
-            + ". "
-            if present_personality else ""
+            "bringing traits like " + ', '.join(
+                ANK_TRAITS['personality'][str(n)]['positive'] for n in present_personality
+            ) + ". " if present_personality else ""
         )
         + (
             f"However, missing {', '.join(f'{n} ({PLANET_MAP[n]})' for n in missing_personality)} "
-            f"can lead to {', '.join(ANK_TRAITS['personality'][str(n)]['negative'] for n in missing_personality)}."
-            if missing_personality else ""
+            f"can lead to {', '.join(
+                ANK_TRAITS['personality'][str(n)]['negative'] for n in missing_personality
+            )}." if missing_personality else ""
         )
     )
 
     # Career
     present_career = [n for n in [4, 5, 8] if count_map[n] > 0]
     missing_career = [n for n in [4, 5, 8] if n not in present_career]
-    career_paragraph = (
+    career_text = (
         f"Career and finances are influenced by {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_career)}. "
         + ', '.join(ANK_TRAITS['career'][str(n)]['positive'] for n in present_career)
         + (
@@ -101,7 +99,7 @@ def generate_ank_interpretation(grid, missing_numbers):
     # Love
     present_love = [n for n in [2, 6] if count_map[n] > 0]
     missing_love = [n for n in [2, 6] if n not in present_love]
-    love_paragraph = (
+    love_text = (
         f"In love and relationships, {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_love)} "
         + ', '.join(ANK_TRAITS['love'][str(n)]['positive'] for n in present_love)
         + (
@@ -114,7 +112,7 @@ def generate_ank_interpretation(grid, missing_numbers):
     # Health
     present_health = [n for n in [1, 9, 7, 8] if count_map[n] > 0]
     missing_health = [n for n in [1, 9, 7, 8] if n not in present_health]
-    health_paragraph = (
+    health_text = (
         f"Your health and mindset are shaped by {', '.join(f'{n} ({PLANET_MAP[n]})' for n in present_health)}. "
         + ', '.join(ANK_TRAITS['health'][str(n)]['positive'] for n in present_health)
         + (
@@ -128,14 +126,14 @@ def generate_ank_interpretation(grid, missing_numbers):
     remedy = ANK_TRAITS['remedies'].get(str(dominant_num), "5 Mukhi Rudraksha for balance.")
 
     return {
-        "personality": personality_paragraph.strip(),
-        "career_finance": career_paragraph.strip(),
-        "love_relationships": love_paragraph.strip(),
-        "health_mindset": health_paragraph.strip(),
+        "personality": personality_text.strip(),
+        "career_finance": career_text.strip(),
+        "love_relationships": love_text.strip(),
+        "health_mindset": health_text.strip(),
         "remedy": remedy
     }
 
-# ---------------------- MAHADASHA TIMELINE -----------------
+# ---------------------- MAHADASHA TIMELINE ----------------------
 def generate_mahadasha_timeline(dob, future_years=20):
     dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
     today = datetime.date.today()
@@ -163,8 +161,7 @@ def generate_mahadasha_timeline(dob, future_years=20):
 
     return mahadashas
 
-
-# ---------------------- PREDICTIONS ------------------------
+# ---------------------- PREDICTIONS ----------------------
 def get_predictions(current_dasha):
     if not current_dasha:
         return {}
@@ -183,10 +180,9 @@ def generate_vedic_kundali(name, dob):
         ank_grid, missing_numbers = build_primary_ank_kundali(dob, birth_number, destiny_number)
         ank_interpretation = generate_ank_interpretation(ank_grid, missing_numbers)
 
-        # Mahadasha Timeline
-        mahadasha_seq = generate_mahadasha_timeline(dob, total_years=50)
+        # Mahadasha timeline
+        mahadasha_seq = generate_mahadasha_timeline(dob, future_years=20)
 
-        # Find current Mahadasha
         today = datetime.date.today()
         current_dasha = next(
             (m for m in mahadasha_seq
@@ -217,7 +213,6 @@ def generate_vedic_kundali(name, dob):
         import traceback
         print("ERROR in generate_vedic_kundali:", traceback.format_exc())
         return {"error": str(e)}
-
 
 if __name__ == "__main__":
     print(json.dumps(generate_vedic_kundali("Ravi Kumar", "1985-03-31"), indent=2))
