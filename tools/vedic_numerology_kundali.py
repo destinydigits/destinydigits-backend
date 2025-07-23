@@ -1,6 +1,7 @@
 # File: tools/vedic_numerology_kundali.py
 import datetime
 import json
+from dateutil.relativedelta import relativedelta
 
 # ---------------------- LOAD TRAITS ----------------------
 with open("tools/ank_kundali_traits.json", "r", encoding="utf-8") as f:
@@ -138,7 +139,7 @@ def generate_ank_interpretation(grid, missing_numbers):
 def generate_mahadasha_timeline(dob, future_years=20):
     dob_date = datetime.datetime.strptime(dob, "%Y-%m-%d").date()
     today = datetime.date.today()
-    end_limit = today.replace(year=today.year + future_years)
+    end_limit = today + relativedelta(years=future_years)
 
     birth_number = get_birth_number(dob)
     current_number = birth_number
@@ -148,7 +149,7 @@ def generate_mahadasha_timeline(dob, future_years=20):
 
     while start_date <= end_limit:
         duration = current_number
-        end_date = start_date.replace(year=start_date.year + duration) - datetime.timedelta(days=1)
+        end_date = start_date + relativedelta(years=duration) - datetime.timedelta(days=1)
 
         mahadashas.append({
             "number": current_number,
@@ -161,6 +162,7 @@ def generate_mahadasha_timeline(dob, future_years=20):
         current_number = 1 if current_number == 9 else current_number + 1
 
     return mahadashas
+
 
 # ---------------------- PREDICTIONS ------------------------
 def get_predictions(current_dasha):
