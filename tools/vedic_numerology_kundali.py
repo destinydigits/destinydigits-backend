@@ -43,11 +43,11 @@ def get_birth_number(dob):
     return reduce_strict(int(dob.split("-")[2]))
 
 def get_destiny_number(dob):
-    parts = dob.split("-")
-    year_last2 = int(parts[0][2:])
-    total = int(parts[2]) + int(parts[1]) + year_last2
+    parts = dob.split("-")  # [YYYY, MM, DD]
+    digits = [int(d) for d in parts[2] + parts[1] + parts[0]]  # DDMMYYYY ke sabhi digits
+    total = sum(digits)
     return reduce_strict(total)
-
+    
 def get_day_lord_number(date_obj):
     """Return day lord number based on weekday."""
     return DAY_LORD_MAP[date_obj.weekday()]
