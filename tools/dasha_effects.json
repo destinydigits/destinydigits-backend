@@ -1,50 +1,47 @@
 {
   "1": {
-    "single": "This phase ignites a powerful spark within you to take bold initiatives. Your confidence is rising and you feel ready to step out of your comfort zone. It’s an ideal time to start something new that truly reflects your individuality.",
-    "double": "Your desire for independence is now twice as strong. You want to lead, make decisions your way, and claim your space. Just make sure that your enthusiasm doesn’t turn into impatience or impulsive decisions — balance your fire with thoughtfulness.",
-    "multiple": "When 1’s energy dominates heavily, it can bring restlessness or ego conflicts with those around you. If others don’t share your vision, don’t push too hard. Instead, channel this fiery confidence into projects where you can shine without resistance."
+    "single": "<ul><li><strong>Sun</strong> brings a spark to take bold initiatives and lead with confidence.</li><li>Your self-belief is high, pushing you to step out of your comfort zone.</li><li>Ideal time to begin projects that showcase your individuality and ambition.</li></ul>",
+    "double": "<ul><li><strong>Sun</strong> energy doubles your desire for independence and authority.</li><li>You want to lead and make decisions your own way.</li><li>Ensure this enthusiasm doesn’t turn into impatience or ego-driven actions.</li></ul>",
+    "multiple": "<ul><li>Multiple influences of <strong>Sun</strong> can bring restlessness or ego clashes.</li><li>Avoid forcing your vision if others don’t align.</li><li>Channel this fiery confidence into constructive leadership tasks.</li></ul>"
   },
   "2": {
-    "single": "You are feeling emotionally connected to people and situations. Conversations feel deeper, and you naturally crave harmony and emotional understanding. It’s a great time to build trust and nurture close bonds.",
-    "double": "Your sensitivity is amplified, and you may feel like you need constant emotional reassurance. Small misunderstandings could hurt you more than usual, so open-hearted communication is key during this time.",
-    "multiple": "An excess of 2 energy can bring confusion, overthinking, or emotional mood swings. Avoid absorbing too many emotions of others and instead focus on your own mental balance and self-care."
+    "single": "<ul><li><strong>Moon</strong> enhances emotional sensitivity and deep connections.</li><li>Conversations feel meaningful and build harmony with others.</li><li>A good time to create trust and nurture close bonds.</li></ul>",
+    "double": "<ul><li><strong>Moon</strong> energy amplifies your emotional needs and sensitivity.</li><li>Small misunderstandings can hurt more, so communicate openly.</li><li>Stay balanced and avoid over-dependence on others.</li></ul>",
+    "multiple": "<ul><li>Excess <strong>Moon</strong> energy can bring confusion and mood swings.</li><li>Avoid absorbing too many emotions of others.</li><li>Focus on self-care and emotional balance.</li></ul>"
   },
   "3": {
-    "single": "Your creative side is blooming, and you feel more expressive than usual. Whether through words, art, or ideas, you want to share what’s in your heart and mind. This is a great time for writing, speaking, or creative work.",
-    "double": "Your charm and creativity feel doubled — you naturally attract attention and admiration. However, too many ideas can scatter your focus, so try to channel your energy into one strong plan.",
-    "multiple": "Too many 3s can create restlessness, distractions, or shallow communication. This is a reminder to slow down and give depth to your creative expression, rather than rushing through everything."
+    "single": "<ul><li><strong>Jupiter</strong> boosts creativity, expression, and optimism.</li><li>Your ideas and words flow effortlessly, inspiring others.</li><li>Perfect time for writing, public speaking, or artistic pursuits.</li></ul>",
+    "double": "<ul><li><strong>Jupiter</strong> doubles your charm and creativity, attracting admiration.</li><li>Too many ideas can scatter your focus.</li><li>Channel your energy into one strong plan for better results.</li></ul>",
+    "multiple": "<ul><li>Multiple <strong>Jupiter</strong> influences may cause restlessness or shallow communication.</li><li>Slow down and bring depth to your creative expression.</li><li>Focus on quality rather than rushing through everything.</li></ul>"
   },
   "4": {
-    "single": "You’re feeling the need to ground yourself and bring order to your life. Hard work and discipline feel natural now, and you are ready to build a strong foundation for the future.",
-    "double": "Your inner perfectionist is active, pushing you to do everything with precision. While this can bring great results, avoid becoming too rigid or critical of others.",
-    "multiple": "When 4 energy multiplies, it can create stress and over-controlling behavior. Try to let go of what you can’t control and focus on creating structure without losing flexibility."
+    "single": "<ul><li><strong>Rahu</strong> encourages discipline and structure in life.</li><li>You feel motivated to create stability and order around you.</li><li>Hard work and focus will lead to long-term growth.</li></ul>",
+    "double": "<ul><li><strong>Rahu</strong> energy doubles your drive for perfection.</li><li>You might push yourself beyond limits to get things done.</li><li>Stay flexible and avoid being overly critical of others.</li></ul>",
+    "multiple": "<ul><li>Excess <strong>Rahu</strong> energy can lead to stress and over-controlling tendencies.</li><li>Learn to relax and adapt rather than forcing outcomes.</li><li>Balance work with self-care.</li></ul>"
   },
   "5": {
-    "single": "Your mind is craving change and variety. You feel adventurous and curious, ready to explore something new — whether it’s travel, learning, or exciting opportunities.",
-    "double": "Your desire for freedom and thrill is heightened. You may feel restless with routines, but avoid making sudden or risky decisions in the heat of the moment.",
-    "multiple": "Too much 5 energy can bring chaos, lack of focus, or impulsive behavior. Use this energy wisely by channeling it into constructive adventures or new learning."
+    "single": "<ul><li><strong>Mercury</strong> brings curiosity, adventure, and change.</li><li>You are eager to explore new opportunities or experiences.</li><li>Perfect time to learn, travel, or experiment with creative ideas.</li></ul>",
+    "double": "<ul><li><strong>Mercury</strong> energy heightens your need for excitement and variety.</li><li>Routines might feel boring, but avoid impulsive decisions.</li><li>Think carefully before making sudden changes.</li></ul>",
+    "multiple": "<ul><li>Too much <strong>Mercury</strong> energy can bring chaos and lack of focus.</li><li>Stay grounded and plan your actions carefully.</li><li>Channel this energy into meaningful adventures.</li></ul>"
   },
   "6": {
-    "single": "You are focused on love, family, and relationships. Creating harmony in your personal life feels natural, and you are more caring and protective of those you love.",
-    "double": "Your nurturing energy is doubled, and you may want to shower affection on others. Be careful not to expect too much in return or feel disappointed.",
-    "multiple": "Excess 6 energy can make you emotionally heavy or overly attached to others’ problems. Remember to care for yourself just as much as you care for them."
+    "single": "<ul><li><strong>Venus</strong> shifts focus towards love, family, and harmony.</li><li>You feel caring and protective of your loved ones.</li><li>Perfect phase for improving relationships and home life.</li></ul>",
+    "double": "<ul><li><strong>Venus</strong> energy doubles your affection and emotional warmth.</li><li>You may expect the same love in return, leading to disappointments.</li><li>Balance your expectations with self-love.</li></ul>",
+    "multiple": "<ul><li>Excess <strong>Venus</strong> energy can make you emotionally heavy or overly attached.</li><li>Maintain personal boundaries while caring for others.</li><li>Don’t forget to take care of yourself too.</li></ul>"
   },
   "7": {
-    "single": "You feel reflective and thoughtful, often wanting to spend time in your own company. It’s a time of gaining wisdom, spiritual awareness, or deep introspection.",
-    "double": "Your quest for answers is strong, and you might find yourself diving into spiritual studies, research, or personal development. Solitude feels refreshing now.",
-    "multiple": "Too many 7s can make you overly detached or lost in your thoughts. Balance is key — don’t isolate yourself too much from the real world."
+    "single": "<ul><li><strong>Ketu</strong> enhances introspection and spiritual thinking.</li><li>You may seek solitude to reflect and grow mentally.</li><li>A good time for meditation, study, and self-discovery.</li></ul>",
+    "double": "<ul><li><strong>Ketu</strong> energy doubles your quest for answers.</li><li>You may dive deeper into spiritual or research-oriented fields.</li><li>Solitude feels refreshing but maintain balance with the outer world.</li></ul>",
+    "multiple": "<ul><li>Excess <strong>Ketu</strong> energy may make you overly detached.</li><li>Don’t get lost in overthinking or isolation.</li><li>Balance inner reflection with real-world actions.</li></ul>"
   },
   "8": {
-    "single": "You’re focused on achieving success, financial stability, and building something long-term. Your determination and ambition are strong, helping you make big strides in your career or business.",
-    "double": "Responsibilities feel heavier now, but you are capable of handling them with discipline. Your hard work can bring significant rewards if you stay patient and grounded.",
-    "multiple": "Excess 8 energy may lead to stress, power struggles, or ego conflicts. Keep your calm and avoid taking on unnecessary pressure."
+    "single": "<ul><li><strong>Saturn</strong> emphasizes career, discipline, and financial stability.</li><li>Your determination helps in building long-term success.</li><li>Patience and consistent efforts will pay off.</li></ul>",
+    "double": "<ul><li><strong>Saturn</strong> energy doubles your sense of responsibility.</li><li>Tasks may feel heavy, but persistence will lead to rewards.</li><li>Stay calm and avoid taking unnecessary pressure.</li></ul>",
+    "multiple": "<ul><li>Excess <strong>Saturn</strong> energy can cause stress and conflicts.</li><li>Avoid power struggles and focus on steady progress.</li><li>Keep a balance between work and relaxation.</li></ul>"
   },
   "9": {
-    "single": "You feel more compassionate, thoughtful, and ready to let go of past baggage. It’s a time of healing, forgiveness, and helping others in need.",
-    "double": "Your emotions are intense, and you may feel drawn toward resolving old conflicts or giving back to others. This can be a deeply fulfilling phase.",
-    "multiple": "Too much 9 energy can make you feel drained or overwhelmed with emotions. Focus on self-healing before trying to fix others’ problems."
+    "single": "<ul><li><strong>Mars</strong> increases compassion, strength, and emotional healing.</li><li>You are ready to let go of past baggage.</li><li>Perfect time for helping others and practicing forgiveness.</li></ul>",
+    "double": "<ul><li><strong>Mars</strong> energy doubles emotional intensity and courage.</li><li>You may feel driven to resolve past issues or take bold steps.</li><li>Use this energy for constructive changes.</li></ul>",
+    "multiple": "<ul><li>Excess <strong>Mars</strong> energy can cause emotional exhaustion.</li><li>Focus on self-healing and avoid taking on too many responsibilities.</li><li>Channel your passion wisely.</li></ul>"
   }
 }
-
-
-
