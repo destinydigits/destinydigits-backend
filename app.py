@@ -22,6 +22,7 @@ from tools.resume_booster import get_resume_booster
 from tools.best_working_days import get_best_working_days
 from tools.personal_core_numbers import get_personal_core_number
 from tools.vedic_kundali import get_vedic_kundali
+from flask import send_file
 import os
 
 app = Flask(__name__)
@@ -62,6 +63,10 @@ def extract_numbers():
         return jsonify(result)
     except Exception as e:
         return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
+
+@app.route("/api/dasha-effects")
+def get_dasha_effects():
+    return send_file("tools/dasha_effects.json", mimetype="application/json")
 
 @app.route('/api/horoscope-message')
 def get_horoscope_message():
