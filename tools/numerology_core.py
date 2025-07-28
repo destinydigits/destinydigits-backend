@@ -21,12 +21,15 @@ def reduce_number(n):
         n = sum(int(d) for d in str(n))
     return n
 
-
 def reduce_strict(n):
     while n > 9:
         n = sum(int(d) for d in str(n))
     return n
-
+    
+def reduce_to_single_digit(n):
+    while n > 9:
+        n = sum(int(d) for d in str(n))
+    return n
 
 def numerology_values(name):
     name = name.upper()
@@ -43,7 +46,6 @@ def numerology_values(name):
         'hiddenPassion': max(set(all_letters), key=all_letters.count) if all_letters else None
     }
 
-
 def get_challenge_numbers(day, month, year):
     c1 = abs(month - day)
     c2 = abs(day - year)
@@ -52,13 +54,11 @@ def get_challenge_numbers(day, month, year):
     reduced = [reduce_strict(c) for c in (c1, c2, c3, c4)]
     return reduced
 
-
 def get_primary_challenge_number(challenge_list):
     for c in challenge_list:
         if c != 0:
             return c
     return None
-
 
 def get_pinnacle_numbers(day, month, year):
     p1 = reduce_strict(day + month)
@@ -66,7 +66,6 @@ def get_pinnacle_numbers(day, month, year):
     p3 = reduce_strict(p1 + p2)
     p4 = reduce_strict(month + year)
     return [p1, p2, p3, p4]
-
 
 def enrich_report(numbers):
     lp = numbers["life_path"]
@@ -143,9 +142,9 @@ def extract_full_numerology(name, dob_str):
     challenge_list = get_challenge_numbers(day, month, reduce_strict(year))
     challenge_number = get_primary_challenge_number(challenge_list)
     today = datetime.datetime.today()
-    personal_year = reduce_strict(day + month + today.year)
-    personal_month = reduce_strict(personal_year + today.month)
-    personal_day = reduce_strict(personal_month + today.day)
+    personal_year = reduce_to_single_digit(day + month + today.year)
+    personal_month = reduce_to_single_digit(personal_year + today.month)
+    personal_day = reduce_to_single_digit(personal_month + today.day)
 
     pinnacles = get_pinnacle_numbers(day, month, reduce_strict(year))
     challenge_list = get_challenge_numbers(day, month, reduce_strict(year))
