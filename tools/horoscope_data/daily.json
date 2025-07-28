@@ -1,59 +1,114 @@
 {
   "1": {
-    "horoscope": [
-      "Today is the perfect day to take initiative and move forward with confidence. Your leadership qualities are strong—don’t hesitate to act.",
-      "This is a time for bold decisions. Trust your inner compass and don’t wait for others to approve your ideas.",
-      "Your energy today attracts progress. Start something new that aligns with your long-term vision.",
-      "Lead by example. Others will naturally follow your guidance if you stay assertive and focused.",
-      "Step into your power—today rewards those who take calculated risks and stand tall in their truth."
-    ],
-    "luckyColor": "Red",
-    "todayTip": "Take the first step toward a goal you've been delaying."
-  },
+  "horoscope": [
+    "Today is the perfect day to take initiative and move forward with confidence. Your leadership qualities are strong—don’t hesitate to act.",
+    "This is a time for bold decisions. Trust your inner compass and don’t wait for others to approve your ideas.",
+    "Your energy today attracts progress. Start something new that aligns with your long-term vision.",
+    "Lead by example. Others will naturally follow your guidance if you stay assertive and focused.",
+    "Step into your power—today rewards those who take calculated risks and stand tall in their truth."
+  ],
+  "luckyColor": "Red",
+  "luckyNumber": 1,
+  "todayTip": "Take the first step toward a goal you've been delaying—it will set the tone for future success.",
+  "dos": [
+    "Take bold and decisive action.",
+    "Trust your instincts when making decisions.",
+    "Show leadership in challenging situations."
+  ],
+  "donts": [
+    "Don’t procrastinate or second-guess yourself.",
+    "Avoid being overly aggressive or dominating.",
+    "Stay away from impulsive, unplanned risks."
+  ]
+},
   "2": {
-    "horoscope": [
-      "Be gentle with yourself and others today. Harmony and emotional balance are the keys to success.",
-      "Relationships require your attention. Offer compassion and be a good listener to deepen bonds.",
-      "Today is ideal for teamwork and cooperation. Avoid conflict and seek middle ground wherever possible.",
-      "Sensitivity is your strength—not a weakness. Use it to understand the needs of people around you.",
-      "Let kindness be your language. Your ability to heal and connect emotionally will shine today."
-    ],
-    "luckyColor": "Light Blue",
-    "todayTip": "Speak kindly to yourself and others."
-  },
+  "horoscope": [
+    "Be gentle with yourself and others today. Harmony and emotional balance are the keys to success.",
+    "Relationships require your attention. Offer compassion and be a good listener to deepen bonds.",
+    "Today is ideal for teamwork and cooperation. Avoid conflict and seek middle ground wherever possible.",
+    "Sensitivity is your strength—not a weakness. Use it to understand the needs of people around you.",
+    "Let kindness be your language. Your ability to heal and connect emotionally will shine today."
+  ],
+  "luckyColor": "Light Blue",
+  "luckyNumber": 2,
+  "todayTip": "Speak kindly to yourself and others, and let harmony guide your actions.",
+  "dos": [
+    "Be patient and empathetic while dealing with others.",
+    "Support teamwork and cooperative efforts.",
+    "Focus on balancing emotions and maintaining peace."
+  ],
+  "donts": [
+    "Don’t engage in unnecessary arguments or conflicts.",
+    "Avoid being overly passive or dependent on others.",
+    "Don’t ignore your inner voice when making choices."
+  ]
+},
   "3": {
-    "horoscope": [
-      "Your creative spirit is glowing today. Express yourself through art, music, or joyful conversation.",
-      "Share your thoughts and feelings freely. Your words can uplift and inspire others.",
-      "Laughter is medicine—find humor even in small things. Joy is your superpower today.",
-      "Don't suppress your need for fun. Engage in activities that bring you happiness and release stress.",
-      "Your charm and playfulness make you magnetic. Use them to spread positivity wherever you go."
-    ],
-    "luckyColor": "Yellow",
-    "todayTip": "Start your day with a creative ritual—write, sing, or draw."
-  },
+  "horoscope": [
+    "Your creative spirit is glowing today. Express yourself through art, music, or joyful conversation.",
+    "Share your thoughts and feelings freely. Your words can uplift and inspire others.",
+    "Laughter is medicine—find humor even in small things. Joy is your superpower today.",
+    "Don't suppress your need for fun. Engage in activities that bring you happiness and release stress.",
+    "Your charm and playfulness make you magnetic. Use them to spread positivity wherever you go."
+  ],
+  "luckyColor": "Yellow",
+  "luckyNumber": 3,
+  "todayTip": "Start your day with a creative ritual—write, sing, or draw, and let your natural charm shine.",
+  "dos": [
+    "Engage in creative activities that inspire you.",
+    "Use your communication skills to uplift others.",
+    "Spread positivity and laughter wherever you go."
+  ],
+  "donts": [
+    "Don’t ignore your creative urges or self-expression.",
+    "Avoid overindulging in distractions.",
+    "Don’t let negative people dampen your enthusiasm."
+  ]
+},
   "4": {
-    "horoscope": [
-      "Today is all about structure and productivity. Stick to your routine and knock tasks off your list.",
-      "Be methodical in your work—attention to detail will bring big rewards.",
-      "Discipline is your friend today. Stay focused on the bigger picture while handling the small steps.",
-      "Hard work may not feel glamorous, but it builds the foundation for long-term success.",
-      "Take responsibility seriously. Being dependable will earn you respect and peace of mind."
-    ],
-    "luckyColor": "Brown",
-    "todayTip": "Stick to a task you’ve been avoiding—your focus is strong today."
-  },
+  "horoscope": [
+    "Today is all about structure and productivity. Stick to your routine and knock tasks off your list.",
+    "Be methodical in your work—attention to detail will bring big rewards.",
+    "Discipline is your friend today. Stay focused on the bigger picture while handling the small steps.",
+    "Hard work may not feel glamorous, but it builds the foundation for long-term success.",
+    "Take responsibility seriously. Being dependable will earn you respect and peace of mind."
+  ],
+  "luckyColor": "Brown",
+  "luckyNumber": 4,
+  "todayTip": "Stick to a task you’ve been avoiding—your focus and discipline will pay off today.",
+  "dos": [
+    "Work with dedication and consistency.",
+    "Pay attention to details in your projects.",
+    "Stay organized and plan your day efficiently."
+  ],
+  "donts": [
+    "Don’t postpone tasks or procrastinate.",
+    "Avoid being overly rigid or stubborn.",
+    "Don’t ignore the need for a proper work-life balance."
+  ]
+},
   "5": {
-    "horoscope": [
-      "Expect the unexpected—today invites excitement and change. Embrace it with open arms.",
-      "Let go of rigid plans and allow space for adventure. A flexible mindset will serve you well.",
-      "Be spontaneous! Say yes to something new, whether it's an idea, opportunity, or experience.",
-      "Movement is medicine. Whether it's physical travel or a mental shift, change will energize you.",
-      "Keep things light and lively—your freedom-loving nature thrives when you explore beyond the usual."
-    ],
-    "luckyColor": "Sky Blue",
-    "todayTip": "Try something you’ve never done before, no matter how small."
-  },
+  "horoscope": [
+    "Expect the unexpected—today invites excitement and change. Embrace it with open arms.",
+    "Let go of rigid plans and allow space for adventure. A flexible mindset will serve you well.",
+    "Be spontaneous! Say yes to something new, whether it's an idea, opportunity, or experience.",
+    "Movement is medicine. Whether it's physical travel or a mental shift, change will energize you.",
+    "Keep things light and lively—your freedom-loving nature thrives when you explore beyond the usual."
+  ],
+  "luckyColor": "Sky Blue",
+  "luckyNumber": 5,
+  "todayTip": "Try something you’ve never done before, no matter how small—embrace the thrill of new experiences.",
+  "dos": [
+    "Be open to change and spontaneous opportunities.",
+    "Explore something new to refresh your energy.",
+    "Stay adaptable and embrace freedom."
+  ],
+  "donts": [
+    "Don’t cling to rigid plans or schedules.",
+    "Avoid impulsive decisions without thinking.",
+    "Don’t let distractions take you off course."
+  ]
+},
   "6": {
     "horoscope": [
       "Focus on nurturing yourself and others. Acts of care will bring emotional fulfillment and strengthen your bonds.",
@@ -77,36 +132,69 @@
     ]
   },
   "7": {
-    "horoscope": [
-      "Today calls for introspection. Slow down and tune into your inner wisdom.",
-      "Quiet moments will bring clarity. Solitude isn’t loneliness—it’s nourishment for the soul.",
-      "Ask deeper questions and seek spiritual insight. The answers are already within you.",
-      "Let your intuition lead. Don’t rush decisions—feel them out from a place of stillness.",
-      "Withdraw from the noise. Reflection will guide you more than reaction ever could."
-    ],
-    "luckyColor": "Purple",
-    "todayTip": "Spend 10 minutes in silence to reconnect with your intuition."
-  },
+  "horoscope": [
+    "Today calls for introspection. Slow down and tune into your inner wisdom.",
+    "Quiet moments will bring clarity. Solitude isn’t loneliness—it’s nourishment for the soul.",
+    "Ask deeper questions and seek spiritual insight. The answers are already within you.",
+    "Let your intuition lead. Don’t rush decisions—feel them out from a place of stillness.",
+    "Withdraw from the noise. Reflection will guide you more than reaction ever could."
+  ],
+  "luckyColor": "Purple",
+  "luckyNumber": 7,
+  "todayTip": "Spend 10 minutes in silence to reconnect with your intuition and inner guidance.",
+  "dos": [
+    "Take time for meditation or mindfulness.",
+    "Listen to your intuition before making decisions.",
+    "Spend a quiet moment in nature or solitude."
+  ],
+  "donts": [
+    "Don’t rush into commitments or decisions today.",
+    "Avoid overthinking small issues.",
+    "Don’t ignore your emotional and spiritual needs."
+  ]
+},
   "8": {
-    "horoscope": [
-      "Step into your authority today. Set goals, act strategically, and claim your power.",
-      "This is a day for focus and ambition. Financial planning or leadership actions will bring results.",
-      "Own your role—whether at work or home—and lead with clarity and integrity.",
-      "You have the tools to manifest your goals. Be bold, decisive, and take practical action.",
-      "Use your influence wisely. When you lead with purpose, success naturally follows."
-    ],
-    "luckyColor": "Dark Green",
-    "todayTip": "Make a list of your top 3 priorities and take action."
-  },
+  "horoscope": [
+    "Step into your authority today. Set goals, act strategically, and claim your power.",
+    "This is a day for focus and ambition. Financial planning or leadership actions will bring results.",
+    "Own your role—whether at work or home—and lead with clarity and integrity.",
+    "You have the tools to manifest your goals. Be bold, decisive, and take practical action.",
+    "Use your influence wisely. When you lead with purpose, success naturally follows."
+  ],
+  "luckyColor": "Dark Green",
+  "luckyNumber": 8,
+  "todayTip": "Make a list of your top 3 priorities and take decisive action to move forward.",
+  "dos": [
+    "Focus on achieving your long-term goals.",
+    "Use your leadership skills to guide others effectively.",
+    "Take calculated steps for financial or career growth."
+  ],
+  "donts": [
+    "Don’t get distracted by unimportant tasks.",
+    "Avoid being overly controlling or stubborn.",
+    "Don’t let fear of failure stop you from taking action."
+  ]
+},
   "9": {
-    "horoscope": [
-      "Offer kindness freely. Your ability to care for others brings peace to your own heart.",
-      "It’s time to release what no longer serves you. Let go and make room for something better.",
-      "Forgiveness is your strength today. Whether it's for yourself or others, it will lighten your spirit.",
-      "Your journey today involves compassion and service. Focus on giving without expectations.",
-      "Embrace closure. Every ending holds the seed of a beautiful new beginning."
-    ],
-    "luckyColor": "White",
-    "todayTip": "Let go of one emotional burden you’ve been carrying."
-  }
+  "horoscope": [
+    "Offer kindness freely. Your ability to care for others brings peace to your own heart.",
+    "It’s time to release what no longer serves you. Let go and make room for something better.",
+    "Forgiveness is your strength today. Whether it's for yourself or others, it will lighten your spirit.",
+    "Your journey today involves compassion and service. Focus on giving without expectations.",
+    "Embrace closure. Every ending holds the seed of a beautiful new beginning."
+  ],
+  "luckyColor": "White",
+  "luckyNumber": 9,
+  "todayTip": "Let go of one emotional burden you’ve been carrying and focus on compassionate actions.",
+  "dos": [
+    "Practice forgiveness and gratitude today.",
+    "Offer help to someone in need, even in small ways.",
+    "Reflect on endings as opportunities for fresh starts."
+  ],
+  "donts": [
+    "Don’t hold grudges or negative emotions.",
+    "Avoid overextending yourself emotionally.",
+    "Don’t ignore your own healing process."
+  ]
+}
 }
