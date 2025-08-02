@@ -168,6 +168,12 @@ def get_tool_result():
     
     return jsonify({"error": "Unsupported tool"}), 400
 
+    from tools.luck_engine import calculate_luck_score
+
+    if tool == "luck-meter":
+        return jsonify(calculate_luck_score(data.get("name"), data.get("dob")))
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
