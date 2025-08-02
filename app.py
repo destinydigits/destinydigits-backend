@@ -23,6 +23,7 @@ from tools.best_working_days import get_best_working_days
 from tools.personal_core_numbers import get_personal_core_number
 from tools.vedic_kundali import get_vedic_kundali
 from tools.luck_engine import calculate_luck_score
+from tools.flames import flames_result
 from flask import send_file
 import os
 
@@ -120,6 +121,8 @@ def get_tool_result():
         
     if tool == "luck-meter":
         return jsonify(calculate_luck_score(data.get("name"), data.get("dob")))
+    if tool == "flames-check":
+        return jsonify(flames_result(data.get("name1"), data.get("name2")))
     if tool == "romantic-vibes":
         return jsonify(get_romantic_vibes(data))
     if tool == "karmic-lessons-marriage":
