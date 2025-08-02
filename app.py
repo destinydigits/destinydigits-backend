@@ -117,7 +117,9 @@ def get_tool_result():
             "fullReport": full_report
         }
         return jsonify(result)
-
+        
+    if tool == "luck-meter":
+        return jsonify(calculate_luck_score(data.get("name"), data.get("dob")))
     if tool == "romantic-vibes":
         return jsonify(get_romantic_vibes(data))
     if tool == "karmic-lessons-marriage":
@@ -169,10 +171,6 @@ def get_tool_result():
     
     return jsonify({"error": "Unsupported tool"}), 400
 
-    from tools.luck_engine import calculate_luck_score
-
-    if tool == "luck-meter":
-        return jsonify(calculate_luck_score(data.get("name"), data.get("dob")))
 
 
 if __name__ == '__main__':
