@@ -88,12 +88,6 @@ def get_horoscope_message():
 
     return jsonify(result)
 
-@app.route('/api/tool-result', methods=['POST'])
-    def get_tool_result():
-        data = request.get_json()
-        tool = data.get("tool")
-        print("Requested tool:", tool)
-
 def get_money_vibration_today(data):
     name = data.get("name")
     dob = data.get("dob")
