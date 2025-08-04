@@ -189,10 +189,10 @@ def get_tool_result():
         ))
 
     if tool == "baby-name-suggestion":
-    return jsonify(run_baby_name_suggestion(
-        data.get("dob"),
-        data.get("gender")
-    ))
+        return jsonify(run_baby_name_suggestion(
+            data.get("dob"),
+            data.get("gender")
+        ))
     
     return jsonify({"error": "Unsupported tool"}), 400
 
