@@ -3,7 +3,7 @@ import random
 import os
 from tools.numerology_core import extract_full_numerology
 
-# Path to baby_names.json
+# File path
 BABY_NAME_PATH = os.path.join(os.path.dirname(__file__), "baby_names.json")
 
 def run_baby_name_suggestion(dob, gender):
@@ -23,41 +23,25 @@ def run_baby_name_suggestion(dob, gender):
         if not names:
             raise ValueError("No names available for selected gender")
 
-        # Calculate destiny number
-        destiny = get_destiny_number(dob)
+        # Get destiny number from existing numerology engine
+        destiny = extract_full_numerology("Baby", dob).get("destinyNumber") or 0
 
-        # Match names with same vibration
+        # Filter names that match destiny number
         matching_names = []
         for name in names:
-            number = get_expression_number(name)
-            if number == destiny:
+            expr = extract_full_numerology(name, dob).get("expression_number")
+            if expr == destiny:
                 matching_names.append(name)
 
         if not matching_names:
-            raise ValueError("No matching names found for this destiny number")
+            raise ValueError("No matching names found for destiny number")
 
-def get_expression_number(name):
-    letter_map = {
-        'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9,
-        'J':1, 'K':2, 'L':3, 'M':4, 'N':5, 'O':6, 'P':7, 'Q':8, 'R':9,
-        'S':1, 'T':2, 'U':3, 'V':4, 'W':5, 'X':6, 'Y':7, 'Z':8
-    }
-
-    name = name.upper()
-    total = sum(letter_map.get(ch, 0) for ch in name if ch.isalpha())
-
-    while total not in [11, 22, 33] and total > 9:
-        total = sum(int(d) for d in str(total))
-
-    return total
-
-        # Pick 3 random names
+        # Pick up to 3 matching names
         final_names = random.sample(matching_names, min(3, len(matching_names)))
 
-        # Prepare response
         name_blocks = []
         for name in final_names:
-            message = f"{name} vibrates with number {destiny}, which aligns beautifully with your baby's life path. It supports natural growth and soul expression."
+            message = f"{name} vibrates with number {destiny}, which aligns beautifully with your baby's life path. It supports their natural growth and soul purpose."
             name_blocks.append({
                 "name": name,
                 "number": destiny,
@@ -88,5 +72,3 @@ def get_expression_number(name):
             "summary": f"Something went wrong: {str(e)}",
             "suggestions": []
         }
-
-
