@@ -1,17 +1,38 @@
-def run_mobile_number_checker(mobile_number):
+from string import digits as digit_chars
+
+def run_mobile_number_checker(mobile_number, name=None, dob=None):
     try:
-        digits = [int(d) for d in str(mobile_number) if d.isdigit()]
+        # Extract digits only
+        digits = [int(d) for d in str(mobile_number) if d in digit_chars]
         if len(digits) < 10:
             raise ValueError("Invalid mobile number")
 
         total = sum(digits)
 
-        # Reduce to single digit unless master number
+        # Reduce total to a vibration number
         while total not in [11, 22, 33] and total > 9:
             total = sum(int(d) for d in str(total))
 
         vibration = total
         traits = vibration_traits.get(vibration, default_traits)
+
+        # Optional: Destiny comparison
+        feeling = ""
+        if name and dob:
+            try:
+                from tools.numerology_core import extract_full_numerology
+                profile = extract_full_numerology(name, dob)
+                destiny = profile.get("destiny_number") or profile.get("destinyNumber")
+                if destiny:
+                    diff = abs(vibration - destiny)
+                    if destiny == vibration:
+                        feeling = "This number is in perfect harmony with your destiny path."
+                    elif diff in [1, 2]:
+                        feeling = "This number gently supports your destiny path with a unique influence."
+                    else:
+                        feeling = "This number carries a different energy than your life path — use it with awareness."
+            except Exception as e:
+                feeling = ""
 
         return {
             "tool": "mobile-number-checker",
@@ -23,7 +44,8 @@ def run_mobile_number_checker(mobile_number):
             "summary": traits["summary"],
             "vibrationMeaning": traits["meaning"],
             "energyMessage": traits["message"],
-            "remedy": traits["remedy"]
+            "remedy": traits["remedy"],
+            "feeling": feeling
         }
 
     except Exception as e:
@@ -37,7 +59,8 @@ def run_mobile_number_checker(mobile_number):
             "summary": f"Something went wrong: {str(e)}",
             "vibrationMeaning": "",
             "energyMessage": "",
-            "remedy": ""
+            "remedy": "",
+            "feeling": ""
         }
 
 
