@@ -24,6 +24,7 @@ from tools.personal_core_numbers import get_personal_core_number
 from tools.vedic_kundali import get_vedic_kundali
 from tools.luck_engine import calculate_luck_score
 from tools.flames import flames_result
+from tools.name_correction_engine import run_name_correction_tool
 from flask import send_file
 import os
 
@@ -139,6 +140,10 @@ def get_tool_result():
         return jsonify(get_marriage_compatibility(data))
     if tool in ["best-year-to-marry", "marriage-year"]:
         return jsonify(get_best_year_to_marry(data))
+    if tool == "name-correction":
+        name = data.get("name")
+        dob = data.get("dob")
+        return jsonify(run_name_correction_tool(name, dob))
     if tool == "ideal-partner-traits":
         return jsonify(get_ideal_partner_traits(data))
     if tool in ["money-vibration-today", "money-today"]:
