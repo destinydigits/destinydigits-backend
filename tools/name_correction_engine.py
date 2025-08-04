@@ -69,12 +69,19 @@ def get_vibration_compatibility(expression, destiny):
 # Letter suggestion logic
 def suggest_letters_to_add(name, expression, destiny):
     ideal_letters = []
+    formatted_suggestions = []
+
     for ch in ascii_uppercase:
         new_name = name + ch
         new_expr = get_expression_number(new_name)
         if new_expr == destiny:
             ideal_letters.append(ch)
-    return ideal_letters[:5]
+
+    # Format output without examples
+    for ch in ideal_letters[:5]:
+        formatted_suggestions.append(f"Try adding one extra '{ch}' to your name")
+
+    return formatted_suggestions
 
 # Expression Number calculator
 def get_expression_number(name):
