@@ -24,7 +24,8 @@ from tools.personal_core_numbers import get_personal_core_number
 from tools.vedic_kundali import get_vedic_kundali
 from tools.luck_engine import calculate_luck_score
 from tools.flames import flames_result
-from tools.name_correction_engine import run_name_correction_tool
+from tools.numerology_core import extract_full_numerology, get_expression_number
+from string import ascii_uppercase
 from flask import send_file
 import os
 
