@@ -5,7 +5,7 @@ def run_name_correction_tool(name, dob):
     try:
         numerology = extract_full_numerology(name, dob)
         expression = numerology.get("expression_number")
-        destiny = numerology.get("destinyNumber")
+        destiny = numerology.get("destiny_number") or numerology.get("destinyNumber")
 
         if not expression or not destiny:
             return {
