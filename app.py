@@ -28,6 +28,7 @@ from tools.numerology_core import extract_full_numerology
 from tools.name_correction_engine import run_name_correction_tool
 from string import ascii_uppercase
 from tools.mobile_number_checker import run_mobile_number_checker
+from tools.baby_name_suggestion import run_baby_name_suggestion
 from flask import send_file
 import os
 
@@ -186,6 +187,12 @@ def get_tool_result():
             name=data.get("name"),
             dob=data.get("dob")
         ))
+
+    if tool == "baby-name-suggestion":
+    return jsonify(run_baby_name_suggestion(
+        data.get("dob"),
+        data.get("gender")
+    ))
     
     return jsonify({"error": "Unsupported tool"}), 400
 
