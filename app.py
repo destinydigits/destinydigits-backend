@@ -188,6 +188,8 @@ def get_tool_result():
             name=data.get("name"),
             dob=data.get("dob")
         ))
+    
+    return jsonify({"error": "Unsupported tool"}), 400
 
 
 
