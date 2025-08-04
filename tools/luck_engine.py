@@ -54,7 +54,7 @@ def calculate_luck_score(name, dob, today=None):
     day_multiplier = day_modifiers[weekday]
 
     base_score = personal_day * expression_number
-    final_score = int(min(100, max(30, base_score * day_multiplier)))
+    final_score = int(min(100, max(10, base_score * day_multiplier)))
 
     # 🧠 Build output
     return {
