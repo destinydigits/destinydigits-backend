@@ -27,6 +27,7 @@ from tools.flames import flames_result
 from tools.numerology_core import extract_full_numerology
 from tools.name_correction_engine import run_name_correction_tool
 from string import ascii_uppercase
+from tools.mobile_number_checker import run_mobile_number_checker
 from flask import send_file
 import os
 
@@ -180,6 +181,9 @@ def get_tool_result():
         return jsonify(get_vedic_kundali(data))
     
     return jsonify({"error": "Unsupported tool"}), 400
+
+    if tool == "mobile-number-checker":
+        return jsonify(run_mobile_number_checker(data.get("mobileNumber")))
 
 
 
