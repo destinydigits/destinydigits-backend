@@ -183,7 +183,11 @@ def get_tool_result():
     return jsonify({"error": "Unsupported tool"}), 400
 
     if tool == "mobile-number-checker":
-        return jsonify(run_mobile_number_checker(data.get("mobileNumber")))
+        return jsonify(run_mobile_number_checker(
+            data.get("mobileNumber"),
+            name=data.get("name"),
+            dob=data.get("dob")
+        ))
 
 
 
