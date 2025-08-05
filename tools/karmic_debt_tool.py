@@ -1,4 +1,5 @@
 from tools.numerology_core import extract_full_numerology
+from datetime import datetime
 
 def run_karmic_debt_tool(name, dob):
     try:
@@ -8,11 +9,14 @@ def run_karmic_debt_tool(name, dob):
         numerology = extract_full_numerology(name, dob)
 
         # Check karmic debt numbers
+        birth_day = int(datetime.strptime(dob, "%Y-%m-%d").day)
+
         karmic_debt_candidates = [
+            birth_day,
             numerology.get("life_path"),
             numerology.get("destiny_number"),
             numerology.get("expression_number"),
-            numerology.get("soul_urge"),
+            numerology.get("heart_number"),
         ]
 
         karmic_debt_numbers = [13, 14, 16, 19]
