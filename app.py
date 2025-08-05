@@ -30,7 +30,7 @@ from string import ascii_uppercase
 from tools.mobile_number_checker import run_mobile_number_checker
 from tools.baby_name_suggestion import run_baby_name_suggestion
 from tools.karmic_debt_tool import run_karmic_debt_tool
-from tools.find_love_god import run_find_love_god_tool
+from tools.find_love_god import run_find_love_god
 from flask import send_file
 import os
 
@@ -200,9 +200,7 @@ def get_tool_result():
         ))
 
     if tool == "find-love-god":
-        return jsonify(run_find_love_god_tool(
-            data.get("name"), data.get("dob")
-        ))
+        return jsonify(run_find_love_god(data.get("name"), data.get("dob")))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
