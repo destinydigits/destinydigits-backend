@@ -64,7 +64,7 @@ def run_find_love_god(name, dob):
             raise ValueError("Name and DOB required")
 
         numerology = extract_full_numerology(name, dob)
-        heart_number = numerology.get("heartNumber")
+        heart_number = numerology.get("heartNumber") or numerology.get("heart_number")
 
         if heart_number not in LOVE_GOD_MAP:
             raise ValueError("Unable to map heart number")
