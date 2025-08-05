@@ -126,7 +126,7 @@ def get_tool_result():
         return jsonify(result)
 
     if tool == "karmic-debt-check":
-    return jsonify(run_karmic_debt_tool(data.get("name"), data.get("dob")))
+        return jsonify(run_karmic_debt_tool(data.get("name"), data.get("dob")))
 
     if tool == "luck-meter":
         return jsonify(calculate_luck_score(data.get("name"), data.get("dob")))
