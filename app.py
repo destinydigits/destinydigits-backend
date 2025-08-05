@@ -29,6 +29,7 @@ from tools.name_correction_engine import run_name_correction_tool
 from string import ascii_uppercase
 from tools.mobile_number_checker import run_mobile_number_checker
 from tools.baby_name_suggestion import run_baby_name_suggestion
+from tools.karmic_debt_tool import run_karmic_debt_tool
 from flask import send_file
 import os
 
@@ -123,7 +124,10 @@ def get_tool_result():
             "fullReport": full_report
         }
         return jsonify(result)
-        
+
+    if tool == "karmic-debt-check":
+    return jsonify(run_karmic_debt_tool(data.get("name"), data.get("dob")))
+
     if tool == "luck-meter":
         return jsonify(calculate_luck_score(data.get("name"), data.get("dob")))
     if tool == "flames-check":
