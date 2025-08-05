@@ -1,15 +1,60 @@
 from tools.numerology_core import extract_full_numerology
 
 LOVE_GOD_MAP = {
-    1: ("Eros (Greek)", "Passionate, direct, and bold in love."),
-    2: ("Hathor (Egyptian)", "Nurturing, emotionally intuitive, and values deep bonds."),
-    3: ("Freyja (Norse)", "Creative, joyful, and attracts love through charm."),
-    4: ("Parvati (Indian)", "Devoted, stable, and builds strong emotional foundations."),
-    5: ("Aphrodite (Greek)", "Adventurous, sensual, and thrives on excitement in love."),
-    6: ("Lakshmi (Indian)", "Romantic, harmonious, and believes in spiritual connection."),
-    7: ("Cupid (Roman)", "Mysterious, idealistic, and seeks soul-level connection."),
-    8: ("Ishtar (Babylonian)", "Strong, magnetic, and desires power balance in love."),
-    9: ("Radha (Indian)", "Compassionate, selfless, and devoted in love."),
+    1: {
+        "god": "Eros",
+        "vibe": "Passionate Initiator",
+        "summary": "You are bold and unafraid in love. Your heart is ruled by Eros, the Greek god of passion. You bring spark and desire into relationships, lighting fires that can’t be ignored.",
+        "syncMessage": "Trust your passion — let Eros guide you to pursue love with courage and intensity."
+    },
+    2: {
+        "god": "Radha",
+        "vibe": "Devoted Companion",
+        "summary": "Your heart resonates with Radha, symbol of divine devotion and soul connection in Indian mythology. You seek emotional closeness and spiritual bonding.",
+        "syncMessage": "Let your love flow with devotion — Radha's energy helps you create soulful bonds that last."
+    },
+    3: {
+        "god": "Freyja",
+        "vibe": "Creative Charmer",
+        "summary": "Your heart dances with Freyja, the Norse goddess of love and beauty. You express love through joy, charm, and emotional creativity.",
+        "syncMessage": "Let Freyja inspire your heart — charm, express, and celebrate the joy of connection."
+    },
+    4: {
+        "god": "Hathor",
+        "vibe": "Loyal Protector",
+        "summary": "You embody Hathor’s spirit, the Egyptian goddess of love, protection, and motherhood. Your love is stable, loyal, and deeply nurturing.",
+        "syncMessage": "Let Hathor remind you — love grows through care, loyalty, and shared structure."
+    },
+    5: {
+        "god": "Cupid",
+        "vibe": "Magnetic Explorer",
+        "summary": "With Cupid’s essence, you seek excitement and variety in love. Your heart craves freedom, but also delights in the playful pursuit of connection.",
+        "syncMessage": "Let Cupid's arrows lead you — explore love with curiosity, but stay true to your core."
+    },
+    6: {
+        "god": "Aphrodite",
+        "vibe": "Romantic Dreamer",
+        "summary": "Your heart number is 6 – full of love, harmony, and beauty. Your guiding Love God is Aphrodite, the Greek goddess of love and desire. Her divine influence helps you form deep, beautiful connections that celebrate emotional truth and romance.",
+        "syncMessage": "Let your love life be guided by Aphrodite's grace — express beauty, care, and soul-deep connection."
+    },
+    7: {
+        "god": "Parvati",
+        "vibe": "Spiritual Lover",
+        "summary": "Your love path aligns with Parvati, the goddess of devotion and inner connection. You seek depth and meaning beyond physical attraction.",
+        "syncMessage": "Let Parvati's calm devotion lead you — seek the soul behind the smile."
+    },
+    8: {
+        "god": "Venus",
+        "vibe": "Sensual Power",
+        "summary": "Venus blesses you with the power to love with intensity and stability. You offer your partner emotional strength, sensuality, and loyalty.",
+        "syncMessage": "Let Venus shine through you — love boldly and protect what matters."
+    },
+    9: {
+        "god": "Lakshmi",
+        "vibe": "Compassionate Healer",
+        "summary": "Your love is generous and healing. Guided by Lakshmi, you bring compassion, support, and grace to every connection.",
+        "syncMessage": "Let Lakshmi guide your relationships — serve with love and uplift others through care."
+    }
 }
 
 def run_find_love_god_tool(name, dob):
