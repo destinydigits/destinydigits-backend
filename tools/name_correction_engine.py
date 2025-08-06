@@ -1,7 +1,9 @@
 from tools.numerology_core import extract_full_numerology
 from string import ascii_uppercase
 
-def run_name_correction_tool(name, dob):
+def run_name_correction_tool(data):
+    name = data.get("name")
+    dob = data.get("dob")
     try:
         numerology = extract_full_numerology(name, dob)
         expression = numerology.get("expression_number")
