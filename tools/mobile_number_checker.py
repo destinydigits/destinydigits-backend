@@ -1,6 +1,9 @@
 from string import digits as digit_chars
 
-def run_mobile_number_checker(mobile_number, name=None, dob=None):
+def run_mobile_number_checker(data):
+    mobile_number = data.get("mobileNumber")
+    name = data.get("name")
+    dob = data.get("dob")
     try:
         # Extract digits only
         digits = [int(d) for d in str(mobile_number) if d in digit_chars]
