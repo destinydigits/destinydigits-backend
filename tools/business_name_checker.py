@@ -1,7 +1,9 @@
 from datetime import datetime
 from tools.numerology_core import numerology_values, extract_full_numerology
 
-def business_name_checker(name: str, dob: str):
+def business_name_checker(data):
+    name = data.get("businessName")
+    dob = data.get("dob")
     try:
         # Expression number from business name
         name_data = numerology_values(name)
