@@ -195,7 +195,7 @@ def get_tool_result():
         return jsonify(run_find_love_god(data))
 
     if tool == "business-name-checker":
-        return jsonify(business_name_checker(data.get("name"), data.get("dob")))
+        return jsonify(business_name_checker(data))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
