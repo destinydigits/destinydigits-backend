@@ -1,6 +1,6 @@
 def flames_result(data):
-    name1 = data.get("name1")
-    name2 = data.get("name2")
+   name1 = data.get("name1") or data.get("name") or ""
+   name2 = data.get("name2") or data.get("partnerName") or ""
     
     n1 = name1.lower().replace(" ", "")
     n2 = name2.lower().replace(" ", "")
