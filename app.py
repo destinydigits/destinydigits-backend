@@ -201,7 +201,7 @@ def get_tool_result():
         ))
 
     if tool == "find-love-god":
-        return jsonify(run_find_love_god(data.get("name"), data.get("dob")))
+        return jsonify(run_find_love_god(data))
 
     if tool == "business-name-checker":
         return jsonify(business_name_checker(data.get("name"), data.get("dob")))
