@@ -57,7 +57,9 @@ LOVE_GODS = {
     }
 }
 
-def run_find_love_god(name, dob):
+def run_find_love_god(data):
+    name = data.get("name")
+    dob = data.get("dob")
     try:
         if not name or not dob:
             raise ValueError("Name and DOB required")
