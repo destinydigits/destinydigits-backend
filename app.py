@@ -195,10 +195,7 @@ def get_tool_result():
         ))
 
     if tool == "baby-name-suggestion":
-        return jsonify(run_baby_name_suggestion(
-            data.get("dob"),
-            data.get("gender")
-        ))
+        return jsonify(run_baby_name_suggestion(data))
 
     if tool == "find-love-god":
         return jsonify(run_find_love_god(data))
