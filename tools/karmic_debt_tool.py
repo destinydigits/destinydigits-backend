@@ -1,8 +1,10 @@
 from tools.numerology_core import extract_full_numerology
 from datetime import datetime
 
-def run_karmic_debt_tool(name, dob):
+def run_karmic_debt_tool(data):
     try:
+        name = data.get("name")
+        dob = data.get("dob")
         if not name or not dob:
             raise ValueError("Name and DOB are required")
 
