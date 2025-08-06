@@ -151,9 +151,7 @@ def get_tool_result():
     if tool in ["best-year-to-marry", "marriage-year"]:
         return jsonify(get_best_year_to_marry(data))
     if tool == "name-correction":
-        name = data.get("name")
-        dob = data.get("dob")
-        return jsonify(run_name_correction_tool(name, dob))
+        return jsonify(run_name_correction_tool(data))
     if tool == "ideal-partner-traits":
         return jsonify(get_ideal_partner_traits(data))
     if tool in ["money-vibration-today", "money-today"]:
