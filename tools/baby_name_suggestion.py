@@ -6,8 +6,10 @@ from tools.numerology_core import extract_full_numerology
 # File path
 BABY_NAME_PATH = os.path.join(os.path.dirname(__file__), "baby_names.json")
 
-def run_baby_name_suggestion(dob, gender):
+def run_baby_name_suggestion(data):
     try:
+        dob = data.get("dob")
+        gender = data.get("gender")
         if not dob or not gender:
             raise ValueError("DOB and gender are required")
 
