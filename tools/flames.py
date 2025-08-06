@@ -8,7 +8,7 @@ def flames_result(data):
     # Remove common letters
     n1_list = list(n1)
     n2_list = list(n2)
-    for ch in name1:
+    for ch in n1_list[:]:
         if ch in n2_list:
             n1_list.remove(ch)
             n2_list.remove(ch)
