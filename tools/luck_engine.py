@@ -38,7 +38,9 @@ def get_daily_tip(name, dob, score, today_str):
     random.seed(seed)
     return random.choice(tips)
 
-def calculate_luck_score(name, dob, today=None):
+def calculate_luck_score(data, today=None):
+    name = data.get("name")
+    dob = data.get("dob")
     if not today:
         today = datetime.date.today()
     today_str = today.strftime("%Y-%m-%d")
