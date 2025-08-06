@@ -131,7 +131,7 @@ def get_tool_result():
         return jsonify(run_karmic_debt_tool(data))
 
     if tool == "luck-meter":
-        return jsonify(calculate_luck_score(data.get("name"), data.get("dob")))
+        return jsonify(calculate_luck_score(data))
     if tool == "flames-check":
         return jsonify(flames_result(data.get("name1"), data.get("name2")))
     if tool == "romantic-vibes":
