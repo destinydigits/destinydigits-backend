@@ -133,7 +133,7 @@ def get_tool_result():
     if tool == "luck-meter":
         return jsonify(calculate_luck_score(data))
     if tool == "flames-check":
-        return jsonify(flames_result(data.get("name1"), data.get("name2")))
+        return jsonify(flames_result(data))
     if tool == "romantic-vibes":
         return jsonify(get_romantic_vibes(data))
     if tool == "karmic-lessons-marriage":
