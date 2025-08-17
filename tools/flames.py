@@ -1,13 +1,13 @@
 def flames_result(data):
-   name1 = data.get("name1") or data.get("name") or ""
-   name2 = data.get("name2") or data.get("partnerName") or ""
+    name1 = data.get("name1") or data.get("name") or ""
+    name2 = data.get("name2") or data.get("partnerName") or ""
     
-   n1 = name1.lower().replace(" ", "")
-   n2 = name2.lower().replace(" ", "")
+    n1 = name1.lower().replace(" ", "")
+    n2 = name2.lower().replace(" ", "")
 
     # Remove common letters
-   n1_list = list(n1)
-   n2_list = list(n2)
+    n1_list = list(n1)
+    n2_list = list(n2)
     for ch in n1_list[:]:
         if ch in n2_list:
             n1_list.remove(ch)
