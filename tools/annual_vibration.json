@@ -1,35 +1,36 @@
-INSIGHT_PARAGRAPHS = {
-    "life_path": {
-        1: "You are a born leader, full of ambition and drive to stand out.",
-        2: "You are a natural peacemaker who thrives in collaboration and support.",
-        3: "You shine with creativity and joyful self-expression.",
-        4: "You are grounded, reliable, and excellent at building foundations.",
-        5: "You are adventurous, free-spirited, and love exploring new paths.",
-        6: "You carry a deep sense of care, love, and responsibility.",
-        7: "You seek wisdom, introspection, and spiritual truth.",
-        8: "You are a power achiever with great potential in business and finance.",
-        9: "You live with compassion, idealism, and a sense of higher purpose."
-    },
-    "heart_number": {
-        1: "Your inner desire is to lead, achieve, and make your unique mark.",
-        2: "You crave emotional connection, harmony, and understanding in relationships.",
-        3: "You seek joy, fun, and emotional expression in everything you do.",
-        4: "You need security, structure, and long-term commitment in your life.",
-        5: "You yearn for freedom, variety, and the thrill of new experiences.",
-        6: "You long to nurture, support, and build loving bonds with others.",
-        7: "You deeply desire solitude, truth, and meaningful inner connection.",
-        8: "You want to be respected, successful, and materially secure.",
-        9: "You are fulfilled by helping others, healing, and serving a greater cause."
-    },
-    "annual_vibration": {
-        "1": "✨ This year marks a fresh start in your life journey. It brings opportunities to reinvent yourself, take the lead, and plant the seeds of something entirely new. You may feel a surge of energy to begin new projects, move forward with long-delayed plans, or shift your personal focus. Embrace independence and trust your instincts — this is your time to shine. Don’t be afraid to take bold steps and claim your personal power. The year 1 is all about self-leadership, initiative, and laying the foundation for the next 9-year cycle.",
-        "2": "🤝 This year asks you to slow down and focus on connection. It's a period of patience, emotional growth, and deepening your bonds with others. You’ll find yourself more sensitive to others’ energies, more aware of relationship dynamics, and often placed in roles that require diplomacy and grace. Avoid rushing into decisions — this is not the time for bold moves. Instead, nurture trust, cooperation, and inner peace. It’s also a wonderful year for healing past emotional wounds and building intimate partnerships.",
-        "3": "🎨 This year brings joy, creativity, and social sparkle. You may feel a burst of inspiration to express yourself — through art, writing, speaking, or simply enjoying life more freely. It’s a time to lighten your emotional load, travel more, laugh often, and deepen your connection with your inner child. This is a magnetic year: people are drawn to your vibe. Just be careful not to scatter your energy or escape responsibilities. Create, celebrate, and stay grounded.",
-        "4": "🏗️ Discipline, effort, and structure define your year ahead. After the lightness of the past cycle, this year grounds you. It’s about building something long-term — whether that’s your career, health, finances, or relationships. Expect responsibilities to increase, but also know that the work you do now will have lasting rewards. Set routines, stick to plans, and stay consistent. This isn’t a flashy year, but it’s one of your most productive ones. Brick by brick, you're building the life you want.",
-        "5": "🌪️ Change is in the air. This year will shake things up — in your location, relationships, career, or even how you view yourself. It’s a dynamic and unpredictable time where freedom becomes your top priority. You might feel restless or drawn to explore new people, paths, or passions. Stay flexible and open-minded. Don't resist the changes — flow with them. This is a year of transformation, adventure, and unexpected opportunities. Embrace the chaos — it’s reshaping your future.",
-        "6": "🏡 This is a heart-centered year, focused on love, responsibility, and nurturing others. Family, home life, and community may take center stage. You may be called to step up in roles of service, support, or emotional leadership. It’s a time to build deeper relationships, create harmony in your personal life, and fulfill duties with compassion. This year is also ideal for starting a family, deepening commitments, or healing family wounds. Give love freely — and receive it too.",
-        "7": "🔮 This is a soul-searching year — one that invites introspection, solitude, and spiritual growth. You may feel the urge to withdraw from noise and focus on your inner world. This is a time to explore deep questions, study something meaningful, or simply slow down. It’s not a year for external achievements but for internal realignment. Take time for nature, journaling, meditation, or therapy. If you trust the silence, it will reveal your next steps with divine clarity.",
-        "8": "💼 Power, success, and financial focus take the lead this year. The seeds you planted in previous years begin to pay off. It’s a year of ambition, leadership, and material progress. Career advancement, money matters, and status become important themes. But with great power comes responsibility — make sure you’re using your energy wisely. Stay confident, be decisive, and aim high. This is your year to level up and claim what you deserve.",
-        "9": "🌕 This is a year of completion, karmic release, and emotional closure. You may find yourself wrapping up old cycles, saying goodbye to people or patterns that no longer serve you. While this can be emotional, it’s also incredibly freeing. This is your time to let go, forgive, and prepare for a brand new cycle ahead. Focus on compassion, creativity, and giving back. Don’t push for new beginnings — instead, reflect, release, and realign."
-    }
+{
+  "life_path": {
+    "1": "You are a born leader, full of ambition and drive to stand out.",
+    "2": "You are a natural peacemaker who thrives in collaboration and support.",
+    "3": "You shine with creativity and joyful self-expression.",
+    "4": "You are grounded, reliable, and excellent at building foundations.",
+    "5": "You are adventurous, free-spirited, and love exploring new paths.",
+    "6": "You carry a deep sense of care, love, and responsibility.",
+    "7": "You seek wisdom, introspection, and spiritual truth.",
+    "8": "You are a power achiever with great potential in business and finance.",
+    "9": "You live with compassion, idealism, and a sense of higher purpose."
+  },
+  "heart_number": {
+    "1": "Your inner desire is to lead, achieve, and make your unique mark.",
+    "2": "You crave emotional connection, harmony, and understanding in relationships.",
+    "3": "You seek joy, fun, and emotional expression in everything you do.",
+    "4": "You need security, structure, and long-term commitment in your life.",
+    "5": "You yearn for freedom, variety, and the thrill of new experiences.",
+    "6": "You long to nurture, support, and build loving bonds with others.",
+    "7": "You deeply desire solitude, truth, and meaningful inner connection.",
+    "8": "You want to be respected, successful, and materially secure.",
+    "9": "You are fulfilled by helping others, healing, and serving a greater cause."
+  },
+  "annual_vibration": {
+    "1": "✨ This year marks a fresh start in your life journey. It brings opportunities to reinvent yourself, take the lead, and plant the seeds of something entirely new. You may feel a surge of energy to begin new projects, move forward with long-delayed plans, or shift your personal focus. Embrace independence and trust your instincts — this is your time to shine. Don’t be afraid to take bold steps and claim your personal power. The year 1 is all about self-leadership, initiative, and laying the foundation for the next 9-year cycle.",
+    "2": "🤝 This year asks you to slow down and focus on connection. It's a period of patience, emotional growth, and deepening your bonds with others. You’ll find yourself more sensitive to others’ energies, more aware of relationship dynamics, and often placed in roles that require diplomacy and grace. Avoid rushing into decisions — this is not the time for bold moves. Instead, nurture trust, cooperation, and inner peace. It’s also a wonderful year for healing past emotional wounds and building intimate partnerships.",
+    "3": "🎨 This year brings joy, creativity, and social sparkle. You may feel a burst of inspiration to express yourself — through art, writing, speaking, or simply enjoying life more freely. It’s a time to lighten your emotional load, travel more, laugh often, and deepen your connection with your inner child. This is a magnetic year: people are drawn to your vibe. Just be careful not to scatter your energy or escape responsibilities. Create, celebrate, and stay grounded.",
+    "4": "🏗️ Discipline, effort, and structure define your year ahead. After the lightness of the past cycle, this year grounds you. It’s about building something long-term — whether that’s your career, health, finances, or relationships. Expect responsibilities to increase, but also know that the work you do now will have lasting rewards. Set routines, stick to plans, and stay consistent. This isn’t a flashy year, but it’s one of your most productive ones. Brick by brick, you're building the life you want.",
+    "5": "🌪️ Change is in the air. This year will shake things up — in your location, relationships, career, or even how you view yourself. It’s a dynamic and unpredictable time where freedom becomes your top priority. You might feel restless or drawn to explore new people, paths, or passions. Stay flexible and open-minded. Don't resist the changes — flow with them. This is a year of transformation, adventure, and unexpected opportunities. Embrace the chaos — it’s reshaping your future.",
+    "6": "🏡 This is a heart-centered year, focused on love, responsibility, and nurturing others. Family, home life, and community may take center stage. You may be called to step up in roles of service, support, or emotional leadership. It’s a time to build deeper relationships, create harmony in your personal life, and fulfill duties with compassion. This year is also ideal for starting a family, deepening commitments, or healing family wounds. Give love freely — and receive it too.",
+    "7": "🔮 This is a soul-searching year — one that invites introspection, solitude, and spiritual growth. You may feel the urge to withdraw from noise and focus on your inner world. This is a time to explore deep questions, study something meaningful, or simply slow down. It’s not a year for external achievements but for internal realignment. Take time for nature, journaling, meditation, or therapy. If you trust the silence, it will reveal your next steps with divine clarity.",
+    "8": "💼 Power, success, and financial focus take the lead this year. The seeds you planted in previous years begin to pay off. It’s a year of ambition, leadership, and material progress. Career advancement, money matters, and status become important themes. But with great power comes responsibility — make sure you’re using your energy wisely. Stay confident, be decisive, and aim high. This is your year to level up and claim what you deserve.",
+    "9": "🌕 This is a year of completion, karmic release, and emotional closure. You may find yourself wrapping up old cycles, saying goodbye to people or patterns that no longer serve you. While this can be emotional, it’s also incredibly freeing. This is your time to let go, forgive, and prepare for a brand new cycle ahead. Focus on compassion, creativity, and giving back. Don’t push for new beginnings — instead, reflect, release, and realign."
+  },
+  "quote": "“A birthday is not just a date. It’s the beginning of a fresh orbit — around the sun, and around your own growth.”"
 }
