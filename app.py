@@ -223,11 +223,11 @@ def life_path_trait_route():
         return jsonify(life_path_trait_run(name, dob))
 
     if tool == "birthday-year-prediction":
-    name = data.get("name")
-    dob = data.get("dob")
-    if not name or not dob:
-        return jsonify({"error": "Missing name or dob"}), 400
-    return jsonify(run_birthday_year_prediction(name, dob))
+        name = data.get("name")
+        dob = data.get("dob")
+        if not name or not dob:
+            return jsonify({"error": "Missing name or dob"}), 400
+        return jsonify(run_birthday_year_prediction(name, dob))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
