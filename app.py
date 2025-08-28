@@ -231,6 +231,20 @@ def life_path_trait_route():
     
         result = run_birthday_year_prediction(name, dob)
         status_code = 200 if "error" not in result else 500
+
+    if tool == "birthday-year-prediction":
+        name = data.get("name")
+        dob = data.get("dob")
+        if not name or not dob:
+            return jsonify({"error": "Missing name or dob"}), 400
+    
+        result = run_birthday_year_prediction(name, dob)
+        
+        # ✅ Add fallback return check:
+        if not result:
+            return jsonify({"error": "Internal error: No result generated."}), 500
+        
+        return jsonify(result), 200 if "error" not in result else 500
     
         return jsonify(result), status_code
 
