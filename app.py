@@ -215,11 +215,11 @@ def life_path_trait_route():
         return jsonify(run_current_challenge(data))
 
     if tool == "life-path-trait":
-    name = data.get("name")
-    dob = data.get("dob")
-    if not name or not dob:
-        return jsonify({"error": "Missing name or dob"}), 400
-    return jsonify(life_path_trait_run(name, dob))
+        name = data.get("name")
+        dob = data.get("dob")
+        if not name or not dob:
+            return jsonify({"error": "Missing name or dob"}), 400
+        return jsonify(life_path_trait_run(name, dob))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
