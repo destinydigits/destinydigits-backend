@@ -33,6 +33,7 @@ from tools.karmic_debt_tool import run_karmic_debt_tool
 from tools.find_love_god import run_find_love_god
 from tools.business_name_checker import business_name_checker
 from tools.current_challenge import run_current_challenge
+from life_path_trait_tool import run as life_path_trait_run
 from flask import send_file
 import os
 
@@ -128,6 +129,18 @@ def get_tool_result():
         }
         return jsonify(result)
 
+@app.route('/api/life-path-trait', methods=['POST'])
+def life_path_trait_route():
+    try:
+        data = request.get_json(force=True)
+        name = data.get("name")
+        dob = data.get("dob")
+        if not name or not dob:
+            return jsonify({"error": "Missing name or dob"}), 400
+        return jsonify(life_path_trait_run(name, dob))
+    except Exception as e:
+        return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
+    
     if tool == "karmic-debt-check":
         return jsonify(run_karmic_debt_tool(data))
 
@@ -200,6 +213,13 @@ def get_tool_result():
 
     if tool == "current-challenge":
         return jsonify(run_current_challenge(data))
+
+    if tool == "life-path-trait":
+    name = data.get("name")
+    dob = data.get("dob")
+    if not name or not dob:
+        return jsonify({"error": "Missing name or dob"}), 400
+    return jsonify(life_path_trait_run(name, dob))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
