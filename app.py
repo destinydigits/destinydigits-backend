@@ -41,7 +41,7 @@ import os
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-# ------------------- CORS HEADERS -------------------
+# ------------------- CORS HEADERS ------------------
 @app.after_request
 def apply_cors_headers(response):
     response.headers["Access-Control-Allow-Origin"] = "https://destinydigits.com"
