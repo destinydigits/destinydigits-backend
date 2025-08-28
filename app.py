@@ -129,18 +129,6 @@ def get_tool_result():
             "fullReport": full_report
         }
         return jsonify(result)
-
-@app.route('/api/life-path-trait', methods=['POST'])
-def life_path_trait_route():
-    try:
-        data = request.get_json(force=True)
-        name = data.get("name")
-        dob = data.get("dob")
-        if not name or not dob:
-            return jsonify({"error": "Missing name or dob"}), 400
-        return jsonify(life_path_trait_run(name, dob))
-    except Exception as e:
-        return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
     
     if tool == "karmic-debt-check":
         return jsonify(run_karmic_debt_tool(data))
@@ -225,17 +213,16 @@ def life_path_trait_route():
     if tool == "birthday-year-prediction":
         name = data.get("name")
         dob = data.get("dob")
-
         if not name or not dob:
             return jsonify({"error": "Missing name or dob"}), 400
 
         result = run_birthday_year_prediction(name, dob)
         if not result:
             return jsonify({"error": "Internal error: No result generated."}), 500
-
         return jsonify(result), 200 if "error" not in result else 500
-
-    return jsonify({"error": "Unsupported tool"}), 400
+    
+    # ✅ FINAL fallback if no tool matched
+    return jsonify({"error": "Unsupported or missing tool"}), 400
 
     
 
