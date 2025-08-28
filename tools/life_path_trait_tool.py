@@ -1,23 +1,9 @@
-# life_path_trait_tool.py
-# DestinyDigits: Life Path → One-line personalized trait (frontend-ready)
-
+# tools/life_path_trait_tool.py
 from typing import Dict
 
-try:
-    from numerology_core import extract_full_numerology  # import from your project
-except Exception:
-    # Fallback: minimal calculator
-    def _reduce(n: int) -> int:
-        while n > 9 and n not in (11, 22, 33):
-            n = sum(int(d) for d in str(n))
-        return n
+# Use project core (tools/numerology_core.py)
+from .numerology_core import extract_full_numerology
 
-    def extract_full_numerology(name: str, dob_str: str) -> Dict:
-        raw = sum(int(ch) for ch in dob_str if ch.isdigit())
-        life_path = _reduce(raw)
-        return {"life_path": life_path}
-
-# Humanized one-line traits
 LIFE_PATH_TRAITS: Dict[int, str] = {
     1: "You never like to follow, you always want to lead and do it your way.",
     2: "Your emotional connections are too strong, you value bonds and harmony.",
@@ -34,12 +20,6 @@ LIFE_PATH_TRAITS: Dict[int, str] = {
 }
 
 def run(name: str, dob: str) -> Dict:
-    """
-    Input:
-        name: str
-        dob: str in 'YYYY-MM-DD'
-    Output: dict ready for frontend
-    """
     try:
         data = extract_full_numerology(name, dob)
         lp = data.get("life_path")
@@ -47,20 +27,20 @@ def run(name: str, dob: str) -> Dict:
         lp = None
 
     if not lp or not isinstance(lp, int):
+        msg = "We couldn’t calculate your Life Path number. Please check DOB (YYYY-MM-DD)."
         return {
             "tool": "life-path-trait",
             "title": "Life Path Trait",
             "name": name,
             "dob": dob,
             "lifePath": None,
-            "trait": "We couldn’t calculate your Life Path number. Please check DOB (YYYY-MM-DD).",
-            "summary": "We couldn’t calculate your Life Path number. Please check DOB (YYYY-MM-DD).",
+            "trait": msg,
+            "summary": msg,
             "mainNumber": 0,
             "mainPercentage": 100
         }
 
     trait = LIFE_PATH_TRAITS.get(lp, "Your energy is unique — keep exploring your path with confidence.")
-
     return {
         "tool": "life-path-trait",
         "title": "Life Path Trait",
