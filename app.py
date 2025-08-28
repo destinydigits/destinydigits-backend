@@ -34,6 +34,7 @@ from tools.find_love_god import run_find_love_god
 from tools.business_name_checker import business_name_checker
 from tools.current_challenge import run_current_challenge
 from tools.life_path_trait_tool import run as life_path_trait_run
+from tools.birthday_year_tool import run_birthday_year_prediction
 from flask import send_file
 import os
 
@@ -220,6 +221,13 @@ def life_path_trait_route():
         if not name or not dob:
             return jsonify({"error": "Missing name or dob"}), 400
         return jsonify(life_path_trait_run(name, dob))
+
+    if tool == "birthday-year-prediction":
+    name = data.get("name")
+    dob = data.get("dob")
+    if not name or not dob:
+        return jsonify({"error": "Missing name or dob"}), 400
+    return jsonify(run_birthday_year_prediction(name, dob))
 
     return jsonify({"error": "Unsupported tool"}), 400
 
