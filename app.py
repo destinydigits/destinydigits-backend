@@ -33,7 +33,7 @@ from tools.karmic_debt_tool import run_karmic_debt_tool
 from tools.find_love_god import run_find_love_god
 from tools.business_name_checker import business_name_checker
 from tools.current_challenge import run_current_challenge
-from life_path_trait_tool import run as life_path_trait_run
+from tools.life_path_trait_tool import run as life_path_trait_run
 from flask import send_file
 import os
 
